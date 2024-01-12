@@ -3,8 +3,8 @@ on: push
 
 env:
   GODOT_VERSION: 4.2.1
-  EXPORT_NAME: jamtemplate
-  ITCHIO_NAME: antonioda/jamtemplate
+  EXPORT_NAME: godot-wild-jam-65
+  ITCHIO_NAME: antonioda/godot-wild-jam-65
 
 jobs:
   export-windows:
