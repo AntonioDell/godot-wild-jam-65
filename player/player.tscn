@@ -1,8 +1,69 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2eygpgki0vx0"]
+[gd_scene load_steps=8 format=3 uid="uid://b2eygpgki0vx0"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_l8dor"]
-[ext_resource type="SpriteFrames" uid="uid://pqgl02v8tb2d" path="res://player/rocket_sprite_frames.tres" id="1_wf4h8"]
-[ext_resource type="SpriteFrames" uid="uid://cpunraqcnb5ix" path="res://player/robot_sprite_frames.tres" id="2_4k06d"]
+[ext_resource type="Texture2D" uid="uid://e0i2e8njvlx8" path="res://player/rocket_sprites.png" id="2_oh1me"]
+[ext_resource type="Texture2D" uid="uid://byrponduq70lk" path="res://player/robot_sprites.png" id="3_noran"]
+
+[sub_resource type="Animation" id="Animation_0bbe5"]
+resource_name = "charge"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RocketSprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RobotSprites:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+}
+
+[sub_resource type="Animation" id="Animation_4on4x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RocketSprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RobotSprites:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_daa85"]
+_data = {
+"RESET": SubResource("Animation_4on4x"),
+"charge": SubResource("Animation_0bbe5")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g7b2x"]
 size = Vector2(35, 43)
@@ -10,12 +71,21 @@ size = Vector2(35, 43)
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_l8dor")
 
-[node name="Rocket" type="AnimatedSprite2D" parent="."]
-sprite_frames = ExtResource("1_wf4h8")
-animation = &"overload"
+[node name="RocketSprites" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("2_oh1me")
+hframes = 14
 
-[node name="Body" type="AnimatedSprite2D" parent="."]
-sprite_frames = ExtResource("2_4k06d")
+[node name="RobotSprites" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("3_noran")
+hframes = 14
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_daa85")
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 10)
