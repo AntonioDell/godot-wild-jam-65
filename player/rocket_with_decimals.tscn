@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkxifw7a3hfio"]
+
+[ext_resource type="Script" path="res://player/rocket_with_decimals.gd" id="1_ia0ul"]
+
+[node name="RocketWithDecimals" type="Node"]
+script = ExtResource("1_ia0ul")

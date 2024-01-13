@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://b2eygpgki0vx0"]
+[gd_scene load_steps=9 format=3 uid="uid://b2eygpgki0vx0"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_l8dor"]
 [ext_resource type="Texture2D" uid="uid://e0i2e8njvlx8" path="res://player/rocket_sprites.png" id="2_oh1me"]
 [ext_resource type="Texture2D" uid="uid://byrponduq70lk" path="res://player/robot_sprites.png" id="3_noran"]
+[ext_resource type="PackedScene" uid="uid://bkxifw7a3hfio" path="res://player/rocket_with_decimals.tscn" id="4_cfi6y"]
 
 [sub_resource type="Animation" id="Animation_0bbe5"]
 resource_name = "charge"
@@ -68,16 +69,19 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g7b2x"]
 size = Vector2(35, 43)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("rocket_with_decimals")]
 script = ExtResource("1_l8dor")
+rocket_with_decimals = NodePath("RocketWithDecimals")
 
 [node name="RocketSprites" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+texture_filter = 3
 texture = ExtResource("2_oh1me")
 hframes = 14
 
 [node name="RobotSprites" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+texture_filter = 3
 texture = ExtResource("3_noran")
 hframes = 14
 
@@ -90,3 +94,5 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 10)
 shape = SubResource("RectangleShape2D_g7b2x")
+
+[node name="RocketWithDecimals" parent="." instance=ExtResource("4_cfi6y")]
