@@ -1,6 +1,7 @@
 extends Node
 class_name RocketWithDecimals
 
+
 signal charging_started()
 signal rocket_started()
 

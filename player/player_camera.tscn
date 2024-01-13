@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://ckdhse0b313y1"]
+
+[node name="PlayerCamera" type="Camera2D"]
+limit_left = 0
+limit_bottom = 969
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
