@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://d2uoopqhlhss4"]
+
+[ext_resource type="Script" path="res://level_1.gd" id="1_1w6lp"]
+[ext_resource type="PackedScene" uid="uid://b2eygpgki0vx0" path="res://player/player.tscn" id="1_5k6pr"]
+
+[sub_resource type="Gradient" id="Gradient_5dgkd"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yd4wj"]
+gradient = SubResource("Gradient_5dgkd")
+width = 1200
+height = 1200
+
+[sub_resource type="Gradient" id="Gradient_4t6s5"]
+offsets = PackedFloat32Array(0.981308)
+colors = PackedColorArray(0.830335, 0.830335, 0.830335, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e4mlq"]
+gradient = SubResource("Gradient_4t6s5")
+width = 700
+height = 1200
+
+[sub_resource type="Gradient" id="Gradient_dsig1"]
+offsets = PackedFloat32Array(0.0989957)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6vcen"]
+gradient = SubResource("Gradient_dsig1")
+width = 600
+height = 32
+
+[node name="Level1" type="Node"]
+script = ExtResource("1_1w6lp")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Black" type="Sprite2D" parent="Background"]
+position = Vector2(574, 365)
+texture = SubResource("GradientTexture2D_yd4wj")
+
+[node name="White" type="Sprite2D" parent="Background"]
+position = Vector2(586, 365)
+texture = SubResource("GradientTexture2D_e4mlq")
+
+[node name="Foreground" type="Node2D" parent="."]
+
+[node name="Floor" type="StaticBody2D" parent="Foreground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Foreground/Floor"]
+position = Vector2(533, 634)
+texture = SubResource("GradientTexture2D_6vcen")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Foreground/Floor"]
+position = Vector2(533, 634)
+polygon = PackedVector2Array(300, 16, -300, 16, -300, -16, 300, -16)
+
+[node name="Player" parent="." instance=ExtResource("1_5k6pr")]
+position = Vector2(477, 564)

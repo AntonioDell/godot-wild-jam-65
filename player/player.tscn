@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2eygpgki0vx0"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_l8dor"]
+[ext_resource type="SpriteFrames" uid="uid://pqgl02v8tb2d" path="res://player/rocket_sprite_frames.tres" id="1_wf4h8"]
+[ext_resource type="SpriteFrames" uid="uid://cpunraqcnb5ix" path="res://player/robot_sprite_frames.tres" id="2_4k06d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g7b2x"]
+size = Vector2(35, 43)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_l8dor")
+
+[node name="Rocket" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_wf4h8")
+animation = &"overload"
+
+[node name="Body" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_4k06d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 10)
+shape = SubResource("RectangleShape2D_g7b2x")
