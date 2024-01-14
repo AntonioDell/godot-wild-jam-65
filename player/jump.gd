@@ -6,8 +6,8 @@ signal jump_ended()
 
 @export var max_jump_remember_time = .1
 @export var max_coyote_time = .15
-@export var max_jump_duration = 1.0
-@export var max_jump_speed = 500.0
+@export var max_jump_duration = .2
+@export var max_jump_speed = 750.0
 
 var jump_pressed_remember_time = 0.0
 var coyote_time = 0.0
@@ -48,7 +48,7 @@ func get_vertical_velocity(delta: float, is_on_floor: bool) -> Vector2:
 	if is_on_floor:
 		coyote_time = max_coyote_time
 	
-	if coyote_time > 0 and jump_pressed_remember_time > 0:
+	if not is_jumping and coyote_time > 0 and jump_pressed_remember_time > 0:
 		_start_jump()
 	
 	return ret

@@ -8,8 +8,8 @@ signal rocket_stopped()
 
 
 @export var max_vertical_speed = 1000.0
-@export var max_vertical_acceleration_duration = 2.0
-@export var max_charge_time_seconds = 1
+@export var max_vertical_acceleration_duration = 1
+@export var max_charge_time_seconds = 2
 
 
 var is_charging = false
@@ -21,7 +21,7 @@ var is_rocket_active = false:
 			rocket_stopped.emit()
 		is_rocket_active = value
 var charge_time = 0.0
-var min_charge = .2
+var min_charge = 0.0
 var charge = 0.0
 var max_rocket_duration = 0.0
 var rocket_duration = 0.0
@@ -63,9 +63,9 @@ func _begin_charging_rocket():
 	is_charging = true
 	charging_started.emit()
 
-func _start_rocket():
+func _start_rocket():	
 	charge = clampf(inverse_lerp(0.0, max_charge_time_seconds, charge_time), min_charge, 1.0)
-	max_rocket_duration = smoothstep(0.0, max_vertical_acceleration_duration, charge * max_vertical_acceleration_duration)
+	max_rocket_duration = charge * max_vertical_acceleration_duration
 	rocket_duration = max_rocket_duration
 	charge_time = 0.0
 	is_charging = false
