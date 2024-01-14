@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://b2eygpgki0vx0"]
+[gd_scene load_steps=11 format=3 uid="uid://b2eygpgki0vx0"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_l8dor"]
 [ext_resource type="Texture2D" uid="uid://e0i2e8njvlx8" path="res://player/rocket_sprites.png" id="2_oh1me"]
 [ext_resource type="Texture2D" uid="uid://byrponduq70lk" path="res://player/robot_sprites.png" id="3_noran"]
 [ext_resource type="PackedScene" uid="uid://bkxifw7a3hfio" path="res://player/rocket_with_decimals.tscn" id="4_cfi6y"]
+[ext_resource type="PackedScene" uid="uid://bw4o3wsn2jhkm" path="res://player/jump.tscn" id="5_7v38u"]
+[ext_resource type="Script" path="res://player/jump.gd" id="6_j437d"]
 
 [sub_resource type="Animation" id="Animation_4on4x"]
 length = 0.001
@@ -69,9 +71,15 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g7b2x"]
 size = Vector2(35.5, 43.5)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("rocket_with_decimals")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("rocket_with_decimals", "jump")]
 script = ExtResource("1_l8dor")
 rocket_with_decimals = NodePath("RocketWithDecimals")
+jump = NodePath("Jump")
+
+[node name="RocketWithDecimals" parent="." instance=ExtResource("4_cfi6y")]
+
+[node name="Jump" parent="." instance=ExtResource("5_7v38u")]
+script = ExtResource("6_j437d")
 
 [node name="RocketSprites" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -94,5 +102,3 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.75, 10.25)
 shape = SubResource("RectangleShape2D_g7b2x")
-
-[node name="RocketWithDecimals" parent="." instance=ExtResource("4_cfi6y")]
