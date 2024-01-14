@@ -1132,4 +1132,4 @@ vframes = 15
 shape = SubResource("RectangleShape2D_qm6rh")
 
 [node name="Player" parent="." instance=ExtResource("2_dsbnp")]
-position = Vector2(66, 416)
+position = Vector2(303, 416)
