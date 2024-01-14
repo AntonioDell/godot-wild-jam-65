@@ -67,7 +67,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g7b2x"]
-size = Vector2(35, 43)
+size = Vector2(35.5, 43.5)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("rocket_with_decimals")]
 script = ExtResource("1_l8dor")
@@ -92,7 +92,7 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 10)
+position = Vector2(0.75, 10.25)
 shape = SubResource("RectangleShape2D_g7b2x")
 
 [node name="RocketWithDecimals" parent="." instance=ExtResource("4_cfi6y")]

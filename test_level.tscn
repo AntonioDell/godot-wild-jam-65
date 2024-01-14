@@ -1,0 +1,1135 @@
+[gd_scene load_steps=4 format=3 uid="uid://bstap6xlg22ii"]
+
+[ext_resource type="Texture2D" uid="uid://cndy31sc7q7y1" path="res://test_level_layout.png" id="1_8k2fv"]
+[ext_resource type="PackedScene" uid="uid://b2eygpgki0vx0" path="res://player/player.tscn" id="2_dsbnp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qm6rh"]
+size = Vector2(32, 32)
+
+[node name="TestLevel" type="Node"]
+
+[node name="TestLevelLayout" type="Sprite2D" parent="."]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+centered = false
+
+[node name="Tiles" type="Node2D" parent="."]
+
+[node name="Tile" type="StaticBody2D" parent="Tiles"]
+position = Vector2(16, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile2" type="StaticBody2D" parent="Tiles"]
+position = Vector2(16, 48)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile2"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile2"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile3" type="StaticBody2D" parent="Tiles"]
+position = Vector2(16, 80)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile3"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile3"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile4" type="StaticBody2D" parent="Tiles"]
+position = Vector2(16, 112)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile4"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile4"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile5" type="StaticBody2D" parent="Tiles"]
+position = Vector2(16, 144)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile5"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile5"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile6" type="StaticBody2D" parent="Tiles"]
+position = Vector2(16, 176)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile6"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile6"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile7" type="StaticBody2D" parent="Tiles"]
+position = Vector2(16, 208)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile7"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile7"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile8" type="StaticBody2D" parent="Tiles"]
+position = Vector2(16, 240)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile8"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile8"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile9" type="StaticBody2D" parent="Tiles"]
+position = Vector2(16, 272)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile9"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile9"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile10" type="StaticBody2D" parent="Tiles"]
+position = Vector2(16, 304)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile10"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile10"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile11" type="StaticBody2D" parent="Tiles"]
+position = Vector2(16, 336)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile11"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile11"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile12" type="StaticBody2D" parent="Tiles"]
+position = Vector2(16, 368)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile12"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile12"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile13" type="StaticBody2D" parent="Tiles"]
+position = Vector2(656, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile13"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile13"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile14" type="StaticBody2D" parent="Tiles"]
+position = Vector2(656, 48)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile14"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile14"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile15" type="StaticBody2D" parent="Tiles"]
+position = Vector2(656, 80)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile15"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile15"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile16" type="StaticBody2D" parent="Tiles"]
+position = Vector2(656, 112)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile16"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile16"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile17" type="StaticBody2D" parent="Tiles"]
+position = Vector2(656, 144)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile17"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile17"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile18" type="StaticBody2D" parent="Tiles"]
+position = Vector2(656, 176)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile18"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile18"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile19" type="StaticBody2D" parent="Tiles"]
+position = Vector2(656, 208)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile19"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile19"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile20" type="StaticBody2D" parent="Tiles"]
+position = Vector2(656, 240)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile20"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile20"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile21" type="StaticBody2D" parent="Tiles"]
+position = Vector2(656, 272)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile21"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile21"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile22" type="StaticBody2D" parent="Tiles"]
+position = Vector2(656, 304)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile22"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile22"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile23" type="StaticBody2D" parent="Tiles"]
+position = Vector2(656, 336)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile23"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile23"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile24" type="StaticBody2D" parent="Tiles"]
+position = Vector2(656, 368)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile24"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile24"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile25" type="StaticBody2D" parent="Tiles"]
+position = Vector2(656, 400)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile25"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile25"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile26" type="StaticBody2D" parent="Tiles"]
+position = Vector2(656, 432)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile26"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile26"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile27" type="StaticBody2D" parent="Tiles"]
+position = Vector2(656, 464)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile27"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile27"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile28" type="StaticBody2D" parent="Tiles"]
+position = Vector2(176, 304)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile28"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile28"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile29" type="StaticBody2D" parent="Tiles"]
+position = Vector2(176, 336)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile29"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile29"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile30" type="StaticBody2D" parent="Tiles"]
+position = Vector2(176, 368)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile30"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile30"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile31" type="StaticBody2D" parent="Tiles"]
+position = Vector2(400, 304)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile31"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile31"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile32" type="StaticBody2D" parent="Tiles"]
+position = Vector2(400, 336)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile32"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile32"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile33" type="StaticBody2D" parent="Tiles"]
+position = Vector2(400, 368)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile33"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile33"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile34" type="StaticBody2D" parent="Tiles"]
+position = Vector2(16, 400)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile34"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile34"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile35" type="StaticBody2D" parent="Tiles"]
+position = Vector2(16, 432)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile35"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile35"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile36" type="StaticBody2D" parent="Tiles"]
+position = Vector2(16, 464)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile36"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile36"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile37" type="StaticBody2D" parent="Tiles"]
+position = Vector2(176, 400)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile37"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile37"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile38" type="StaticBody2D" parent="Tiles"]
+position = Vector2(176, 432)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile38"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile38"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile39" type="StaticBody2D" parent="Tiles"]
+position = Vector2(176, 464)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile39"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile39"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile40" type="StaticBody2D" parent="Tiles"]
+position = Vector2(400, 400)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile40"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile40"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile41" type="StaticBody2D" parent="Tiles"]
+position = Vector2(400, 432)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile41"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile41"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile42" type="StaticBody2D" parent="Tiles"]
+position = Vector2(400, 464)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile42"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile42"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile43" type="StaticBody2D" parent="Tiles"]
+position = Vector2(368, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile43"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile43"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile44" type="StaticBody2D" parent="Tiles"]
+position = Vector2(368, 48)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile44"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile44"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile45" type="StaticBody2D" parent="Tiles"]
+position = Vector2(368, 80)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile45"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile45"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile46" type="StaticBody2D" parent="Tiles"]
+position = Vector2(208, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile46"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile46"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile47" type="StaticBody2D" parent="Tiles"]
+position = Vector2(208, 48)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile47"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile47"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile48" type="StaticBody2D" parent="Tiles"]
+position = Vector2(208, 80)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile48"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile48"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile49" type="StaticBody2D" parent="Tiles"]
+position = Vector2(176, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile49"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile49"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile50" type="StaticBody2D" parent="Tiles"]
+position = Vector2(176, 48)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile50"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile50"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile51" type="StaticBody2D" parent="Tiles"]
+position = Vector2(176, 80)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile51"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile51"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile52" type="StaticBody2D" parent="Tiles"]
+position = Vector2(80, 112)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile52"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile52"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile53" type="StaticBody2D" parent="Tiles"]
+position = Vector2(48, 112)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile53"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile53"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile56" type="StaticBody2D" parent="Tiles"]
+position = Vector2(48, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile56"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile56"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile57" type="StaticBody2D" parent="Tiles"]
+position = Vector2(112, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile57"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile57"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile58" type="StaticBody2D" parent="Tiles"]
+position = Vector2(80, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile58"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile58"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile59" type="StaticBody2D" parent="Tiles"]
+position = Vector2(240, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile59"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile59"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile60" type="StaticBody2D" parent="Tiles"]
+position = Vector2(304, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile60"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile60"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile80" type="StaticBody2D" parent="Tiles"]
+position = Vector2(336, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile80"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile80"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile81" type="StaticBody2D" parent="Tiles"]
+position = Vector2(592, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile81"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile81"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile82" type="StaticBody2D" parent="Tiles"]
+position = Vector2(624, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile82"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile82"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile83" type="StaticBody2D" parent="Tiles"]
+position = Vector2(624, 336)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile83"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile83"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile84" type="StaticBody2D" parent="Tiles"]
+position = Vector2(624, 464)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile84"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile84"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile85" type="StaticBody2D" parent="Tiles"]
+position = Vector2(144, 464)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile85"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile85"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile86" type="StaticBody2D" parent="Tiles"]
+position = Vector2(112, 464)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile86"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile86"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile87" type="StaticBody2D" parent="Tiles"]
+position = Vector2(80, 464)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile87"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile87"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile88" type="StaticBody2D" parent="Tiles"]
+position = Vector2(48, 464)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile88"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile88"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile89" type="StaticBody2D" parent="Tiles"]
+position = Vector2(112, 432)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile89"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile89"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile90" type="StaticBody2D" parent="Tiles"]
+position = Vector2(144, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile90"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile90"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile91" type="StaticBody2D" parent="Tiles"]
+position = Vector2(304, 112)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile91"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile91"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile92" type="StaticBody2D" parent="Tiles"]
+position = Vector2(400, 272)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile92"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile92"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile93" type="StaticBody2D" parent="Tiles"]
+position = Vector2(432, 400)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile93"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile93"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile61" type="StaticBody2D" parent="Tiles"]
+position = Vector2(272, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile61"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile61"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile62" type="StaticBody2D" parent="Tiles"]
+position = Vector2(400, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile62"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile62"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile63" type="StaticBody2D" parent="Tiles"]
+position = Vector2(464, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile63"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile63"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile64" type="StaticBody2D" parent="Tiles"]
+position = Vector2(432, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile64"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile64"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile65" type="StaticBody2D" parent="Tiles"]
+position = Vector2(496, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile65"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile65"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile66" type="StaticBody2D" parent="Tiles"]
+position = Vector2(560, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile66"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile66"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile67" type="StaticBody2D" parent="Tiles"]
+position = Vector2(528, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile67"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile67"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile68" type="StaticBody2D" parent="Tiles"]
+position = Vector2(432, 464)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile68"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile68"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile69" type="StaticBody2D" parent="Tiles"]
+position = Vector2(496, 464)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile69"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile69"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile70" type="StaticBody2D" parent="Tiles"]
+position = Vector2(464, 464)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile70"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile70"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile71" type="StaticBody2D" parent="Tiles"]
+position = Vector2(528, 464)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile71"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile71"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile72" type="StaticBody2D" parent="Tiles"]
+position = Vector2(592, 464)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile72"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile72"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile73" type="StaticBody2D" parent="Tiles"]
+position = Vector2(560, 464)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile73"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile73"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile74" type="StaticBody2D" parent="Tiles"]
+position = Vector2(208, 464)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile74"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile74"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile75" type="StaticBody2D" parent="Tiles"]
+position = Vector2(272, 464)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile75"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile75"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile76" type="StaticBody2D" parent="Tiles"]
+position = Vector2(240, 464)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile76"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile76"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile77" type="StaticBody2D" parent="Tiles"]
+position = Vector2(304, 464)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile77"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile77"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile78" type="StaticBody2D" parent="Tiles"]
+position = Vector2(368, 464)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile78"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile78"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile79" type="StaticBody2D" parent="Tiles"]
+position = Vector2(336, 464)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile79"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile79"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile54" type="StaticBody2D" parent="Tiles"]
+position = Vector2(368, 112)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile54"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile54"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Tile55" type="StaticBody2D" parent="Tiles"]
+position = Vector2(336, 112)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/Tile55"]
+texture_filter = 3
+texture = ExtResource("1_8k2fv")
+hframes = 21
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Tile55"]
+shape = SubResource("RectangleShape2D_qm6rh")
+
+[node name="Player" parent="." instance=ExtResource("2_dsbnp")]
+position = Vector2(66, 416)
