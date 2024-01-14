@@ -1132,4 +1132,12 @@ vframes = 15
 shape = SubResource("RectangleShape2D_qm6rh")
 
 [node name="Player" parent="." instance=ExtResource("2_dsbnp")]
-position = Vector2(303, 416)
+position = Vector2(62, 416)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(2, 2)
+limit_left = 0
+limit_bottom = 480
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+editor_draw_limits = true
