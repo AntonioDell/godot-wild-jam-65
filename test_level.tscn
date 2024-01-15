@@ -1,13 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://bstap6xlg22ii"]
+[gd_scene load_steps=6 format=3 uid="uid://bstap6xlg22ii"]
 
 [ext_resource type="Texture2D" uid="uid://cndy31sc7q7y1" path="res://test_level_layout.png" id="1_8k2fv"]
 [ext_resource type="PackedScene" uid="uid://b2eygpgki0vx0" path="res://player/player.tscn" id="2_dsbnp"]
 [ext_resource type="AudioStream" uid="uid://bohrwvpn44bih" path="res://sound/solarmaybelvel1.wav" id="3_5h5lr"]
+[ext_resource type="PackedScene" uid="uid://y7v8xra3ou2a" path="res://player/dev_settings.tscn" id="4_k3kvq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qm6rh"]
 size = Vector2(32, 32)
 
 [node name="TestLevel" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DevSettings" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("4_k3kvq")]
+player = NodePath("../../Player")
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_5h5lr")

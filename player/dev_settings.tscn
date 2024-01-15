@@ -38,10 +38,10 @@ autowrap_mode = 0
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
-button_pressed = true
 
 [node name="SettingsList" type="PanelContainer" parent="VBoxContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/SettingsList"]
@@ -61,33 +61,45 @@ layout_mode = 2
 text = "Waling speed"
 
 [node name="WalkingSpeed" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+unique_name_in_owner = true
 layout_mode = 2
 step = 0.1
+allow_greater = true
+allow_lesser = true
 
 [node name="Label7" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
 layout_mode = 2
 text = "Walking slowdown"
 
 [node name="WalkingSlowdown" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+unique_name_in_owner = true
 layout_mode = 2
 step = 0.1
+allow_greater = true
+allow_lesser = true
 
 [node name="Label8" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
 layout_mode = 2
 text = "Max gravity"
 
 [node name="MaxGravity" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+unique_name_in_owner = true
 layout_mode = 2
 step = 0.1
+allow_greater = true
+allow_lesser = true
 
 [node name="Label11" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
 layout_mode = 2
 text = "Jump vertical acceleration duration"
 
 [node name="JumpVerticalAccelerationDuration" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+unique_name_in_owner = true
 layout_mode = 2
 max_value = 10.0
 step = 0.01
+allow_greater = true
+allow_lesser = true
 suffix = "s"
 
 [node name="Label13" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
@@ -95,9 +107,12 @@ layout_mode = 2
 text = "Jump max coyote time"
 
 [node name="JumpMaxCoyoteTime" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+unique_name_in_owner = true
 layout_mode = 2
 max_value = 1.0
 step = 0.01
+allow_greater = true
+allow_lesser = true
 suffix = "s"
 
 [node name="Label14" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
@@ -105,9 +120,12 @@ layout_mode = 2
 text = "Jump max remember time"
 
 [node name="JumpMaxRememberTime" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+unique_name_in_owner = true
 layout_mode = 2
 max_value = 1.0
 step = 0.01
+allow_greater = true
+allow_lesser = true
 suffix = "s"
 
 [node name="Label12" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
@@ -115,9 +133,11 @@ layout_mode = 2
 text = "Max jump speed"
 
 [node name="JumpMaxJumpSpeed" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+unique_name_in_owner = true
 layout_mode = 2
 max_value = 1000.0
 allow_greater = true
+allow_lesser = true
 suffix = "s"
 
 [node name="Label4" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
@@ -125,8 +145,11 @@ layout_mode = 2
 text = "Rocket max charge time"
 
 [node name="RocketMaxChargeTime" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+unique_name_in_owner = true
 layout_mode = 2
 step = 0.1
+allow_greater = true
+allow_lesser = true
 suffix = "s"
 
 [node name="Label10" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
@@ -134,8 +157,11 @@ layout_mode = 2
 text = "Rocket min charge"
 
 [node name="RocketMinCharge" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+unique_name_in_owner = true
 layout_mode = 2
 step = 0.1
+allow_greater = true
+allow_lesser = true
 suffix = "%"
 
 [node name="Label5" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
@@ -143,8 +169,11 @@ layout_mode = 2
 text = "Max vertical acceleration Duration"
 
 [node name="RocketMaxVerticalAccelerationDuration" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+unique_name_in_owner = true
 layout_mode = 2
 step = 0.1
+allow_greater = true
+allow_lesser = true
 suffix = "s"
 
 [node name="Label6" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
@@ -152,18 +181,22 @@ layout_mode = 2
 text = "Rocket max vertical speed"
 
 [node name="RocketMaxVerticalSpeed" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+unique_name_in_owner = true
 layout_mode = 2
 max_value = 1000.0
 step = 0.1
 allow_greater = true
+allow_lesser = true
 
 [node name="Label9" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
 layout_mode = 2
 text = "Rocket max overload time"
 
 [node name="RocketMaxOverloadTime" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+unique_name_in_owner = true
 layout_mode = 2
 max_value = 1000.0
 step = 0.1
 allow_greater = true
+allow_lesser = true
 suffix = "s"

@@ -1,6 +1,7 @@
 extends CharacterBody2D
+class_name Player
 
-@export var rocket_with_decimals: RocketWithDecimals
+@export var rocket: RocketWithDecimals
 @export var jump: Jump
 @export var walking_speed = 250.0
 @export var max_gravity = 750.0
@@ -26,12 +27,12 @@ var is_charging = false
 func _ready():
 	# We assume charge_right and charge_left have the same length!
 	var charge_animation_length = animation_player.get_animation("charge_right").length
-	charge_animation_playback_speed = charge_animation_length / rocket_with_decimals.max_charge_time_seconds
-	rocket_with_decimals.charging_started.connect(_on_rocket_charging_started)
-	rocket_with_decimals.rocket_started.connect(_on_rocket_started)
-	rocket_with_decimals.rocket_started.connect(_on_rocket_stopped)
-	rocket_with_decimals.overload_started.connect(_on_rocket_overload_started)
-	rocket_with_decimals.overload_ended.connect(_on_rocket_overload_ended)
+	charge_animation_playback_speed = charge_animation_length / rocket.max_charge_time_seconds
+	rocket.charging_started.connect(_on_rocket_charging_started)
+	rocket.rocket_started.connect(_on_rocket_started)
+	rocket.rocket_started.connect(_on_rocket_stopped)
+	rocket.overload_started.connect(_on_rocket_overload_started)
+	rocket.overload_ended.connect(_on_rocket_overload_ended)
 	
 	jump.jump_started.connect(_on_jump_started)
 	jump.jump_ended.connect(_on_jump_ended)
@@ -79,7 +80,7 @@ func _get_horizontal_velocity(delta: float):
 func _get_vertical_velocity(delta: float) -> Vector2:
 	var _is_on_floor = is_on_floor() 
 	var vertical_jump_velocity = jump.get_vertical_velocity(delta, _is_on_floor)
-	var vertical_rocket_velocity = rocket_with_decimals.get_vertical_velocity(delta, _is_on_floor)
+	var vertical_rocket_velocity = rocket.get_vertical_velocity(delta, _is_on_floor)
 	var vertical_gravity_velocity =  _get_gravity_vector(delta)
 	
 	if is_stunned:

@@ -364,9 +364,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g7b2x"]
 size = Vector2(25, 28)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("rocket_with_decimals", "jump")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("rocket", "jump")]
 script = ExtResource("1_l8dor")
-rocket_with_decimals = NodePath("RocketWithDecimals")
+rocket = NodePath("RocketWithDecimals")
 jump = NodePath("Jump")
 
 [node name="RocketWithDecimals" parent="." instance=ExtResource("4_cfi6y")]
