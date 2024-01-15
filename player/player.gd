@@ -1,14 +1,20 @@
 extends CharacterBody2D
 class_name Player
 
+@export_category("Movement")
 @export var rocket: RocketWithDecimals
 @export var jump: Jump
 @export var walking_speed = 250.0
 @export var max_gravity = 750.0
 @export var walking_slowdown = 0.05
 
+@export_category("Audio")
+@export var charge_audio_playback_position = 6.8
+@export var charge_audio_playback_length = 12.0 - 6.8
+
 @onready var robot_sprites = %RobotSprites
 @onready var animation_player = %AnimationPlayer
+@onready var charge_audio: AudioStreamPlayer = %ChargeAudio
 
 enum HorizontalState {
 	IDLE_RIGHT,
@@ -35,6 +41,9 @@ func _ready():
 	# We assume charge_right and charge_left have the same length!
 	var charge_animation_length = animation_player.get_animation("charge_right").length
 	charge_animation_playback_speed = charge_animation_length / (rocket.max_charge_time_seconds - rocket.max_charge_delay)
+	
+	charge_audio.pitch_scale = charge_audio_playback_length / rocket.max_charge_time_seconds
+	
 	rocket.charging_started.connect(_on_rocket_charging_started)
 	rocket.max_charge_reached.connect(_on_rocket_max_charge_reached)
 	rocket.rocket_started.connect(_on_rocket_started)
@@ -116,6 +125,9 @@ func _on_rocket_charging_started():
 		animation_player.play("charge_left", -1, charge_animation_playback_speed)
 	else:
 		animation_player.play("charge_right", -1, charge_animation_playback_speed)
+	
+	charge_audio.play(charge_audio_playback_position)
+	
 
 func _on_rocket_max_charge_reached():
 	if horizontal_state == HorizontalState.LEFT or horizontal_state == HorizontalState.IDLE_LEFT:
@@ -131,6 +143,9 @@ func _on_rocket_started():
 		animation_player.play("fly_left")
 	else:
 		animation_player.play("fly_right")
+	
+	# TODO: Play blastoff audio
+	charge_audio.stop()
 
 func _on_rocket_stopped():
 	pass
@@ -143,6 +158,9 @@ func _on_rocket_overload_started():
 	else:
 		animation_player.play("overload_right")
 		animation_player.queue("idle_right")
+	
+	# TODO: Play overload audio
+	charge_audio.stop()
 	
 	is_stunned = true
 	await animation_player.animation_finished

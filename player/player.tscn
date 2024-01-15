@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://b2eygpgki0vx0"]
+[gd_scene load_steps=25 format=3 uid="uid://b2eygpgki0vx0"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_l8dor"]
 [ext_resource type="PackedScene" uid="uid://bkxifw7a3hfio" path="res://player/rocket_with_decimals.tscn" id="4_cfi6y"]
 [ext_resource type="PackedScene" uid="uid://bw4o3wsn2jhkm" path="res://player/jump.tscn" id="5_7v38u"]
+[ext_resource type="AudioStream" uid="uid://ccdvwddx75dmd" path="res://sound/blastoff2.wav" id="5_dh1e6"]
 [ext_resource type="Script" path="res://player/jump.gd" id="6_j437d"]
 [ext_resource type="Texture2D" uid="uid://bqeuc5oxc8ilk" path="res://player/robot_sprites_v3.png" id="7_ff3xo"]
 
@@ -491,6 +492,12 @@ jump = NodePath("Jump")
 
 [node name="Jump" parent="." instance=ExtResource("5_7v38u")]
 script = ExtResource("6_j437d")
+
+[node name="ChargeAudio" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_dh1e6")
+volume_db = -10.0
+pitch_scale = 2.45
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
