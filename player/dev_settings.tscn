@@ -152,6 +152,19 @@ allow_greater = true
 allow_lesser = true
 suffix = "s"
 
+[node name="Label15" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+layout_mode = 2
+text = "Rocket max charge delay"
+
+[node name="RocketMaxChargeDelay" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1000.0
+step = 0.1
+allow_greater = true
+allow_lesser = true
+suffix = "s"
+
 [node name="Label10" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
 layout_mode = 2
 text = "Rocket min charge"

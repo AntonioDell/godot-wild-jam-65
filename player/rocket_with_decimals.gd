@@ -3,6 +3,7 @@ class_name RocketWithDecimals
 
 
 signal charging_started()
+signal max_charge_reached()
 signal rocket_started()
 signal rocket_stopped()
 signal overload_started()
@@ -11,7 +12,8 @@ signal overload_ended()
 
 @export var max_vertical_speed = 1000.0
 @export var max_vertical_acceleration_duration = 1
-@export var max_charge_time_seconds = 2
+@export var max_charge_time_seconds = 2.2 # = charge_right + max_charge_delay
+@export var max_charge_delay = .4 
 @export var max_overload_time = 1.0
 @export var min_charge = 0.0
 
@@ -31,6 +33,7 @@ var rocket_duration = 0.0
 var left_floor = false
 var is_overloaded = false
 var overload_timer = 0.0
+
 
 func get_vertical_velocity(delta: float, is_on_floor: bool) -> Vector2:
 	var ret = Vector2.ZERO
@@ -70,6 +73,8 @@ func _handle_rocket_charge_input(delta: float):
 		if charge_time > max_charge_time_seconds:
 			_start_overload()
 		else:
+			if charge_time > max_charge_time_seconds - max_charge_delay:
+				max_charge_reached.emit()
 			charge_time += delta
 
 func _begin_charging_rocket():
@@ -78,7 +83,7 @@ func _begin_charging_rocket():
 	charging_started.emit()
 
 func _start_rocket():
-	charge = clampf(inverse_lerp(0.0, max_charge_time_seconds, charge_time), min_charge, 1.0)
+	charge = clampf(inverse_lerp(0.0, max_charge_time_seconds - max_charge_delay, charge_time), min_charge, 1.0)
 	max_rocket_duration = charge * max_vertical_acceleration_duration
 	rocket_duration = max_rocket_duration
 	charge_time = 0.0

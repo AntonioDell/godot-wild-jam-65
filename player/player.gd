@@ -22,13 +22,21 @@ var charge_animation_playback_speed = 1.0
 var is_jumping = false
 var is_stunned = false
 var is_charging = false
-
+var rocket_velocity := Vector2.ZERO:
+	set(value):
+		if sign(rocket_velocity.y) == -1 and sign(value.y) >= 0: 
+			if horizontal_state == HorizontalState.LEFT or horizontal_state == HorizontalState.IDLE_LEFT:
+				animation_player.play("fly_highest_point_reached_left")
+			else:
+				animation_player.play("fly_highest_point_reached_right")
+		rocket_velocity = value
 
 func _ready():
 	# We assume charge_right and charge_left have the same length!
 	var charge_animation_length = animation_player.get_animation("charge_right").length
-	charge_animation_playback_speed = charge_animation_length / rocket.max_charge_time_seconds
+	charge_animation_playback_speed = charge_animation_length / (rocket.max_charge_time_seconds - rocket.max_charge_delay)
 	rocket.charging_started.connect(_on_rocket_charging_started)
+	rocket.max_charge_reached.connect(_on_rocket_max_charge_reached)
 	rocket.rocket_started.connect(_on_rocket_started)
 	rocket.rocket_started.connect(_on_rocket_stopped)
 	rocket.overload_started.connect(_on_rocket_overload_started)
@@ -88,7 +96,8 @@ func _get_vertical_velocity(delta: float) -> Vector2:
 	elif vertical_rocket_velocity == Vector2.ZERO:
 		return vertical_jump_velocity + vertical_gravity_velocity
 	else:
-		return vertical_rocket_velocity + vertical_gravity_velocity
+		rocket_velocity = vertical_rocket_velocity + vertical_gravity_velocity
+		return rocket_velocity
 
 func _get_gravity_vector(delta: float):
 	var strength = 0.0
@@ -108,11 +117,20 @@ func _on_rocket_charging_started():
 	else:
 		animation_player.play("charge_right", -1, charge_animation_playback_speed)
 
+func _on_rocket_max_charge_reached():
+	if horizontal_state == HorizontalState.LEFT or horizontal_state == HorizontalState.IDLE_LEFT:
+		animation_player.play("max_charge_left")
+	else:
+		animation_player.play("max_charge_right")
+
 func _on_rocket_started():
 	is_charging = false
-	# TODO: Play blastoff animation then play idle
-	animation_player.stop()
 	gravity_acceleration = 0.0
+	
+	if horizontal_state == HorizontalState.LEFT or horizontal_state == HorizontalState.IDLE_LEFT:
+		animation_player.play("fly_left")
+	else:
+		animation_player.play("fly_right")
 
 func _on_rocket_stopped():
 	pass

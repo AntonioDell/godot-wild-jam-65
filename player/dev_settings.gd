@@ -31,6 +31,8 @@ func _ready():
 	%JumpMaxJumpSpeed.value = player.jump.max_jump_speed
 	%RocketMaxChargeTime.value_changed.connect(func(value: float): player.rocket.max_charge_time_seconds = value)
 	%RocketMaxChargeTime.value = player.rocket.max_charge_time_seconds
+	%RocketMaxChargeDelay.value_changed.connect(func(value: float): player.rocket.max_charge_delay = value)
+	%RocketMaxChargeDelay.value = player.rocket.max_charge_delay
 	%RocketMinCharge.value_changed.connect(func(value: float): player.rocket.min_charge = value)
 	%RocketMinCharge.value = player.rocket.min_charge
 	%RocketMaxVerticalAccelerationDuration.value_changed.connect(func(value: float): player.rocket.max_vertical_acceleration_duration = value)
@@ -39,7 +41,3 @@ func _ready():
 	%RocketMaxVerticalSpeed.value = player.rocket.max_vertical_speed
 	%RocketMaxOverloadTime.value_changed.connect(func(value: float): player.rocket.max_overload_time = value)
 	%RocketMaxOverloadTime.value = player.rocket.max_overload_time
-
-
-func _on_expand_settings_checkbox_toggled(toggled_on: bool):
-	settings_list.visible = toggled_on
