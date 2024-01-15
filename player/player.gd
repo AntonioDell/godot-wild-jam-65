@@ -24,7 +24,12 @@ enum HorizontalState {
 }
 var horizontal_state = HorizontalState.IDLE_RIGHT
 var gravity_acceleration = 0.0
-var charge_animation_playback_speed = 1.0
+var charge_animation_playback_speed = 1.0 :
+	get:
+		var charge_animation_length = animation_player.get_animation("charge_right").length
+		return charge_animation_length / (rocket.max_charge_time_seconds - rocket.max_charge_delay)
+
+		
 var is_jumping = false
 var is_stunned = false
 var is_charging = false
@@ -38,12 +43,6 @@ var rocket_velocity := Vector2.ZERO:
 		rocket_velocity = value
 
 func _ready():
-	# We assume charge_right and charge_left have the same length!
-	var charge_animation_length = animation_player.get_animation("charge_right").length
-	charge_animation_playback_speed = charge_animation_length / (rocket.max_charge_time_seconds - rocket.max_charge_delay)
-	
-	charge_audio.pitch_scale = charge_audio_playback_length / rocket.max_charge_time_seconds
-	
 	rocket.charging_started.connect(_on_rocket_charging_started)
 	rocket.max_charge_reached.connect(_on_rocket_max_charge_reached)
 	rocket.rocket_started.connect(_on_rocket_started)
@@ -126,8 +125,8 @@ func _on_rocket_charging_started():
 	else:
 		animation_player.play("charge_right", -1, charge_animation_playback_speed)
 	
+	charge_audio.pitch_scale = charge_audio_playback_length / rocket.max_charge_time_seconds
 	charge_audio.play(charge_audio_playback_position)
-	
 
 func _on_rocket_max_charge_reached():
 	if horizontal_state == HorizontalState.LEFT or horizontal_state == HorizontalState.IDLE_LEFT:
