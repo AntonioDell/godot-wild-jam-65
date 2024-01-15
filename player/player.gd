@@ -10,10 +10,12 @@ extends CharacterBody2D
 @onready var animation_player = %AnimationPlayer
 
 var charge_animation_playback_speed = 1.0
-var is_jumping = false
 var max_gravity = 750.0
 var gravity_acceleration = 0.0
+
+var is_jumping = false
 var is_stunned = false
+var is_charging = false
 
 enum HorizontalState {
 	IDLE_RIGHT,
@@ -48,6 +50,11 @@ func _get_horizontal_velocity(delta: float):
 	if is_stunned: return Vector2.ZERO
 	
 	var horizontal_direction = Input.get_axis("move_left", "move_right")
+	if is_charging and is_jumping: 
+		return Vector2.RIGHT * horizontal_direction * walking_speed
+	elif is_charging:
+		return Vector2.ZERO
+	
 	if is_on_floor() or is_jumping:
 		if horizontal_direction < 0 and horizontal_state != HorizontalState.LEFT:
 			if horizontal_state != HorizontalState.IDLE_LEFT:
@@ -97,12 +104,14 @@ func _get_gravity_vector(delta: float):
 	return Vector2.DOWN * strength
 
 func _on_rocket_charging_started():
+	is_charging = true
 	if horizontal_state == HorizontalState.LEFT or horizontal_state == HorizontalState.IDLE_LEFT:
 		animation_player.play("charge_left", -1, charge_animation_playback_speed)
 	else:
 		animation_player.play("charge_right", -1, charge_animation_playback_speed)
 
 func _on_rocket_started():
+	is_charging = false
 	# TODO: Play blastoff animation then play idle
 	animation_player.stop()
 	gravity_acceleration = 0.0
@@ -111,6 +120,7 @@ func _on_rocket_stopped():
 	pass
 
 func _on_rocket_overload_started():
+	is_charging = false
 	if horizontal_state == HorizontalState.LEFT or horizontal_state == HorizontalState.IDLE_LEFT:
 		animation_player.play("overload_left")
 		animation_player.queue("idle_left")

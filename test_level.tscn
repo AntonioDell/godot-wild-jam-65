@@ -1,17 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://bstap6xlg22ii"]
+[gd_scene load_steps=5 format=3 uid="uid://bstap6xlg22ii"]
 
 [ext_resource type="Texture2D" uid="uid://cndy31sc7q7y1" path="res://test_level_layout.png" id="1_8k2fv"]
 [ext_resource type="PackedScene" uid="uid://b2eygpgki0vx0" path="res://player/player.tscn" id="2_dsbnp"]
+[ext_resource type="AudioStream" uid="uid://bohrwvpn44bih" path="res://sound/solarmaybelvel1.wav" id="3_5h5lr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qm6rh"]
 size = Vector2(32, 32)
 
 [node name="TestLevel" type="Node"]
 
-[node name="TestLevelLayout" type="Sprite2D" parent="."]
-texture_filter = 3
-texture = ExtResource("1_8k2fv")
-centered = false
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_5h5lr")
+volume_db = -20.0
 
 [node name="Tiles" type="Node2D" parent="."]
 
@@ -1141,3 +1141,4 @@ limit_bottom = 480
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 editor_draw_limits = true
+editor_draw_drag_margin = true
