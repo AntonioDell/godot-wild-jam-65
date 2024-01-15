@@ -2,142 +2,168 @@
 
 [ext_resource type="Script" path="res://player/dev_settings.gd" id="1_vlfok"]
 
-[node name="DevSettings" type="VBoxContainer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -823.0
-offset_bottom = -289.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 10
+[node name="DevSettings" type="ScrollContainer"]
+offset_right = 376.0
+offset_bottom = 474.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 script = ExtResource("1_vlfok")
-
-[node name="Title" type="RichTextLabel" parent="."]
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 24
-text = "Developer Settings"
-fit_content = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-text = "Grounded movement"
-
-[node name="GroundedMovement" type="GridContainer" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_constants/h_separation = 20
-columns = 2
-
-[node name="Label" type="Label" parent="VBoxContainer/GroundedMovement"]
-layout_mode = 2
-text = "Stopping damping"
-
-[node name="GroundStoppingDamp" type="SpinBox" parent="VBoxContainer/GroundedMovement"]
-layout_mode = 2
-size_flags_horizontal = 2
-step = 0.1
-
-[node name="Label3" type="Label" parent="VBoxContainer/GroundedMovement"]
-layout_mode = 2
-text = "Turning damping"
-
-[node name="GroundTurningDamp" type="SpinBox" parent="VBoxContainer/GroundedMovement"]
-layout_mode = 2
-size_flags_horizontal = 2
-step = 0.1
-
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer2"]
 layout_mode = 2
-text = "Airborne movement"
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 2
 
-[node name="AirborneMovement" type="GridContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer2/MarginContainer"]
 layout_mode = 2
-theme_override_constants/h_separation = 20
-columns = 2
+theme_override_constants/separation = 30
+alignment = 1
 
-[node name="Label3" type="Label" parent="VBoxContainer/AirborneMovement"]
+[node name="Title" type="RichTextLabel" parent="VBoxContainer/PanelContainer2/MarginContainer/HBoxContainer"]
 layout_mode = 2
-text = "Stopping damping"
+theme_override_font_sizes/normal_font_size = 24
+text = "Developer Settings"
+fit_content = true
+autowrap_mode = 0
 
-[node name="AirStoppingDamp" type="SpinBox" parent="VBoxContainer/AirborneMovement"]
-layout_mode = 2
-size_flags_horizontal = 2
-step = 0.1
-
-[node name="Label4" type="Label" parent="VBoxContainer/AirborneMovement"]
-layout_mode = 2
-text = "Turning damp"
-
-[node name="AirTurningDamp" type="SpinBox" parent="VBoxContainer/AirborneMovement"]
-layout_mode = 2
-size_flags_horizontal = 2
-step = 0.1
-
-[node name="Label2" type="Label" parent="VBoxContainer/AirborneMovement"]
-layout_mode = 2
-text = "Rocket type"
-
-[node name="RocketTypeOptionButton" type="OptionButton" parent="VBoxContainer/AirborneMovement"]
+[node name="ExpandSettingsCheckbox" type="CheckBox" parent="VBoxContainer/PanelContainer2/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-item_count = 2
-selected = 0
-popup/item_0/text = "Decimal based"
-popup/item_0/id = 0
-popup/item_1/text = "Step based"
-popup/item_1/id = 1
+size_flags_horizontal = 8
+button_pressed = true
 
-[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
-layout_mode = 2
-
-[node name="Label3" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-text = "Rocket type params"
-
-[node name="RocketDecimalBasedParams" type="GridContainer" parent="VBoxContainer"]
+[node name="SettingsList" type="PanelContainer" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/h_separation = 20
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/SettingsList"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Grid" type="GridContainer" parent="VBoxContainer/SettingsList/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
 columns = 2
 
-[node name="Label3" type="Label" parent="VBoxContainer/RocketDecimalBasedParams"]
+[node name="Label3" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+layout_mode = 2
+text = "Waling speed"
+
+[node name="WalkingSpeed" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+layout_mode = 2
+step = 0.1
+
+[node name="Label7" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+layout_mode = 2
+text = "Walking slowdown"
+
+[node name="WalkingSlowdown" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+layout_mode = 2
+step = 0.1
+
+[node name="Label8" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+layout_mode = 2
+text = "Max gravity"
+
+[node name="MaxGravity" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+layout_mode = 2
+step = 0.1
+
+[node name="Label11" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+layout_mode = 2
+text = "Jump vertical acceleration duration"
+
+[node name="JumpVerticalAccelerationDuration" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+layout_mode = 2
+max_value = 10.0
+step = 0.01
+suffix = "s"
+
+[node name="Label13" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+layout_mode = 2
+text = "Jump max coyote time"
+
+[node name="JumpMaxCoyoteTime" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+suffix = "s"
+
+[node name="Label14" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+layout_mode = 2
+text = "Jump max remember time"
+
+[node name="JumpMaxRememberTime" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+suffix = "s"
+
+[node name="Label12" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+layout_mode = 2
+text = "Max jump speed"
+
+[node name="JumpMaxJumpSpeed" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+layout_mode = 2
+max_value = 1000.0
+allow_greater = true
+suffix = "s"
+
+[node name="Label4" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
 layout_mode = 2
 text = "Rocket max charge time"
 
-[node name="RocketDecimalBasedMaxChargeTime" type="SpinBox" parent="VBoxContainer/RocketDecimalBasedParams"]
+[node name="RocketMaxChargeTime" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
 layout_mode = 2
-size_flags_horizontal = 2
 step = 0.1
 suffix = "s"
 
-[node name="Label4" type="Label" parent="VBoxContainer/RocketDecimalBasedParams"]
+[node name="Label10" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+layout_mode = 2
+text = "Rocket min charge"
+
+[node name="RocketMinCharge" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+layout_mode = 2
+step = 0.1
+suffix = "%"
+
+[node name="Label5" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
 layout_mode = 2
 text = "Max vertical acceleration Duration"
 
-[node name="RocketDecimalBasedMaxVerticalAccelerationDuration" type="SpinBox" parent="VBoxContainer/RocketDecimalBasedParams"]
+[node name="RocketMaxVerticalAccelerationDuration" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
 layout_mode = 2
-size_flags_horizontal = 2
 step = 0.1
 suffix = "s"
 
-[node name="Label" type="Label" parent="VBoxContainer/RocketDecimalBasedParams"]
+[node name="Label6" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
 layout_mode = 2
 text = "Rocket max vertical speed"
 
-[node name="RocketDecimalBasedMaxVerticalSpeed" type="SpinBox" parent="VBoxContainer/RocketDecimalBasedParams"]
+[node name="RocketMaxVerticalSpeed" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
 layout_mode = 2
-size_flags_horizontal = 2
 max_value = 1000.0
 step = 0.1
 allow_greater = true
 
-[node name="RocketStepBaasedParams" type="GridContainer" parent="VBoxContainer"]
-unique_name_in_owner = true
+[node name="Label9" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
 layout_mode = 2
-theme_override_constants/h_separation = 20
+text = "Rocket max overload time"
+
+[node name="RocketMaxOverloadTime" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+layout_mode = 2
+max_value = 1000.0
+step = 0.1
+allow_greater = true
+suffix = "s"

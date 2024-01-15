@@ -1,21 +1,13 @@
 extends CharacterBody2D
 
-@export var walking_speed = 250.0
 @export var rocket_with_decimals: RocketWithDecimals
 @export var jump: Jump
+@export var walking_speed = 250.0
+@export var max_gravity = 750.0
+@export var walking_slowdown = 0.05
 
-@onready var rocket_sprites = %RocketSpritesV1
-@onready var robot_sprites_v1 = %RobotSpritesV1
 @onready var robot_sprites = %RobotSprites
 @onready var animation_player = %AnimationPlayer
-
-var charge_animation_playback_speed = 1.0
-var max_gravity = 750.0
-var gravity_acceleration = 0.0
-
-var is_jumping = false
-var is_stunned = false
-var is_charging = false
 
 enum HorizontalState {
 	IDLE_RIGHT,
@@ -24,6 +16,12 @@ enum HorizontalState {
 	LEFT
 }
 var horizontal_state = HorizontalState.IDLE_RIGHT
+var gravity_acceleration = 0.0
+var charge_animation_playback_speed = 1.0
+var is_jumping = false
+var is_stunned = false
+var is_charging = false
+
 
 func _ready():
 	# We assume charge_right and charge_left have the same length!
@@ -51,8 +49,8 @@ func _get_horizontal_velocity(delta: float):
 	
 	var horizontal_direction = Input.get_axis("move_left", "move_right")
 	if is_charging: 
-		var charging_slowdown = .05 if is_on_floor() else 1.0
-		return Vector2.RIGHT * horizontal_direction * walking_speed * charging_slowdown
+		var slowdown = walking_slowdown if is_on_floor() else 1.0
+		return Vector2.RIGHT * horizontal_direction * walking_speed * slowdown
 	
 	if is_on_floor() or is_jumping:
 		if horizontal_direction < 0 and horizontal_state != HorizontalState.LEFT:
@@ -74,8 +72,8 @@ func _get_horizontal_velocity(delta: float):
 				animation_player.play("idle_right")
 				horizontal_state = HorizontalState.IDLE_RIGHT
 	
-	# TODO: Add acceleration and damping
-	# TODO: Add airborne movement
+	# TODO: Add acceleration and damping (maybe)
+	# TODO: Add airborne movement (maybe)
 	return Vector2.RIGHT * horizontal_direction * walking_speed
 
 func _get_vertical_velocity(delta: float) -> Vector2:

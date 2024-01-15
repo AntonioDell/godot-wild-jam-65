@@ -13,6 +13,7 @@ signal overload_ended()
 @export var max_vertical_acceleration_duration = 1
 @export var max_charge_time_seconds = 2
 @export var max_overload_time = 1.0
+@export var min_charge = 0.0
 
 
 var is_charging = false
@@ -24,7 +25,6 @@ var is_rocket_active = false:
 			rocket_stopped.emit()
 		is_rocket_active = value
 var charge_time = 0.0
-var min_charge = 0.0
 var charge = 0.0
 var max_rocket_duration = 0.0
 var rocket_duration = 0.0

@@ -1,11 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://b2eygpgki0vx0"]
+[gd_scene load_steps=20 format=3 uid="uid://b2eygpgki0vx0"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_l8dor"]
 [ext_resource type="PackedScene" uid="uid://bkxifw7a3hfio" path="res://player/rocket_with_decimals.tscn" id="4_cfi6y"]
 [ext_resource type="PackedScene" uid="uid://bw4o3wsn2jhkm" path="res://player/jump.tscn" id="5_7v38u"]
-[ext_resource type="Texture2D" uid="uid://e0i2e8njvlx8" path="res://player/rocket_sprites_v1.png" id="5_j3yle"]
 [ext_resource type="Script" path="res://player/jump.gd" id="6_j437d"]
-[ext_resource type="Texture2D" uid="uid://byrponduq70lk" path="res://player/robot_sprites_v1.png" id="6_jnbqf"]
 [ext_resource type="Texture2D" uid="uid://bqeuc5oxc8ilk" path="res://player/robot_sprites_v3.png" id="7_ff3xo"]
 
 [sub_resource type="Animation" id="Animation_4on4x"]
@@ -381,21 +379,6 @@ unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_daa85")
 }
-
-[node name="SpritesV1" type="Node2D" parent="."]
-visible = false
-
-[node name="RocketSpritesV1" type="Sprite2D" parent="SpritesV1"]
-unique_name_in_owner = true
-texture_filter = 3
-texture = ExtResource("5_j3yle")
-hframes = 14
-
-[node name="RobotSpritesV1" type="Sprite2D" parent="SpritesV1"]
-unique_name_in_owner = true
-texture_filter = 3
-texture = ExtResource("6_jnbqf")
-hframes = 14
 
 [node name="Sprites" type="Node2D" parent="."]
 

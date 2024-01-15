@@ -1,16 +1,14 @@
-extends VBoxContainer
+@tool
+extends Control
 
-@onready var rocket_type_option_button = %RocketTypeOptionButton
-@onready var rocket_decimal_based_params = %RocketDecimalBasedParams
-@onready var rocket_step_based_params = %RocketStepBaasedParams
+
+@onready var expand_settings_checkbox = %ExpandSettingsCheckbox
+@onready var settings_list = %SettingsList
 
 func _ready():
-	rocket_type_option_button.item_selected.connect(_on_rocket_type_selected)
-	
-func _on_rocket_type_selected(index: int):
-	if index == 0:
-		rocket_decimal_based_params.show()
-		rocket_step_based_params.hide()
-	elif index == 1:
-		rocket_decimal_based_params.hide()
-		rocket_step_based_params.show()
+	expand_settings_checkbox.toggled.connect(_on_expand_settings_checkbox_toggled)
+	_on_expand_settings_checkbox_toggled(expand_settings_checkbox.button_pressed)
+
+
+func _on_expand_settings_checkbox_toggled(toggled_on: bool):
+	settings_list.visible = toggled_on
