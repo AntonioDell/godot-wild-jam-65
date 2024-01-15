@@ -50,10 +50,9 @@ func _get_horizontal_velocity(delta: float):
 	if is_stunned: return Vector2.ZERO
 	
 	var horizontal_direction = Input.get_axis("move_left", "move_right")
-	if is_charging and is_jumping: 
-		return Vector2.RIGHT * horizontal_direction * walking_speed
-	elif is_charging:
-		return Vector2.ZERO
+	if is_charging: 
+		var charging_slowdown = .05 if is_on_floor() else 1.0
+		return Vector2.RIGHT * horizontal_direction * walking_speed * charging_slowdown
 	
 	if is_on_floor() or is_jumping:
 		if horizontal_direction < 0 and horizontal_state != HorizontalState.LEFT:

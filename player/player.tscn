@@ -408,5 +408,5 @@ hframes = 7
 vframes = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3.875, 18.125)
+position = Vector2(0, 18.125)
 shape = SubResource("RectangleShape2D_g7b2x")
