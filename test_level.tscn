@@ -1221,4 +1221,4 @@ tile_set = SubResource("TileSet_1jdhj")
 format = 2
 
 [node name="Drone" parent="." instance=ExtResource("6_g5j7w")]
-position = Vector2(258, 368)
+position = Vector2(242, 346)
