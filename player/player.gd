@@ -1,10 +1,15 @@
 extends CharacterBody2D
 class_name Player
 
+@export_category("Dependendent nodes")
+@export var charge_audio: AudioStreamPlayer
+@export var rocket: RocketWithDecimals 
+@export var player_triggered_jump: Jump
+@export var jump_input: JumpInput
+@export var drone_triggered_jump: Jump
+
 @export_category("Movement")
-@export var rocket: RocketWithDecimals
-@export var jump: Jump
-@export var walking_speed = 250.0
+@export var walking_speed = 150.0
 @export var max_gravity = 750.0
 @export var walking_slowdown = 0.05
 
@@ -12,9 +17,6 @@ class_name Player
 @export var charge_audio_playback_position = 6.8
 @export var charge_audio_playback_length = 12.0 - 6.8
 
-@onready var robot_sprites = %RobotSprites
-@onready var animation_player = %AnimationPlayer
-@onready var charge_audio: AudioStreamPlayer = %ChargeAudio
 
 enum HorizontalState {
 	IDLE_RIGHT,
@@ -28,11 +30,7 @@ var charge_animation_playback_speed = 1.0 :
 	get:
 		var charge_animation_length = animation_player.get_animation("charge_right").length
 		return charge_animation_length / (rocket.max_charge_time_seconds - rocket.max_charge_delay)
-
-		
-var is_jumping = false
 var is_stunned = false
-var is_charging = false
 var rocket_velocity := Vector2.ZERO:
 	set(value):
 		if sign(rocket_velocity.y) == -1 and sign(value.y) >= 0: 
@@ -42,6 +40,9 @@ var rocket_velocity := Vector2.ZERO:
 				animation_player.play("fly_highest_point_reached_right")
 		rocket_velocity = value
 
+@onready var robot_sprites = %RobotSprites
+@onready var animation_player = %AnimationPlayer
+
 func _ready():
 	rocket.charging_started.connect(_on_rocket_charging_started)
 	rocket.max_charge_reached.connect(_on_rocket_max_charge_reached)
@@ -50,8 +51,10 @@ func _ready():
 	rocket.overload_started.connect(_on_rocket_overload_started)
 	rocket.overload_ended.connect(_on_rocket_overload_ended)
 	
-	jump.jump_started.connect(_on_jump_started)
-	jump.jump_ended.connect(_on_jump_ended)
+	jump_input.jump_triggered.connect(func(): 
+		player_triggered_jump.start())
+	player_triggered_jump.jump_started.connect(_jump_started)
+	drone_triggered_jump.jump_started.connect(_jump_started)
 
 func _physics_process(delta):
 	move_and_slide()
@@ -65,11 +68,11 @@ func _get_horizontal_velocity(delta: float):
 	if is_stunned: return Vector2.ZERO
 	
 	var horizontal_direction = Input.get_axis("move_left", "move_right")
-	if is_charging: 
+	if rocket.is_charging: 
 		var slowdown = walking_slowdown if is_on_floor() else 1.0
 		return Vector2.RIGHT * horizontal_direction * walking_speed * slowdown
 	
-	if is_on_floor() or is_jumping:
+	if not rocket.is_rocket_active:
 		if horizontal_direction < 0 and horizontal_state != HorizontalState.LEFT:
 			if horizontal_state != HorizontalState.IDLE_LEFT:
 				# Robot is facing right -> Turn left before walking 
@@ -94,23 +97,34 @@ func _get_horizontal_velocity(delta: float):
 	return Vector2.RIGHT * horizontal_direction * walking_speed
 
 func _get_vertical_velocity(delta: float) -> Vector2:
-	var _is_on_floor = is_on_floor() 
-	var vertical_jump_velocity = jump.get_vertical_velocity(delta, _is_on_floor)
-	var vertical_rocket_velocity = rocket.get_vertical_velocity(delta, _is_on_floor)
-	var vertical_gravity_velocity =  _get_gravity_vector(delta)
+	var _is_on_floor = is_on_floor()
+	jump_input.handle_jump_input(delta, _is_on_floor)
 	
+	var gravity_velocity =  _get_gravity_vector(delta)
 	if is_stunned:
-		return vertical_gravity_velocity
-	elif vertical_rocket_velocity == Vector2.ZERO:
-		return vertical_jump_velocity + vertical_gravity_velocity
-	else:
-		rocket_velocity = vertical_rocket_velocity + vertical_gravity_velocity
+		return gravity_velocity
+	
+	
+	# FIXME: This will stop working as soon as multiple obstacles exist
+	# The higher priority obstacle may always block the lower prio ones 
+	# -> maybe only apply the one with the lowest y value?
+	var drone_jump_velocity = drone_triggered_jump.get_vertical_velocity(delta)
+	if drone_jump_velocity != Vector2.ZERO:
+		return drone_jump_velocity + gravity_velocity
+	
+	rocket_velocity = rocket.get_vertical_velocity(delta, _is_on_floor)
+	if rocket_velocity != Vector2.ZERO:
+		rocket_velocity += gravity_velocity
 		return rocket_velocity
+	
+	var player_jump_velocity = player_triggered_jump.get_vertical_velocity(delta)
+	return player_jump_velocity + gravity_velocity
+
 
 func _get_gravity_vector(delta: float):
 	var strength = 0.0
 	if not is_on_floor():
-		# Falling
+		# Airborne
 		gravity_acceleration += delta
 		var v = clampf(gravity_acceleration, 0.0, 1.0)
 		strength = lerpf(0.0, max_gravity, ease(v, .4))
@@ -119,7 +133,6 @@ func _get_gravity_vector(delta: float):
 	return Vector2.DOWN * strength
 
 func _on_rocket_charging_started():
-	is_charging = true
 	if horizontal_state == HorizontalState.LEFT or horizontal_state == HorizontalState.IDLE_LEFT:
 		animation_player.play("charge_left", -1, charge_animation_playback_speed)
 	else:
@@ -135,7 +148,6 @@ func _on_rocket_max_charge_reached():
 		animation_player.play("max_charge_right")
 
 func _on_rocket_started():
-	is_charging = false
 	gravity_acceleration = 0.0
 	
 	if horizontal_state == HorizontalState.LEFT or horizontal_state == HorizontalState.IDLE_LEFT:
@@ -150,7 +162,6 @@ func _on_rocket_stopped():
 	pass
 
 func _on_rocket_overload_started():
-	is_charging = false
 	if horizontal_state == HorizontalState.LEFT or horizontal_state == HorizontalState.IDLE_LEFT:
 		animation_player.play("overload_left")
 		animation_player.queue("idle_left")
@@ -169,9 +180,5 @@ func _on_rocket_overload_ended():
 	# TODO: Play shakeoff animation
 	pass
 	
-func _on_jump_started(): 
-	is_jumping = true
+func _jump_started():
 	gravity_acceleration = 0.0
-	
-func _on_jump_ended():
-	is_jumping = false

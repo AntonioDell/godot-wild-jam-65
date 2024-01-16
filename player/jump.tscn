@@ -1,3 +1,9 @@
-[gd_scene format=3 uid="uid://bw4o3wsn2jhkm"]
+[gd_scene load_steps=2 format=3 uid="uid://bw4o3wsn2jhkm"]
+
+[ext_resource type="Script" path="res://player/jump.gd" id="1_mk4gx"]
 
 [node name="Jump" type="Node"]
+script = ExtResource("1_mk4gx")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

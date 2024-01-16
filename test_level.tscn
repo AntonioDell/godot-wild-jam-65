@@ -1,12 +1,79 @@
-[gd_scene load_steps=6 format=3 uid="uid://bstap6xlg22ii"]
+[gd_scene load_steps=10 format=3 uid="uid://bstap6xlg22ii"]
 
 [ext_resource type="Texture2D" uid="uid://cndy31sc7q7y1" path="res://test_level_layout.png" id="1_8k2fv"]
 [ext_resource type="PackedScene" uid="uid://b2eygpgki0vx0" path="res://player/player.tscn" id="2_dsbnp"]
 [ext_resource type="AudioStream" uid="uid://bohrwvpn44bih" path="res://sound/solarmaybelvel1.wav" id="3_5h5lr"]
 [ext_resource type="PackedScene" uid="uid://y7v8xra3ou2a" path="res://player/dev_settings.tscn" id="4_k3kvq"]
+[ext_resource type="Texture2D" uid="uid://4hoqymmvome6" path="res://basic_tileset.png" id="5_lknqn"]
+[ext_resource type="PackedScene" uid="uid://diyx00sbuf88l" path="res://obstacles/drone.tscn" id="6_g5j7w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qm6rh"]
 size = Vector2(32, 32)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vadqv"]
+resource_name = "basic"
+texture = ExtResource("5_lknqn")
+texture_region_size = Vector2i(32, 32)
+3:3/0 = 0
+3:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:3/0/physics_layer_0/angular_velocity = 0.0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:3/0 = 0
+4:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:3/0/physics_layer_0/angular_velocity = 0.0
+4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:3/0 = 0
+5:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:3/0/physics_layer_0/angular_velocity = 0.0
+5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:4/0 = 0
+3:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:4/0/physics_layer_0/angular_velocity = 0.0
+3:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:4/0 = 0
+4:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:4/0/physics_layer_0/angular_velocity = 0.0
+4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:4/0 = 0
+5:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:4/0/physics_layer_0/angular_velocity = 0.0
+5:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:5/0 = 0
+1:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:5/0/physics_layer_0/angular_velocity = 0.0
+3:5/0 = 0
+3:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:5/0/physics_layer_0/angular_velocity = 0.0
+3:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:5/0 = 0
+4:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:5/0/physics_layer_0/angular_velocity = 0.0
+4:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:5/0 = 0
+5:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:5/0/physics_layer_0/angular_velocity = 0.0
+5:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:6/0 = 0
+1:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:6/0/physics_layer_0/angular_velocity = 0.0
+0:7/0 = 0
+0:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:7/0/physics_layer_0/angular_velocity = 0.0
+1:7/0 = 0
+1:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:7/0/physics_layer_0/angular_velocity = 0.0
+2:7/0 = 0
+2:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:7/0/physics_layer_0/angular_velocity = 0.0
+3:7/0 = 0
+3:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:7/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_1jdhj"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+terrain_set_0/mode = 0
+sources/0 = SubResource("TileSetAtlasSource_vadqv")
 
 [node name="TestLevel" type="Node"]
 
@@ -1148,3 +1215,10 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
+
+[node name="BasicTileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_1jdhj")
+format = 2
+
+[node name="Drone" parent="." instance=ExtResource("6_g5j7w")]
+position = Vector2(258, 368)

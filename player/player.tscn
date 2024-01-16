@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bkxifw7a3hfio" path="res://player/rocket_with_decimals.tscn" id="4_cfi6y"]
 [ext_resource type="PackedScene" uid="uid://bw4o3wsn2jhkm" path="res://player/jump.tscn" id="5_7v38u"]
 [ext_resource type="AudioStream" uid="uid://ccdvwddx75dmd" path="res://sound/blastoff2.wav" id="5_dh1e6"]
-[ext_resource type="Script" path="res://player/jump.gd" id="6_j437d"]
 [ext_resource type="Texture2D" uid="uid://bqeuc5oxc8ilk" path="res://player/robot_sprites_v3.png" id="7_ff3xo"]
+[ext_resource type="Script" path="res://player/jump_input.gd" id="7_kel1s"]
 
 [sub_resource type="Animation" id="Animation_4on4x"]
 length = 0.001
@@ -88,6 +88,62 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_542fv"]
+resource_name = "fly_highest_point_reached_left"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/RobotSprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [26, 27, 28, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/RobotSprites:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true]
+}
+
+[sub_resource type="Animation" id="Animation_ef0il"]
+resource_name = "fly_highest_point_reached_right"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/RobotSprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [26, 27, 28, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/RobotSprites:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, false, false, false]
 }
 
 [sub_resource type="Animation" id="Animation_7sfbm"]
@@ -190,6 +246,64 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/RobotSprites:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_1x2md"]
+resource_name = "max_charge_left"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/RobotSprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [21, 22]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/RobotSprites:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_qe6y6"]
+resource_name = "max_charge_right"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/RobotSprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [21, 22]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -346,120 +460,6 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_qe6y6"]
-resource_name = "max_charge_right"
-length = 0.2
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites/RobotSprites:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [21, 22]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprites/RobotSprites:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_1x2md"]
-resource_name = "max_charge_left"
-length = 0.2
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites/RobotSprites:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [21, 22]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprites/RobotSprites:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_542fv"]
-resource_name = "fly_highest_point_reached_left"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites/RobotSprites:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [26, 27, 28, 0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprites/RobotSprites:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [true, true, true, true]
-}
-
-[sub_resource type="Animation" id="Animation_ef0il"]
-resource_name = "fly_highest_point_reached_right"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites/RobotSprites:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [26, 27, 28, 0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprites/RobotSprites:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [false, false, false, false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_daa85"]
 _data = {
 "RESET": SubResource("Animation_4on4x"),
@@ -483,15 +483,28 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g7b2x"]
 size = Vector2(25, 28)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("rocket", "jump")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("charge_audio", "rocket", "player_triggered_jump", "jump_input", "drone_triggered_jump")]
+collision_layer = 3
 script = ExtResource("1_l8dor")
-rocket = NodePath("RocketWithDecimals")
-jump = NodePath("Jump")
+charge_audio = NodePath("ChargeAudio")
+rocket = NodePath("Rocket")
+player_triggered_jump = NodePath("PlayerTriggeredJump")
+jump_input = NodePath("JumpInput")
+drone_triggered_jump = NodePath("DroneTriggeredJump")
 
-[node name="RocketWithDecimals" parent="." instance=ExtResource("4_cfi6y")]
+[node name="Rocket" parent="." instance=ExtResource("4_cfi6y")]
+unique_name_in_owner = true
 
-[node name="Jump" parent="." instance=ExtResource("5_7v38u")]
-script = ExtResource("6_j437d")
+[node name="PlayerTriggeredJump" parent="." instance=ExtResource("5_7v38u")]
+unique_name_in_owner = true
+
+[node name="JumpInput" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("7_kel1s")
+
+[node name="DroneTriggeredJump" parent="." instance=ExtResource("5_7v38u")]
+unique_name_in_owner = true
+max_jump_speed = 1000.0
 
 [node name="ChargeAudio" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true

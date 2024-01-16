@@ -39,6 +39,8 @@ func get_vertical_velocity(delta: float, is_on_floor: bool) -> Vector2:
 	var ret = Vector2.ZERO
 	
 	if is_rocket_active and rocket_duration > 0:
+		# FIXME: Find way around this left_floor hack
+		# Since rocket is priority 1 in vertical velocity handling, we need to abort if rocket flight is cut short
 		if not left_floor and not is_on_floor:
 			left_floor = true
 		elif left_floor and is_on_floor:
