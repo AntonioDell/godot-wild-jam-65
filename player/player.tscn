@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b2eygpgki0vx0"]
+[gd_scene load_steps=26 format=3 uid="uid://b2eygpgki0vx0"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_l8dor"]
 [ext_resource type="PackedScene" uid="uid://bkxifw7a3hfio" path="res://player/rocket_with_decimals.tscn" id="4_cfi6y"]
@@ -483,6 +483,10 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g7b2x"]
 size = Vector2(25, 28)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e8t7g"]
+radius = 7.0
+height = 26.0
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("charge_audio", "rocket", "player_triggered_jump", "jump_input", "drone_triggered_jump")]
 collision_layer = 3
 script = ExtResource("1_l8dor")
@@ -531,3 +535,15 @@ vframes = 7
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 18.125)
 shape = SubResource("RectangleShape2D_g7b2x")
+
+[node name="BirdStunCollisionArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BirdStunCollisionArea"]
+position = Vector2(-2, -8)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_e8t7g")
+debug_color = Color(0.988235, 0, 0.282353, 0.419608)
+
+[connection signal="body_entered" from="BirdStunCollisionArea" to="." method="_on_bird_stun_collision_area_body_entered"]

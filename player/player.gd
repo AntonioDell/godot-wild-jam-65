@@ -161,7 +161,7 @@ func _on_rocket_started():
 func _on_rocket_stopped():
 	pass
 
-func _on_rocket_overload_started():
+func _explode():
 	if horizontal_state == HorizontalState.LEFT or horizontal_state == HorizontalState.IDLE_LEFT:
 		animation_player.play("overload_left")
 		animation_player.queue("idle_left")
@@ -169,12 +169,15 @@ func _on_rocket_overload_started():
 		animation_player.play("overload_right")
 		animation_player.queue("idle_right")
 	
-	# TODO: Play overload audio
-	charge_audio.stop()
-	
 	is_stunned = true
 	await animation_player.animation_finished
 	is_stunned = false
+	
+
+func _on_rocket_overload_started():
+	charge_audio.stop()
+	
+	_explode()
 
 func _on_rocket_overload_ended():
 	# TODO: Play shakeoff animation
@@ -182,3 +185,9 @@ func _on_rocket_overload_ended():
 	
 func _jump_started():
 	gravity_acceleration = 0.0
+
+# Bird interactions
+func _on_bird_stun_collision_area_body_entered(body):
+	(body as Bird).get_sucked_in(Vector2.ZERO)
+	_explode()
+

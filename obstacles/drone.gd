@@ -25,7 +25,6 @@ func _trigger_drone_jump():
 	animation_player.queue("idle")
 
 func _on_player_entered(body):
-	print(body)
 	if body is Player:
 		colliding_player = body
 

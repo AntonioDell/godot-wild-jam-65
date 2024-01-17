@@ -1,28 +1,158 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxjfb0xvannha"]
+[gd_scene load_steps=9 format=3 uid="uid://bxjfb0xvannha"]
 
 [ext_resource type="Script" path="res://obstacles/bird.gd" id="1_eq2sd"]
+[ext_resource type="Texture2D" uid="uid://ghuslqbscly0" path="res://obstacles/bird_sprites.png" id="2_0xnvf"]
+[ext_resource type="Texture2D" uid="uid://cpa1vyffph3vx" path="res://obstacles/feather_poof_sprites.png" id="3_622cu"]
 
-[sub_resource type="Gradient" id="Gradient_xyyy5"]
-offsets = PackedFloat32Array(0.25)
-colors = PackedColorArray(0.34902, 0, 0, 1)
+[sub_resource type="Animation" id="Animation_i531r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BirdSprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FeatherPoofSprites:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FeatherPoofSprites:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BirdSprites:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_6mpxv"]
-gradient = SubResource("Gradient_xyyy5")
-width = 32
-height = 32
+[sub_resource type="Animation" id="Animation_u7qm1"]
+resource_name = "fly_loop"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BirdSprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
 
-[node name="Bird" type="CharacterBody2D"]
-collision_layer = 0
-collision_mask = 2
+[sub_resource type="Animation" id="Animation_h7bwu"]
+resource_name = "poof"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FeatherPoofSprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FeatherPoofSprites:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BirdSprites:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ee1y1"]
+_data = {
+"RESET": SubResource("Animation_i531r"),
+"fly_loop": SubResource("Animation_u7qm1"),
+"poof": SubResource("Animation_h7bwu")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xitlq"]
+
+[node name="Bird" type="CharacterBody2D" node_paths=PackedStringArray("patrol_point_nodes")]
+collision_layer = 4
+collision_mask = 4
 motion_mode = 1
 script = ExtResource("1_eq2sd")
+patrol_point_nodes = [NodePath("StartPosition")]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_6mpxv")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_ee1y1")
+}
+autoplay = "fly_loop"
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-color = Color(0.34902, 0, 0, 1)
-polygon = PackedVector2Array(16, -15, 30, -5, 16, -3)
+[node name="BirdSprites" type="Sprite2D" parent="."]
+texture_filter = 3
+texture = ExtResource("2_0xnvf")
+hframes = 3
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
+[node name="FeatherPoofSprites" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 3
+texture = ExtResource("3_622cu")
+hframes = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+shape = SubResource("RectangleShape2D_xitlq")
+
+[node name="StartPosition" type="Node2D" parent="."]
+
+[node name="DebugPatrolPath" type="Line2D" parent="."]
+unique_name_in_owner = true
+closed = true
+width = 1.0
+default_color = Color(0.792157, 0, 0.0901961, 1)

@@ -6,6 +6,7 @@ extends Control
 @onready var expand_settings_checkbox = %ExpandSettingsCheckbox
 @onready var settings_list = %SettingsList
 
+var spawnable_test_bird_scene = preload("res://obstacles/spawnable_test_bird.tscn")
 
 func _ready():
 	# Settings controls
@@ -43,3 +44,8 @@ func _ready():
 	%RocketMaxOverloadTime.value = player.rocket.max_overload_time
 	%DroneJumpSpeed.value_changed.connect(func(value: float): player.drone_triggered_jump.max_jump_speed = value)
 	%DroneJumpSpeed.value = player.drone_triggered_jump.max_jump_speed
+	%SpawnBirdButton.pressed.connect(_respawn_bird)
+
+func _respawn_bird():
+	var new_bird = spawnable_test_bird_scene.instantiate()
+	get_tree().root.add_child(new_bird)
