@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bstap6xlg22ii"]
+[gd_scene load_steps=12 format=3 uid="uid://bstap6xlg22ii"]
 
 [ext_resource type="Texture2D" uid="uid://cndy31sc7q7y1" path="res://test_level_layout.png" id="1_8k2fv"]
 [ext_resource type="PackedScene" uid="uid://b2eygpgki0vx0" path="res://player/player.tscn" id="2_dsbnp"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://y7v8xra3ou2a" path="res://player/dev_settings.tscn" id="4_k3kvq"]
 [ext_resource type="Texture2D" uid="uid://4hoqymmvome6" path="res://basic_tileset.png" id="5_lknqn"]
 [ext_resource type="PackedScene" uid="uid://diyx00sbuf88l" path="res://obstacles/drone.tscn" id="6_g5j7w"]
+[ext_resource type="PackedScene" uid="uid://bxjfb0xvannha" path="res://obstacles/bird.tscn" id="7_4m82x"]
 [ext_resource type="PackedScene" uid="uid://cdqeeip6iobet" path="res://obstacles/spawnable_test_bird.tscn" id="7_aipuw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qm6rh"]
@@ -1224,5 +1225,11 @@ format = 2
 [node name="Drone" parent="." instance=ExtResource("6_g5j7w")]
 position = Vector2(305, 312)
 
+[node name="Drone2" parent="." instance=ExtResource("6_g5j7w")]
+position = Vector2(506, 408)
+
 [node name="Bird" parent="." instance=ExtResource("7_aipuw")]
 position = Vector2(162, 214)
+
+[node name="Bird2" parent="." instance=ExtResource("7_4m82x")]
+position = Vector2(500, 274)

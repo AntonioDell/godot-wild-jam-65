@@ -101,16 +101,17 @@ func _get_vertical_velocity(delta: float) -> Vector2:
 	jump_input.handle_jump_input(delta, _is_on_floor)
 	
 	var gravity_velocity =  _get_gravity_vector(delta)
-	if is_stunned:
-		return gravity_velocity
 	
-	
-	# FIXME: This will stop working as soon as multiple obstacles exist
+	# FIXME: This will stop working as soon as multiple obstacles with jumps exist
 	# The higher priority obstacle may always block the lower prio ones 
 	# -> maybe only apply the one with the lowest y value?
 	var drone_jump_velocity = drone_triggered_jump.get_vertical_velocity(delta)
 	if drone_jump_velocity != Vector2.ZERO:
+		is_stunned = false
 		return drone_jump_velocity + gravity_velocity
+	
+	if is_stunned:
+		return gravity_velocity
 	
 	rocket_velocity = rocket.get_vertical_velocity(delta, _is_on_floor)
 	if rocket_velocity != Vector2.ZERO:

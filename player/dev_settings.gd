@@ -7,6 +7,8 @@ extends Control
 @onready var settings_list = %SettingsList
 
 var spawnable_test_bird_scene = preload("res://obstacles/spawnable_test_bird.tscn")
+var bird_scene = preload("res://obstacles/bird.tscn")
+var spawn_bird_selection = 0
 
 func _ready():
 	# Settings controls
@@ -44,8 +46,17 @@ func _ready():
 	%RocketMaxOverloadTime.value = player.rocket.max_overload_time
 	%DroneJumpSpeed.value_changed.connect(func(value: float): player.drone_triggered_jump.max_jump_speed = value)
 	%DroneJumpSpeed.value = player.drone_triggered_jump.max_jump_speed
+	
+	%SpawnBirdSelector.item_selected.connect(func(index: int): 
+		spawn_bird_selection = index
+	)
 	%SpawnBirdButton.pressed.connect(_respawn_bird)
 
 func _respawn_bird():
-	var new_bird = spawnable_test_bird_scene.instantiate()
+	var new_bird: Node2D
+	if spawn_bird_selection == 0:
+		new_bird = spawnable_test_bird_scene.instantiate()
+	else:
+		new_bird = bird_scene.instantiate()
+		new_bird.position = Vector2(500, 274)
 	get_tree().root.add_child(new_bird)

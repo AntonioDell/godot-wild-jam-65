@@ -55,6 +55,21 @@ layout_mode = 2
 size_flags_vertical = 0
 columns = 2
 
+[node name="SpawnBirdSelector" type="OptionButton" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+item_count = 2
+selected = 0
+popup/item_0/text = "Patrolling Bird"
+popup/item_0/id = 0
+popup/item_1/text = "Stationary Bird"
+popup/item_1/id = 1
+
+[node name="SpawnBirdButton" type="Button" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Spawn"
+
 [node name="Label3" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
 layout_mode = 2
 text = "Waling speed"
@@ -223,12 +238,3 @@ max_value = 1000.0
 step = 0.1
 allow_greater = true
 allow_lesser = true
-
-[node name="Label17" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
-layout_mode = 2
-text = "Spawn bird"
-
-[node name="SpawnBirdButton" type="Button" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Click"
