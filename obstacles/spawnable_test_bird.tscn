@@ -6,9 +6,6 @@
 position = Vector2(77, 174)
 patrol_point_nodes = [NodePath("StartPosition"), NodePath("PatrolPoint1"), NodePath("PatrolPoint2")]
 
-[node name="BirdSprites" parent="." index="1"]
-unique_name_in_owner = true
-
 [node name="DebugPatrolPath" parent="." index="5"]
 points = PackedVector2Array(0, 0, 307, -4, 146, -55)
 

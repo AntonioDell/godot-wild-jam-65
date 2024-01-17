@@ -135,6 +135,7 @@ libraries = {
 autoplay = "fly_loop"
 
 [node name="BirdSprites" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 texture_filter = 3
 texture = ExtResource("2_0xnvf")
 hframes = 3
@@ -153,6 +154,7 @@ shape = SubResource("RectangleShape2D_xitlq")
 
 [node name="DebugPatrolPath" type="Line2D" parent="."]
 unique_name_in_owner = true
+points = PackedVector2Array(0, 0)
 closed = true
 width = 1.0
 default_color = Color(0.792157, 0, 0.0901961, 1)

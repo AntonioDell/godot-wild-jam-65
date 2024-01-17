@@ -58,8 +58,8 @@ func _move_on_patrol(delta: float):
 	# TODO: Make flight movement more natural
 	velocity = direction.normalized() * speed
 
+#region tool scripts
 
-# tool functions
 func _tool_update_debug_path():
 	if not Engine.is_editor_hint(): 
 		return
@@ -73,3 +73,5 @@ func _tool_draw_patrol_path():
 	%DebugPatrolPath.clear_points()
 	for node in patrol_point_nodes:
 		%DebugPatrolPath.add_point(node.position)
+
+#endregion

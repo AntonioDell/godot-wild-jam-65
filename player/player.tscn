@@ -499,6 +499,16 @@ player_triggered_jump = NodePath("PlayerTriggeredJump")
 jump_input = NodePath("JumpInput")
 drone_triggered_jump = NodePath("DroneTriggeredJump")
 
+[node name="Camera" type="Camera2D" parent="."]
+unique_name_in_owner = true
+zoom = Vector2(2, 2)
+limit_left = 0
+limit_bottom = 0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
 [node name="Rocket" parent="." instance=ExtResource("4_cfi6y")]
 unique_name_in_owner = true
 

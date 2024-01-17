@@ -42,6 +42,7 @@ var rocket_velocity := Vector2.ZERO:
 
 @onready var robot_sprites = %RobotSprites
 @onready var animation_player = %AnimationPlayer
+@onready var camera: Camera2D = %Camera
 
 func _ready():
 	rocket.charging_started.connect(_on_rocket_charging_started)
