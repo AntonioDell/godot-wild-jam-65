@@ -47,7 +47,7 @@ func _ready():
 	rocket.charging_started.connect(_on_rocket_charging_started)
 	rocket.max_charge_reached.connect(_on_rocket_max_charge_reached)
 	rocket.rocket_started.connect(_on_rocket_started)
-	rocket.rocket_started.connect(_on_rocket_stopped)
+	rocket.rocket_stopped.connect(_on_rocket_stopped)
 	rocket.overload_started.connect(_on_rocket_overload_started)
 	rocket.overload_ended.connect(_on_rocket_overload_ended)
 	
@@ -148,7 +148,7 @@ func _on_rocket_max_charge_reached():
 	else:
 		animation_player.play("max_charge_right")
 
-func _on_rocket_started():
+func _on_rocket_started(charge_level: int):
 	gravity_acceleration = 0.0
 	
 	if horizontal_state == HorizontalState.LEFT or horizontal_state == HorizontalState.IDLE_LEFT:
@@ -156,8 +156,8 @@ func _on_rocket_started():
 	else:
 		animation_player.play("fly_right")
 	
-	# TODO: Play blastoff audio
 	charge_audio.stop()
+	(get_node("Blastoff%sAudio" % charge_level) as AudioStreamPlayer).play()
 
 func _on_rocket_stopped():
 	pass
