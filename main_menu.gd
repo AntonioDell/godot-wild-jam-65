@@ -11,4 +11,4 @@ func _on_start_button_pressed():
 	start_button.hide()
 	animation_player.play("start_game")
 	await animation_player.animation_finished
-	get_tree().change_scene_to_file("res://level_1.tscn")
+	get_tree().change_scene_to_file("res://level_1/level_1.tscn")
