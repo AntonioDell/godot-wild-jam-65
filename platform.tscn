@@ -2,10 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://dvrrjxuqac6gq" path="res://platform_sprites.png" id="1_26kqd"]
 
-[sub_resource type="Animation" id="Animation_71vpd"]
-resource_name = "idle"
-length = 0.1
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_4rgrq"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -19,8 +17,10 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_4rgrq"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_71vpd"]
+resource_name = "idle"
+length = 0.1
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
