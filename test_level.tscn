@@ -1502,42 +1502,6 @@ vframes = 15
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UpperTiles/Tile27"]
 shape = SubResource("RectangleShape2D_qm6rh")
 
-[node name="Tile28" type="StaticBody2D" parent="UpperTiles"]
-position = Vector2(176, 304)
-
-[node name="Sprite2D" type="Sprite2D" parent="UpperTiles/Tile28"]
-texture_filter = 3
-texture = ExtResource("1_8k2fv")
-hframes = 21
-vframes = 15
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperTiles/Tile28"]
-shape = SubResource("RectangleShape2D_qm6rh")
-
-[node name="Tile29" type="StaticBody2D" parent="UpperTiles"]
-position = Vector2(176, 336)
-
-[node name="Sprite2D" type="Sprite2D" parent="UpperTiles/Tile29"]
-texture_filter = 3
-texture = ExtResource("1_8k2fv")
-hframes = 21
-vframes = 15
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperTiles/Tile29"]
-shape = SubResource("RectangleShape2D_qm6rh")
-
-[node name="Tile30" type="StaticBody2D" parent="UpperTiles"]
-position = Vector2(176, 368)
-
-[node name="Sprite2D" type="Sprite2D" parent="UpperTiles/Tile30"]
-texture_filter = 3
-texture = ExtResource("1_8k2fv")
-hframes = 21
-vframes = 15
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperTiles/Tile30"]
-shape = SubResource("RectangleShape2D_qm6rh")
-
 [node name="Tile31" type="StaticBody2D" parent="UpperTiles"]
 position = Vector2(400, 304)
 
@@ -1611,7 +1575,7 @@ vframes = 15
 shape = SubResource("RectangleShape2D_qm6rh")
 
 [node name="Tile37" type="StaticBody2D" parent="UpperTiles"]
-position = Vector2(176, 400)
+position = Vector2(208, 400)
 
 [node name="Sprite2D" type="Sprite2D" parent="UpperTiles/Tile37"]
 texture_filter = 3
@@ -1623,7 +1587,7 @@ vframes = 15
 shape = SubResource("RectangleShape2D_qm6rh")
 
 [node name="Tile38" type="StaticBody2D" parent="UpperTiles"]
-position = Vector2(176, 432)
+position = Vector2(208, 432)
 
 [node name="Sprite2D" type="Sprite2D" parent="UpperTiles/Tile38"]
 texture_filter = 3
@@ -1958,18 +1922,6 @@ vframes = 15
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UpperTiles/Tile86"]
 shape = SubResource("RectangleShape2D_qm6rh")
 
-[node name="Tile89" type="StaticBody2D" parent="UpperTiles"]
-position = Vector2(112, 432)
-
-[node name="Sprite2D" type="Sprite2D" parent="UpperTiles/Tile89"]
-texture_filter = 3
-texture = ExtResource("1_8k2fv")
-hframes = 21
-vframes = 15
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperTiles/Tile89"]
-shape = SubResource("RectangleShape2D_qm6rh")
-
 [node name="Tile90" type="StaticBody2D" parent="UpperTiles"]
 position = Vector2(144, 16)
 
@@ -2223,7 +2175,7 @@ vframes = 15
 shape = SubResource("RectangleShape2D_qm6rh")
 
 [node name="Player" parent="." instance=ExtResource("2_dsbnp")]
-position = Vector2(62, -64)
+position = Vector2(62, -32)
 
 [node name="BasicTileMap" type="TileMap" parent="."]
 position = Vector2(0, -480)
@@ -2243,5 +2195,5 @@ position = Vector2(162, -266)
 position = Vector2(500, -206)
 
 [node name="DeathMechanic" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_drvub")]
-lock_camera_heights = Array[float]([-448.0, -798.0])
+lock_camera_heights = Array[float]([-160.0, -448.0, -798.0])
 player = NodePath("../Player")

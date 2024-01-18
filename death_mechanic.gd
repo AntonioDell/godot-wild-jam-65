@@ -24,11 +24,19 @@ func _process(delta):
 	_tool_show_debug_lines()
 	if Engine.is_editor_hint() or current_height_index == -1: return
 	
-	if player.global_position.y < lock_camera_heights[current_height_index]:
+	# FIXME: This will not work if the player doesn't touch the floor
+	if player.global_position.y < lock_camera_heights[current_height_index] and player.is_on_floor():
 		# TODO: Lock camera at height and kill player if he falls outside
+		_change_camera_limit(lock_camera_heights[current_height_index])
 		current_height_index = clampi(current_height_index + 1, 0, lock_camera_heights.size() - 1)
 		
 
+var tween
+func _change_camera_limit(new_limit: int):
+	if tween:
+		tween.kill()
+	tween = create_tween()
+	tween.tween_property(player.camera, "limit_bottom", new_limit, 2.0).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 
 #region tool scripts
 

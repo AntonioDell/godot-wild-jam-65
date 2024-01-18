@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b2eygpgki0vx0"]
+[gd_scene load_steps=30 format=3 uid="uid://b2eygpgki0vx0"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_l8dor"]
 [ext_resource type="PackedScene" uid="uid://bkxifw7a3hfio" path="res://player/rocket_with_decimals.tscn" id="4_cfi6y"]
@@ -35,6 +35,28 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/RobotSprites:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprites/RobotSprites:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(8, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="Animation" id="Animation_s8ppt"]
@@ -463,11 +485,49 @@ tracks/1/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_twq8n"]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/RobotSprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 2, 3, 4, 5, 2]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/RobotSprites:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/RobotSprites:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(3, 3),
+"points": PackedFloat32Array(8, -0.1, 239, 0.1, -239, 8, -0.3, 0, 0.3, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_daa85"]
 _data = {
 "RESET": SubResource("Animation_4on4x"),
 "charge_left": SubResource("Animation_s8ppt"),
 "charge_right": SubResource("Animation_0bbe5"),
+"death": SubResource("Animation_twq8n"),
 "fly_highest_point_reached_left": SubResource("Animation_542fv"),
 "fly_highest_point_reached_right": SubResource("Animation_ef0il"),
 "fly_left": SubResource("Animation_7sfbm"),
@@ -484,7 +544,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g7b2x"]
-size = Vector2(25, 28)
+size = Vector2(25, 27.875)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e8t7g"]
 radius = 7.0
@@ -551,6 +611,7 @@ libraries = {
 }
 
 [node name="Sprites" type="Node2D" parent="."]
+position = Vector2(0, -32)
 
 [node name="RobotSprites" type="Sprite2D" parent="Sprites"]
 unique_name_in_owner = true
@@ -561,10 +622,11 @@ hframes = 7
 vframes = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 18.125)
+position = Vector2(0, -13.9375)
 shape = SubResource("RectangleShape2D_g7b2x")
 
 [node name="BirdStunCollisionArea" type="Area2D" parent="."]
+position = Vector2(0, -32)
 collision_layer = 4
 collision_mask = 4
 
@@ -574,4 +636,10 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_e8t7g")
 debug_color = Color(0.988235, 0, 0.282353, 0.419608)
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(24, 0)
+scale = Vector2(4.9, 4.7)
+rect = Rect2(-10, -10, 10, 10)
+
 [connection signal="body_entered" from="BirdStunCollisionArea" to="." method="_on_bird_stun_collision_area_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]

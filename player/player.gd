@@ -39,6 +39,10 @@ var rocket_velocity := Vector2.ZERO:
 			else:
 				animation_player.play("fly_highest_point_reached_right")
 		rocket_velocity = value
+var is_death = false:
+	set(value):
+		is_death = value
+		charge_audio.stop()
 
 @onready var robot_sprites = %RobotSprites
 @onready var animation_player = %AnimationPlayer
@@ -58,9 +62,12 @@ func _ready():
 	drone_triggered_jump.jump_started.connect(_jump_started)
 
 func _physics_process(delta):
+	if is_death: return
 	move_and_slide()
 
 func _process(delta: float):
+	if is_death: return 
+	
 	var horizontal_velocity = _get_horizontal_velocity(delta)
 	var vertical_velocity = _get_vertical_velocity(delta)
 	velocity = horizontal_velocity + vertical_velocity
@@ -122,7 +129,6 @@ func _get_vertical_velocity(delta: float) -> Vector2:
 	var player_jump_velocity = player_triggered_jump.get_vertical_velocity(delta)
 	return player_jump_velocity + gravity_velocity
 
-
 func _get_gravity_vector(delta: float):
 	var strength = 0.0
 	if not is_on_floor():
@@ -135,6 +141,8 @@ func _get_gravity_vector(delta: float):
 	return Vector2.DOWN * strength
 
 func _on_rocket_charging_started():
+	if is_death: return 
+	
 	if horizontal_state == HorizontalState.LEFT or horizontal_state == HorizontalState.IDLE_LEFT:
 		animation_player.play("charge_left", -1, charge_animation_playback_speed)
 	else:
@@ -144,12 +152,16 @@ func _on_rocket_charging_started():
 	charge_audio.play(charge_audio_playback_position)
 
 func _on_rocket_max_charge_reached():
+	if is_death: return 
+	
 	if horizontal_state == HorizontalState.LEFT or horizontal_state == HorizontalState.IDLE_LEFT:
 		animation_player.play("max_charge_left")
 	else:
 		animation_player.play("max_charge_right")
 
 func _on_rocket_started(charge_level: int):
+	if is_death: return 
+	
 	gravity_acceleration = 0.0
 	
 	if horizontal_state == HorizontalState.LEFT or horizontal_state == HorizontalState.IDLE_LEFT:
@@ -161,9 +173,11 @@ func _on_rocket_started(charge_level: int):
 	(get_node("Blastoff%sAudio" % charge_level) as AudioStreamPlayer).play()
 
 func _on_rocket_stopped():
-	pass
+	if is_death: return 
 
 func _explode():
+	if is_death: return 
+	
 	if horizontal_state == HorizontalState.LEFT or horizontal_state == HorizontalState.IDLE_LEFT:
 		animation_player.play("overload_left")
 		animation_player.queue("idle_left")
@@ -177,19 +191,35 @@ func _explode():
 	
 
 func _on_rocket_overload_started():
+	if is_death: return 
+	
 	charge_audio.stop()
 	
 	_explode()
 
 func _on_rocket_overload_ended():
+	if is_death: return 
 	# TODO: Play shakeoff animation
-	pass
 	
 func _jump_started():
+	if is_death: return 
+	
 	gravity_acceleration = 0.0
 
 # Bird interactions
 func _on_bird_stun_collision_area_body_entered(body):
+	if is_death: return 
+	
 	(body as Bird).get_sucked_in(Vector2.ZERO)
 	_explode()
 
+
+func _on_screen_exited():
+	_die()
+
+
+func _die():
+	is_death = true
+	animation_player.play("death")
+	await animation_player.animation_finished
+	get_tree().reload_current_scene()
