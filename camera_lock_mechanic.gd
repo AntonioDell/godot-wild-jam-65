@@ -3,15 +3,16 @@ extends Node
 class_name DeathMechanic
 
 @export var lock_camera_heights: Array[float] = []
-@export var player: Player
 
+var player: Player
 var current_height_index: int = -1
 
 func _ready():
 	if Engine.is_editor_hint(): return
 	
+	player = get_tree().get_first_node_in_group("player") as Player
 	if not player:
-		push_error("%s configuration error: No player set" % name)
+		push_error("%s configuration error: No player exists in tree" % name)
 	
 	lock_camera_heights.sort()
 	lock_camera_heights.reverse()

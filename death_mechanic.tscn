@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bntgfnkp8saaw"]
-
-[ext_resource type="Script" path="res://death_mechanic.gd" id="1_rrmuy"]
-
-[node name="DeathMechanic" type="Node"]
-script = ExtResource("1_rrmuy")

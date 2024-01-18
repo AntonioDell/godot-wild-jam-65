@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bntgfnkp8saaw"]
+
+[ext_resource type="Script" path="res://camera_lock_mechanic.gd" id="1_rrmuy"]
+
+[node name="CameraLockMechanic" type="Node"]
+script = ExtResource("1_rrmuy")
