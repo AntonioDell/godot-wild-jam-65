@@ -38,6 +38,7 @@ position = Vector2(160, -5)
 [node name="CameraLockMechanic" parent="." instance=ExtResource("3_7dctk")]
 
 [node name="Level1Overview" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0.415686)
 texture_filter = 1
 position = Vector2(0, -1365)
