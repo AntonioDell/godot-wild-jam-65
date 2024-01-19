@@ -36,6 +36,7 @@ var tween
 func _change_camera_limit(new_limit: int):
 	if tween:
 		tween.kill()
+	player.camera.limit_bottom = new_limit + 200
 	tween = create_tween()
 	tween.tween_property(player.camera, "limit_bottom", new_limit, 2.0).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 
@@ -68,7 +69,7 @@ func _tool_should_recreate_lines() -> bool:
 
 func _tool_create_debug_line(height: float, width: int) -> Line2D:
 	var line = Line2D.new()
-	line.width = 2
+	line.width = 1
 	line.default_color = Color.DARK_RED
 	line.add_point(Vector2(0, height))
 	line.add_point(Vector2(width, height))

@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cn0mjyo2b2b8c"]
+[gd_scene load_steps=8 format=3 uid="uid://cn0mjyo2b2b8c"]
 
 [ext_resource type="Texture2D" uid="uid://dvrrjxuqac6gq" path="res://platform_sprites.png" id="1_26kqd"]
+[ext_resource type="Script" path="res://platform.gd" id="1_tr2ei"]
 
 [sub_resource type="Animation" id="Animation_4rgrq"]
 length = 0.001
@@ -62,8 +63,10 @@ _data = {
 size = Vector2(128, 16)
 
 [node name="Platform" type="AnimatableBody2D"]
+script = ExtResource("1_tr2ei")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
 root_node = NodePath("../Sprite")
 libraries = {
 "": SubResource("AnimationLibrary_4kpu8")

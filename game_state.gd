@@ -18,6 +18,7 @@ var current_level = 0
 var settings = {
 	"volume": .5
 }
+var level_deaths = 0
 
 @onready var canvas_modulate: CanvasModulate = %CanvasModulate
 
@@ -28,19 +29,19 @@ func start_game():
 	_transition_to(LEVEL_1)
 
 ## Call on player death
-func restart_level():
-	collected_items_in_level.clear()
-	var tween = create_tween()
-	tween.tween_property(canvas_modulate, "color", Color.BLACK, 3.0)
-	await tween.finished
-	get_tree().reload_current_scene()
-	tween.tween_property(canvas_modulate, "color", Color.WHITE, 1.0)
+func register_player_death():
+	level_deaths += 1
+	collected_items_in_level = 0
+
+func get_deaths():
+	return level_deaths
 
 ## Call when player completed the current level
 func complete_level():
 	current_level += 1
 	collected_items += collected_items_in_level
 	collected_items_in_level = 0
+	level_deaths = 0
 	if current_level > level_count:
 		# TODO: Show credits scene
 		current_level = MAIN_MENU
@@ -65,7 +66,7 @@ func change_setting(setting_name: String, value):
 
 func _transition_to(level: int):
 	var tween = create_tween()
-	tween.tween_property(canvas_modulate, "color", Color.BLACK, 3.0)
+	tween.tween_property(canvas_modulate, "color", Color.BLACK, 2.0)
 	await tween.finished
 	var error_code  
 	if level != MAIN_MENU:
@@ -83,7 +84,7 @@ func _transition_to(level: int):
 		return
 	
 	tween = create_tween()
-	tween.tween_property(canvas_modulate, "color", Color.WHITE, 1.0)
+	tween.tween_property(canvas_modulate, "color", Color.WHITE, .75)
 
 ## TODO: Adjust to fit level 2
 func _get_level_scene(level: int) -> PackedScene:

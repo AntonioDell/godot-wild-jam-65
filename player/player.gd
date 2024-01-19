@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Player
 
+signal player_died()
+
 @export_category("Dependendent nodes")
 @export var charge_audio: AudioStreamPlayer
 @export var rocket: RocketWithDecimals 
@@ -222,4 +224,4 @@ func _die():
 	is_death = true
 	animation_player.play("death")
 	await animation_player.animation_finished
-	get_tree().reload_current_scene()
+	player_died.emit()
