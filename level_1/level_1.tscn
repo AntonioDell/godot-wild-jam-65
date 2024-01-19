@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d0v3naa0mmcgs"]
+[gd_scene load_steps=10 format=3 uid="uid://d0v3naa0mmcgs"]
 
 [ext_resource type="PackedScene" uid="uid://b2eygpgki0vx0" path="res://player/player.tscn" id="1_jpexq"]
 [ext_resource type="AudioStream" uid="uid://cnydo7betlsf0" path="res://level_1/solarlevel1.wav" id="1_s4h75"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bntgfnkp8saaw" path="res://camera_lock_mechanic.tscn" id="3_7dctk"]
 [ext_resource type="TileSet" uid="uid://cxd55pf42b50n" path="res://level_1/basic_tileset.tres" id="3_pr3yx"]
 [ext_resource type="PackedScene" uid="uid://cn0mjyo2b2b8c" path="res://platform.tscn" id="6_ck8kh"]
+[ext_resource type="PackedScene" uid="uid://cuqv4b1xmcllc" path="res://level_completed_area.tscn" id="8_b01sy"]
+[ext_resource type="PackedScene" uid="uid://dr86t04x40uwd" path="res://collectable.tscn" id="9_63mg1"]
 
 [node name="Level1" type="Node"]
 
@@ -32,8 +34,11 @@ layer_1/tile_data = PackedInt32Array(-786432, 2, 65537, -720896, 2, 65537, -6553
 [node name="Player" parent="." instance=ExtResource("1_jpexq")]
 position = Vector2(168, -21)
 
-[node name="Platform" parent="." instance=ExtResource("6_ck8kh")]
+[node name="EntryPlatform" parent="." instance=ExtResource("6_ck8kh")]
 position = Vector2(160, -5)
+
+[node name="ExitPlatform" parent="." instance=ExtResource("6_ck8kh")]
+position = Vector2(160, -1221)
 
 [node name="Level1Overview" type="Sprite2D" parent="."]
 visible = false
@@ -50,3 +55,15 @@ anchor_bottom = 1.0
 offset_right = 353.0
 offset_bottom = 0.0
 grow_vertical = 2
+
+[node name="LevelCompletedArea" parent="." instance=ExtResource("8_b01sy")]
+position = Vector2(160, -1235)
+
+[node name="Collectable" parent="." instance=ExtResource("9_63mg1")]
+position = Vector2(596, -498)
+
+[node name="Collectable2" parent="." instance=ExtResource("9_63mg1")]
+position = Vector2(434, -395)
+
+[node name="Collectable3" parent="." instance=ExtResource("9_63mg1")]
+position = Vector2(61, -48)

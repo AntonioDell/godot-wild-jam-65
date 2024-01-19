@@ -1,47 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bdu0ru4jthxpn"]
+[gd_scene load_steps=10 format=3 uid="uid://bdu0ru4jthxpn"]
 
-[ext_resource type="Texture2D" uid="uid://x7ihvbi2l326" path="res://end_level/end_machine_sprites.png" id="1_75nic"]
-[ext_resource type="Texture2D" uid="uid://k51y3ui3i6nb" path="res://energy_collectable_sprites.png" id="2_1pugn"]
-
-[sub_resource type="Animation" id="Animation_qs8e7"]
-resource_name = "insufficient"
-length = 1.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("EndMachine/EndMachineSprites:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 13]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("EndMachine/EnergyCollectableSprites:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("EndMachine/EnergyCollectableSprites2:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
+[ext_resource type="Texture2D" uid="uid://x7ihvbi2l326" path="res://level_3/end_machine_sprites.png" id="1_kcx8n"]
+[ext_resource type="Script" path="res://level_3/level_3.gd" id="1_p1pey"]
+[ext_resource type="Texture2D" uid="uid://k51y3ui3i6nb" path="res://energy_collectable_sprites.png" id="2_3cwla"]
 
 [sub_resource type="Animation" id="Animation_slisx"]
 length = 0.001
@@ -122,6 +83,86 @@ tracks/2/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_qs8e7"]
+resource_name = "insufficient"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EndMachine/EndMachineSprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 13]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EndMachine/EnergyCollectableSprites:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EndMachine/EnergyCollectableSprites2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ac32h"]
+resource_name = "nothing"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EndMachine/EndMachineSprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [57]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EndMachine/EnergyCollectableSprites:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EndMachine/EnergyCollectableSprites2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_6q6g2"]
 resource_name = "radical"
 length = 3.1
@@ -162,22 +203,6 @@ tracks/2/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_ac32h"]
-resource_name = "nothing"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("EndMachine/EndMachineSprites:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [57]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_khw7w"]
 _data = {
 "RESET": SubResource("Animation_slisx"),
@@ -187,20 +212,22 @@ _data = {
 "radical": SubResource("Animation_6q6g2")
 }
 
-[node name="EndLevel" type="Node"]
+[node name="Level3" type="Node"]
+script = ExtResource("1_p1pey")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_khw7w")
+}
+autoplay = "nothing"
 
 [node name="EndMachine" type="Node2D" parent="."]
 position = Vector2(332, 174)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="EndMachine"]
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_khw7w")
-}
-
 [node name="EndMachineSprites" type="Sprite2D" parent="EndMachine"]
 texture_filter = 1
-texture = ExtResource("1_75nic")
+texture = ExtResource("1_kcx8n")
 hframes = 8
 vframes = 8
 frame = 14
@@ -209,13 +236,13 @@ frame = 14
 visible = false
 texture_filter = 1
 position = Vector2(0, 79)
-texture = ExtResource("2_1pugn")
+texture = ExtResource("2_3cwla")
 hframes = 8
 frame = 1
 
 [node name="EnergyCollectableSprites2" type="Sprite2D" parent="EndMachine"]
 texture_filter = 1
 position = Vector2(48, 79)
-texture = ExtResource("2_1pugn")
+texture = ExtResource("2_3cwla")
 hframes = 8
 frame = 1
