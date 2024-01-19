@@ -82,10 +82,9 @@ sources/0 = SubResource("TileSetAtlasSource_vadqv")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="DevSettings" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("4_k3kvq")]
+[node name="DevSettings" parent="CanvasLayer" instance=ExtResource("4_k3kvq")]
 offset_top = -480.0
 offset_bottom = -6.0
-player = NodePath("../../Player")
 metadata/_edit_use_anchors_ = true
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
@@ -2174,7 +2173,10 @@ vframes = 15
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UpperTiles/Tile55"]
 shape = SubResource("RectangleShape2D_qm6rh")
 
-[node name="Player" parent="." groups=["player"] instance=ExtResource("2_dsbnp")]
+[node name="DeathMechanic" parent="." instance=ExtResource("1_drvub")]
+lock_camera_heights = Array[float]([-160.0, -448.0, -798.0])
+
+[node name="Player" parent="." instance=ExtResource("2_dsbnp")]
 position = Vector2(62, -32)
 
 [node name="BasicTileMap" type="TileMap" parent="."]
@@ -2193,6 +2195,3 @@ position = Vector2(162, -266)
 
 [node name="Bird2" parent="." instance=ExtResource("7_4m82x")]
 position = Vector2(500, -206)
-
-[node name="DeathMechanic" parent="." instance=ExtResource("1_drvub")]
-lock_camera_heights = Array[float]([-160.0, -448.0, -798.0])
