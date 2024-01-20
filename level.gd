@@ -20,8 +20,6 @@ func _on_level_completed():
 func _on_player_died(): 
 	GameState.register_player_death()
 	get_tree().reload_current_scene()
-	
-
 
 func _on_close_exit_door_area_body_entered(body):
 	if body is Player:

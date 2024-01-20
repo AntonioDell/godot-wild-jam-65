@@ -1,13 +1,13 @@
-[gd_scene load_steps=26 format=3 uid="uid://d0v3naa0mmcgs"]
+[gd_scene load_steps=25 format=3 uid="uid://d0v3naa0mmcgs"]
 
+[ext_resource type="Script" path="res://level.gd" id="1_c2lw6"]
 [ext_resource type="PackedScene" uid="uid://b2eygpgki0vx0" path="res://player/player.tscn" id="1_jpexq"]
-[ext_resource type="Script" path="res://level_1/level_1.gd" id="1_l55s1"]
 [ext_resource type="AudioStream" uid="uid://cnydo7betlsf0" path="res://level_1/solarlevel1.wav" id="1_s4h75"]
 [ext_resource type="PackedScene" uid="uid://y7v8xra3ou2a" path="res://player/dev_settings.tscn" id="1_t5wgq"]
 [ext_resource type="Texture2D" uid="uid://djq7lf4sdnjsd" path="res://level_1/level_1_overview.png" id="2_7qx3o"]
 [ext_resource type="Texture2D" uid="uid://bv123bsgovx8i" path="res://space_background.png" id="2_m4wty"]
 [ext_resource type="PackedScene" uid="uid://bntgfnkp8saaw" path="res://camera_lock_mechanic.tscn" id="3_7dctk"]
-[ext_resource type="TileSet" uid="uid://cxd55pf42b50n" path="res://level_1/basic_tileset.tres" id="3_pr3yx"]
+[ext_resource type="TileSet" uid="uid://cxd55pf42b50n" path="res://basic_tileset.tres" id="4_km0no"]
 [ext_resource type="Texture2D" uid="uid://b4amgp08qv2js" path="res://level_1/meteor_crash_zone_sprite.png" id="5_os1tc"]
 [ext_resource type="PackedScene" uid="uid://cn0mjyo2b2b8c" path="res://platform.tscn" id="6_ck8kh"]
 [ext_resource type="Texture2D" uid="uid://d0eo4y8ag4ve0" path="res://level_1/meteor_sprite.png" id="6_yp7d8"]
@@ -160,46 +160,6 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_60nju"]
-resource_name = "position_player_at_entry"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Player:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(168, -21)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("EntryPlatform:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(160, -5)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("EntryDoor:is_open")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="Animation" id="Animation_heill"]
 resource_name = "position_player_at_exit"
 length = 0.1
@@ -221,7 +181,6 @@ _data = {
 "RESET": SubResource("Animation_d1063"),
 "level_end": SubResource("Animation_qcerh"),
 "level_start": SubResource("Animation_1ibbq"),
-"position_player_at_entry": SubResource("Animation_60nju"),
 "position_player_at_exit": SubResource("Animation_heill")
 }
 
@@ -236,7 +195,7 @@ size = Vector2(128, 64)
 size = Vector2(64, 93)
 
 [node name="Level1" type="Node"]
-script = ExtResource("1_l55s1")
+script = ExtResource("1_c2lw6")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_s4h75")
@@ -260,7 +219,7 @@ texture = ExtResource("2_m4wty")
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
 position = Vector2(0, 11)
-tile_set = ExtResource("3_pr3yx")
+tile_set = ExtResource("4_km0no")
 rendering_quadrant_size = 32
 format = 2
 layer_0/name = "Background"
