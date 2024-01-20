@@ -7,9 +7,11 @@ enum {
 }
 const SETTINGS = ["volume"]
 
-@export var level_count = 2
+## TODO: Keep updated with level count
+@export var level_count = 3
 
 var level_1_scene: PackedScene = preload("res://level_1/level_1.tscn")
+var level_2_scene: PackedScene = preload("res://level_2/level_2.tscn")
 var level_3_scene: PackedScene = preload("res://level_3/level_3.tscn")
 var main_menu_scene: PackedScene = preload("res://main_menu/main_menu.tscn")
 var collected_items = 0
@@ -90,11 +92,12 @@ func _transition_to(level: int):
 	tween = create_tween()
 	tween.tween_property(canvas_modulate, "color", Color.WHITE, .75)
 
-## TODO: Adjust to fit level 2
 func _get_level_scene(level: int) -> PackedScene:
 	if level == 1:
 		return level_1_scene
-	elif level == 2:
+	if level == 2:
+		return level_2_scene
+	elif level == 3:
 		return level_3_scene
 	return null
 

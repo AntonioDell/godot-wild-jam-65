@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dr86t04x40uwd"]
 
-[ext_resource type="Script" path="res://collectable.gd" id="1_1u2nv"]
-[ext_resource type="Texture2D" uid="uid://k51y3ui3i6nb" path="res://energy_collectable_sprites.png" id="2_8qf5b"]
+[ext_resource type="Script" path="res://level_commons/collectable.gd" id="1_1u2nv"]
+[ext_resource type="Texture2D" uid="uid://k51y3ui3i6nb" path="res://level_commons/energy_collectable_sprites.png" id="2_8qf5b"]
 
 [sub_resource type="Animation" id="Animation_g18pu"]
 length = 0.001

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://y7v8xra3ou2a"]
 
-[ext_resource type="Script" path="res://player/dev_settings.gd" id="1_vlfok"]
+[ext_resource type="Script" path="res://level_commons/dev_settings.gd" id="1_vlfok"]
 
 [node name="DevSettings" type="CanvasLayer"]
 script = ExtResource("1_vlfok")
@@ -43,7 +43,6 @@ size_flags_horizontal = 8
 
 [node name="SettingsList" type="PanelContainer" parent="DevSettings/VBoxContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="DevSettings/VBoxContainer/SettingsList"]
@@ -57,6 +56,15 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 size_flags_vertical = 0
 columns = 2
+
+[node name="Label" type="Label" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
+layout_mode = 2
+text = "Click to skip to end of level"
+
+[node name="ToEndButton" type="Button" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "To End"
 
 [node name="SpawnBirdSelector" type="OptionButton" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 unique_name_in_owner = true

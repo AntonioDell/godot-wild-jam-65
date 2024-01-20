@@ -1,6 +1,7 @@
 @tool
 extends Node
 
+signal to_end_button_clicked
 
 @onready var expand_settings_checkbox = %ExpandSettingsCheckbox
 @onready var settings_list = %SettingsList
@@ -54,6 +55,8 @@ func _ready():
 		spawn_bird_selection = index
 	)
 	%SpawnBirdButton.pressed.connect(_respawn_bird)
+	
+	%ToEndButton.pressed.connect(func(): to_end_button_clicked.emit())
 
 func _respawn_bird():
 	var new_bird: Node2D

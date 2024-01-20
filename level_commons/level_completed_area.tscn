@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cuqv4b1xmcllc"]
 
-[ext_resource type="Script" path="res://level_completed_area.gd" id="1_jotde"]
+[ext_resource type="Script" path="res://level_commons/level_completed_area.gd" id="1_jotde"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_waxmf"]
 normal = Vector2(0, 1)

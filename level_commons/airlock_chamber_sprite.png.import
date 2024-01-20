@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d03ygbtjhkev8"
-path="res://.godot/imported/airlock_chamber_sprite.png-89bbb717d21bb6b7d5e56125ccb927e0.ctex"
+path="res://.godot/imported/airlock_chamber_sprite.png-28c11b743c57eb047fec6cfe32520ac9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://airlock_chamber_sprite.png"
-dest_files=["res://.godot/imported/airlock_chamber_sprite.png-89bbb717d21bb6b7d5e56125ccb927e0.ctex"]
+source_file="res://level_commons/airlock_chamber_sprite.png"
+dest_files=["res://.godot/imported/airlock_chamber_sprite.png-28c11b743c57eb047fec6cfe32520ac9.ctex"]
 
 [params]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bc5a6qmhij3rh"]
 
-[ext_resource type="Texture2D" uid="uid://bi87feul11hlw" path="res://rope_sprites.png" id="1_nseir"]
+[ext_resource type="Texture2D" uid="uid://bi87feul11hlw" path="res://level_commons/rope_sprites.png" id="1_nseir"]
 
 [node name="Rope" type="Line2D"]
 texture = ExtResource("1_nseir")

@@ -1,0 +1,86 @@
+[gd_scene load_steps=8 format=3 uid="uid://b8xbpaau8pmdu"]
+
+[ext_resource type="Script" path="res://level_commons/space_elevator.gd" id="1_pncg0"]
+[ext_resource type="Texture2D" uid="uid://bv123bsgovx8i" path="res://level_commons/space_background.png" id="2_tu46t"]
+[ext_resource type="PackedScene" uid="uid://bc5a6qmhij3rh" path="res://level_commons/rope.tscn" id="3_kty1i"]
+[ext_resource type="PackedScene" uid="uid://cn0mjyo2b2b8c" path="res://level_commons/platform.tscn" id="4_b6lpq"]
+
+[sub_resource type="Animation" id="Animation_al3a2"]
+resource_name = "lift"
+length = 3.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EntryPlatform")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.99893),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_move_animation"
+}, {
+"args": [],
+"method": &"stop_move_animation"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EntryPlatform:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(160, 880), Vector2(160, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_cgd5i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EntryPlatform:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(160, 880)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ce35e"]
+_data = {
+"RESET": SubResource("Animation_cgd5i"),
+"lift": SubResource("Animation_al3a2")
+}
+
+[node name="SpaceElevator" type="Node2D"]
+script = ExtResource("1_pncg0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_ce35e")
+}
+
+[node name="SpaceBackgroundBottom" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+z_index = -2
+position = Vector2(173, 480)
+texture = ExtResource("2_tu46t")
+
+[node name="RopeBottom" parent="." instance=ExtResource("3_kty1i")]
+z_index = -1
+position = Vector2(-1, -4)
+rotation = 1.5708
+points = PackedVector2Array(3.99942, -161, 963.999, -161)
+width = 32.0
+
+[node name="EntryPlatform" parent="." instance=ExtResource("4_b6lpq")]
+z_index = 1
+position = Vector2(160, 880)

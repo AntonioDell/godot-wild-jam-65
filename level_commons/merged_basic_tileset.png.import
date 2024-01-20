@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://k51y3ui3i6nb"
-path="res://.godot/imported/energy_collectable_sprites.png-19fc35ffb54274d705c0fa6592d59db7.ctex"
+uid="uid://iarmb6us4xqy"
+path="res://.godot/imported/merged_basic_tileset.png-4b14cddad235f96094a1341cd6546c3d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://energy_collectable_sprites.png"
-dest_files=["res://.godot/imported/energy_collectable_sprites.png-19fc35ffb54274d705c0fa6592d59db7.ctex"]
+source_file="res://level_commons/merged_basic_tileset.png"
+dest_files=["res://.godot/imported/merged_basic_tileset.png-4b14cddad235f96094a1341cd6546c3d.ctex"]
 
 [params]
 

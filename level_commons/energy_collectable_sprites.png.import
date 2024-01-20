@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bi87feul11hlw"
-path="res://.godot/imported/rope_sprites.png-9e7d25b88e0190b6cb7d82c4cd838142.ctex"
+uid="uid://k51y3ui3i6nb"
+path="res://.godot/imported/energy_collectable_sprites.png-00a290af24739f4fb2adc3a243c4c132.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://rope_sprites.png"
-dest_files=["res://.godot/imported/rope_sprites.png-9e7d25b88e0190b6cb7d82c4cd838142.ctex"]
+source_file="res://level_commons/energy_collectable_sprites.png"
+dest_files=["res://.godot/imported/energy_collectable_sprites.png-00a290af24739f4fb2adc3a243c4c132.ctex"]
 
 [params]
 

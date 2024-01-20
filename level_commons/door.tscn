@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://ddunid30jv8rw"]
 
-[ext_resource type="Script" path="res://door.gd" id="1_0o3oj"]
-[ext_resource type="Texture2D" uid="uid://dstewk56ya6wd" path="res://door_sprites.png" id="1_mcp02"]
+[ext_resource type="Script" path="res://level_commons/door.gd" id="1_0o3oj"]
+[ext_resource type="Texture2D" uid="uid://dstewk56ya6wd" path="res://level_commons/door_sprites.png" id="1_mcp02"]
 
 [sub_resource type="Animation" id="Animation_ehlhw"]
 resource_name = "closes"

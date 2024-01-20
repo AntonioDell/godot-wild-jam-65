@@ -6,7 +6,7 @@
 [ext_resource type="StyleBox" uid="uid://ckgca2irikb2b" path="res://main_menu/main_menu_button_focused.tres" id="3_c0imx"]
 [ext_resource type="Texture2D" uid="uid://dv6bk3jd7yiho" path="res://main_menu/city_1_sprites.png" id="3_vejod"]
 [ext_resource type="Texture2D" uid="uid://cnw86wv3c82nb" path="res://main_menu/city_0_sprites.png" id="4_5clb5"]
-[ext_resource type="Texture2D" uid="uid://bv123bsgovx8i" path="res://space_background.png" id="7_gimxo"]
+[ext_resource type="Texture2D" uid="uid://bv123bsgovx8i" path="res://level_commons/space_background.png" id="7_gimxo"]
 
 [sub_resource type="Animation" id="Animation_n51ja"]
 length = 0.001

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://x7ihvbi2l326" path="res://level_3/end_machine_sprites.png" id="1_kcx8n"]
 [ext_resource type="Script" path="res://level_3/level_3.gd" id="1_p1pey"]
-[ext_resource type="Texture2D" uid="uid://k51y3ui3i6nb" path="res://energy_collectable_sprites.png" id="2_3cwla"]
+[ext_resource type="Texture2D" uid="uid://k51y3ui3i6nb" path="res://level_commons/energy_collectable_sprites.png" id="2_3cwla"]
 
 [sub_resource type="Animation" id="Animation_slisx"]
 length = 0.001
