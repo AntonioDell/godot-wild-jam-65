@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://kfsdmpk231ks"]
+
+[ext_resource type="Script" path="res://obstacles/bullet.gd" id="1_fhg8c"]
+[ext_resource type="Texture2D" uid="uid://djejca2ls30bg" path="res://obstacles/bullet_sprites.png" id="2_2mc4m"]
+
+[sub_resource type="Animation" id="Animation_lmkrb"]
+resource_name = "idle"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_5oc32"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jnkj6"]
+_data = {
+"RESET": SubResource("Animation_5oc32"),
+"idle": SubResource("Animation_lmkrb")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rtvgv"]
+radius = 5.09902
+
+[node name="Bullet" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_fhg8c")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jnkj6")
+}
+autoplay = "idle"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_2mc4m")
+hframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rtvgv")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

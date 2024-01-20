@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dhjday255i03j"]
+[gd_scene load_steps=26 format=3 uid="uid://dhjday255i03j"]
 
 [ext_resource type="Script" path="res://level_commons/level.gd" id="1_gc2hx"]
 [ext_resource type="Texture2D" uid="uid://dhilvr7xxnbyw" path="res://level_2/level_2_obstacles_overview.png" id="2_medwu"]
@@ -18,6 +18,9 @@
 [ext_resource type="PackedScene" uid="uid://b1xhkt7w5yuch" path="res://level_commons/button_area.tscn" id="15_oynrg"]
 [ext_resource type="PackedScene" uid="uid://3dyo6hfhyjtq" path="res://obstacles/electric_power_source.tscn" id="16_fwwd0"]
 [ext_resource type="PackedScene" uid="uid://c3gsskk5cjbug" path="res://obstacles/electric_tile.tscn" id="17_6l7rl"]
+[ext_resource type="PackedScene" uid="uid://dr8ffvra5ss3d" path="res://level_commons/single_door.tscn" id="19_31tk6"]
+[ext_resource type="PackedScene" uid="uid://diyx00sbuf88l" path="res://obstacles/drone.tscn" id="20_qtf2u"]
+[ext_resource type="PackedScene" uid="uid://bxjfb0xvannha" path="res://obstacles/bird.tscn" id="20_xm4v6"]
 
 [sub_resource type="Animation" id="Animation_unyvm"]
 resource_name = "position_player_at_exit"
@@ -74,11 +77,13 @@ position = Vector2(576, -853)
 texture = ExtResource("2_nkbv5")
 
 [node name="Level2ObstaclesOverview" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0.392157)
 position = Vector2(576, -597)
 texture = ExtResource("2_medwu")
 
 [node name="Level2Overview" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0.392157)
 position = Vector2(576, -853)
 texture = ExtResource("3_hn218")
@@ -307,7 +312,25 @@ lock_camera_heights = Array[float]([0.0, -118.0, -533.0, -1013.0])
 
 [node name="DebugEndLevelPositionMarker" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(780, -1128)
+position = Vector2(777, -1130)
+
+[node name="SingleDoor" parent="." instance=ExtResource("19_31tk6")]
+position = Vector2(672, -437)
+rotation = 1.5708
+
+[node name="ButtonArea" parent="." instance=ExtResource("15_oynrg")]
+position = Vector2(623, -389)
+
+[node name="Drone" parent="." instance=ExtResource("20_qtf2u")]
+position = Vector2(223, -164)
+is_shooty = true
+
+[node name="Bird" parent="." node_paths=PackedStringArray("patrol_point_nodes") instance=ExtResource("20_xm4v6")]
+position = Vector2(124, -262)
+patrol_point_nodes = [NodePath("StartPosition"), NodePath("Marker2D")]
+
+[node name="Marker2D" type="Marker2D" parent="Bird"]
+position = Vector2(204, 0)
 
 [node name="Player" parent="." instance=ExtResource("7_wjlhs")]
 position = Vector2(741, 854)
@@ -315,4 +338,5 @@ position = Vector2(741, 854)
 [connection signal="to_end_button_clicked" from="DevSettings" to="." method="_on_dev_settings_to_end_button_clicked"]
 [connection signal="body_entered" from="CloseExitDoorArea" to="." method="_on_close_exit_door_area_body_entered"]
 [connection signal="level_completed" from="LevelCompletedArea" to="." method="_on_level_completed"]
+[connection signal="button_pressed" from="ButtonArea" to="SingleDoor" method="open"]
 [connection signal="player_died" from="Player" to="." method="_on_player_died"]

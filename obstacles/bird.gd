@@ -36,7 +36,8 @@ func _process(delta):
 func _reset_patrol_points():
 	patrol_points = []
 	for node in patrol_point_nodes:
-		patrol_points.append(node.global_position)
+		if node:
+			patrol_points.append(node.global_position)
 	
 	if Engine.is_editor_hint(): return
 	if patrol_points.size() <= 1: 
@@ -63,7 +64,7 @@ func _move_on_patrol(delta: float):
 func _tool_update_debug_path():
 	if not Engine.is_editor_hint(): 
 		return
-	if not patrol_point_nodes.all(func (node): return patrol_points.has(node.global_position)):
+	if not patrol_point_nodes.all(func (node): return node and patrol_points.has(node.global_position)):
 		_reset_patrol_points()
 		_tool_draw_patrol_path()
 	
@@ -72,6 +73,7 @@ func _tool_draw_patrol_path():
 	
 	%DebugPatrolPath.clear_points()
 	for node in patrol_point_nodes:
-		%DebugPatrolPath.add_point(node.position)
+		if node:
+			%DebugPatrolPath.add_point(node.position)
 
 #endregion
