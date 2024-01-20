@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3gsskk5cjbug"]
+
+[ext_resource type="Script" path="res://obstacles/electric_tile.gd" id="1_wh2bk"]
+[ext_resource type="Texture2D" uid="uid://iarmb6us4xqy" path="res://level_commons/merged_basic_tileset.png" id="2_smc1w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qc3v1"]
+size = Vector2(32, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2okfn"]
+size = Vector2(34, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iattu"]
+size = Vector2(32, 32)
+
+[node name="ElectricTile" type="Area2D"]
+script = ExtResource("1_wh2bk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_smc1w")
+hframes = 12
+vframes = 8
+frame = 93
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qc3v1")
+debug_color = Color(0.945098, 0.196078, 0.345098, 0.419608)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2okfn")
+debug_color = Color(0.945098, 0.196078, 0.345098, 0.419608)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_iattu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

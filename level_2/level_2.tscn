@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dhjday255i03j"]
+[gd_scene load_steps=23 format=3 uid="uid://dhjday255i03j"]
 
 [ext_resource type="Script" path="res://level_commons/level.gd" id="1_gc2hx"]
 [ext_resource type="Texture2D" uid="uid://dhilvr7xxnbyw" path="res://level_2/level_2_obstacles_overview.png" id="2_medwu"]
@@ -13,6 +13,11 @@
 [ext_resource type="PackedScene" uid="uid://bntgfnkp8saaw" path="res://level_commons/camera_lock_mechanic.tscn" id="10_5s1vb"]
 [ext_resource type="PackedScene" uid="uid://tdl066rhoyrr" path="res://level_commons/respawn_point.tscn" id="11_4txv2"]
 [ext_resource type="PackedScene" uid="uid://cuqv4b1xmcllc" path="res://level_commons/level_completed_area.tscn" id="12_aqdav"]
+[ext_resource type="PackedScene" uid="uid://ckird3qw1qahd" path="res://level_commons/toggle_buttons.tscn" id="14_5ngxp"]
+[ext_resource type="PackedScene" uid="uid://fsjc3sfbej2q" path="res://obstacles/electric_tile_strip.tscn" id="15_grs3c"]
+[ext_resource type="PackedScene" uid="uid://b1xhkt7w5yuch" path="res://level_commons/button_area.tscn" id="15_oynrg"]
+[ext_resource type="PackedScene" uid="uid://3dyo6hfhyjtq" path="res://obstacles/electric_power_source.tscn" id="16_fwwd0"]
+[ext_resource type="PackedScene" uid="uid://c3gsskk5cjbug" path="res://obstacles/electric_tile.tscn" id="17_6l7rl"]
 
 [sub_resource type="Animation" id="Animation_unyvm"]
 resource_name = "position_player_at_exit"
@@ -99,9 +104,6 @@ unique_name_in_owner = true
 position = Vector2(576, -2213)
 flip_background = true
 
-[node name="Player" parent="." instance=ExtResource("7_wjlhs")]
-position = Vector2(741, 854)
-
 [node name="EntryDoor" parent="." instance=ExtResource("8_qqhcv")]
 unique_name_in_owner = true
 position = Vector2(672, -149)
@@ -114,9 +116,6 @@ is_open = true
 [node name="CloseExitDoorArea" parent="." instance=ExtResource("9_481pr")]
 unique_name_in_owner = true
 position = Vector2(736, -1282)
-
-[node name="CameraLockMechanic" parent="." instance=ExtResource("10_5s1vb")]
-lock_camera_heights = Array[float]([0.0, -118.0, -533.0, -1013.0])
 
 [node name="RespawnPoint" parent="." instance=ExtResource("11_4txv2")]
 position = Vector2(688, -214)
@@ -145,11 +144,175 @@ debug_color = Color(0.235294, 0.623529, 0.360784, 0.419608)
 [node name="LevelCompletedArea" parent="." instance=ExtResource("12_aqdav")]
 position = Vector2(737, -1347)
 
+[node name="ElectricTileStripWithButtons" parent="." node_paths=PackedStringArray("toggle_buttons") instance=ExtResource("15_grs3c")]
+position = Vector2(310, -1111)
+is_active = false
+toggle_buttons = NodePath("ToggleElectricTileStripButtons")
+toggle_buttons_active_index = 0
+
+[node name="ElectricPowerSource" parent="ElectricTileStripWithButtons" instance=ExtResource("16_fwwd0")]
+position = Vector2(-102, 18)
+is_active = false
+
+[node name="ElectricTile" parent="ElectricTileStripWithButtons" instance=ExtResource("17_6l7rl")]
+position = Vector2(-70, 18)
+is_active = false
+
+[node name="ElectricTile2" parent="ElectricTileStripWithButtons" instance=ExtResource("17_6l7rl")]
+position = Vector2(-38, 18)
+is_active = false
+
+[node name="ElectricTile3" parent="ElectricTileStripWithButtons" instance=ExtResource("17_6l7rl")]
+position = Vector2(-6, 18)
+is_active = false
+
+[node name="ElectricTile4" parent="ElectricTileStripWithButtons" instance=ExtResource("17_6l7rl")]
+position = Vector2(26, 18)
+is_active = false
+
+[node name="ElectricTile5" parent="ElectricTileStripWithButtons" instance=ExtResource("17_6l7rl")]
+position = Vector2(58, 18)
+is_active = false
+
+[node name="ElectricTile6" parent="ElectricTileStripWithButtons" instance=ExtResource("17_6l7rl")]
+position = Vector2(90, 18)
+is_active = false
+
+[node name="ElectricTile7" parent="ElectricTileStripWithButtons" instance=ExtResource("17_6l7rl")]
+position = Vector2(122, 18)
+is_active = false
+
+[node name="ElectricTile8" parent="ElectricTileStripWithButtons" instance=ExtResource("17_6l7rl")]
+position = Vector2(154, 18)
+is_active = false
+
+[node name="ElectricTile9" parent="ElectricTileStripWithButtons" instance=ExtResource("17_6l7rl")]
+position = Vector2(186, 18)
+is_active = false
+
+[node name="ElectricPowerSource2" parent="ElectricTileStripWithButtons" instance=ExtResource("16_fwwd0")]
+position = Vector2(218, 18)
+is_active = false
+
+[node name="ToggleElectricTileStripButtons" parent="ElectricTileStripWithButtons" node_paths=PackedStringArray("buttons") instance=ExtResource("14_5ngxp")]
+position = Vector2(-313, 1111)
+buttons = [NodePath("ButtonActivate"), NodePath("ButtonDeactivate")]
+
+[node name="ButtonActivate" parent="ElectricTileStripWithButtons/ToggleElectricTileStripButtons" instance=ExtResource("15_oynrg")]
+position = Vector2(211, -1125)
+
+[node name="ButtonDeactivate" parent="ElectricTileStripWithButtons/ToggleElectricTileStripButtons" instance=ExtResource("15_oynrg")]
+position = Vector2(531, -1125)
+is_pressed = true
+
+[node name="VElectricTileStrip" parent="." instance=ExtResource("15_grs3c")]
+position = Vector2(43, -1091)
+orientation = 1
+toggle_buttons_active_index = 0
+
+[node name="ElectricPowerSource" parent="VElectricTileStrip" instance=ExtResource("16_fwwd0")]
+position = Vector2(5, -65)
+is_active = false
+
+[node name="ElectricTile" parent="VElectricTileStrip" instance=ExtResource("17_6l7rl")]
+position = Vector2(5, -33)
+orientation = 1
+
+[node name="ElectricTile2" parent="VElectricTileStrip" instance=ExtResource("17_6l7rl")]
+position = Vector2(5, -1)
+orientation = 1
+
+[node name="ElectricTile3" parent="VElectricTileStrip" instance=ExtResource("17_6l7rl")]
+position = Vector2(5, 31)
+orientation = 1
+
+[node name="ElectricPowerSource2" parent="VElectricTileStrip" instance=ExtResource("16_fwwd0")]
+position = Vector2(5, 63)
+is_active = false
+
+[node name="VElectricTileStrip2" parent="." instance=ExtResource("15_grs3c")]
+position = Vector2(171, -964)
+orientation = 1
+toggle_buttons_active_index = 0
+
+[node name="ElectricPowerSource" parent="VElectricTileStrip2" instance=ExtResource("16_fwwd0")]
+position = Vector2(5, -65)
+is_active = false
+
+[node name="ElectricTile" parent="VElectricTileStrip2" instance=ExtResource("17_6l7rl")]
+position = Vector2(5, -33)
+orientation = 1
+
+[node name="ElectricTile2" parent="VElectricTileStrip2" instance=ExtResource("17_6l7rl")]
+position = Vector2(5, -1)
+orientation = 1
+
+[node name="ElectricTile3" parent="VElectricTileStrip2" instance=ExtResource("17_6l7rl")]
+position = Vector2(5, 31)
+orientation = 1
+
+[node name="ElectricPowerSource2" parent="VElectricTileStrip2" instance=ExtResource("16_fwwd0")]
+position = Vector2(5, 63)
+is_active = false
+
+[node name="VElectricTileStrip3" parent="." instance=ExtResource("15_grs3c")]
+position = Vector2(42, -868)
+orientation = 1
+toggle_buttons_active_index = 0
+
+[node name="ElectricPowerSource" parent="VElectricTileStrip3" instance=ExtResource("16_fwwd0")]
+position = Vector2(5, -65)
+is_active = false
+
+[node name="ElectricTile" parent="VElectricTileStrip3" instance=ExtResource("17_6l7rl")]
+position = Vector2(5, -33)
+orientation = 1
+
+[node name="ElectricTile2" parent="VElectricTileStrip3" instance=ExtResource("17_6l7rl")]
+position = Vector2(5, -1)
+orientation = 1
+
+[node name="ElectricTile3" parent="VElectricTileStrip3" instance=ExtResource("17_6l7rl")]
+position = Vector2(5, 31)
+orientation = 1
+
+[node name="ElectricPowerSource2" parent="VElectricTileStrip3" instance=ExtResource("16_fwwd0")]
+position = Vector2(5, 63)
+is_active = false
+
+[node name="HElectricTileStrip" parent="." instance=ExtResource("15_grs3c")]
+position = Vector2(265, -549)
+toggle_buttons_active_index = 0
+
+[node name="ElectricPowerSource" parent="HElectricTileStrip" instance=ExtResource("16_fwwd0")]
+position = Vector2(72, 0)
+
+[node name="ElectricTile" parent="HElectricTileStrip" instance=ExtResource("17_6l7rl")]
+position = Vector2(41, 0)
+
+[node name="ElectricTile2" parent="HElectricTileStrip" instance=ExtResource("17_6l7rl")]
+position = Vector2(9, 0)
+
+[node name="ElectricTile3" parent="HElectricTileStrip" instance=ExtResource("17_6l7rl")]
+position = Vector2(-24, 0)
+
+[node name="ElectricTile4" parent="HElectricTileStrip" instance=ExtResource("17_6l7rl")]
+position = Vector2(-56, 0)
+
+[node name="ElectricPowerSource2" parent="HElectricTileStrip" instance=ExtResource("16_fwwd0")]
+position = Vector2(-89, 0)
+
+[node name="CameraLockMechanic" parent="." instance=ExtResource("10_5s1vb")]
+lock_camera_heights = Array[float]([0.0, -118.0, -533.0, -1013.0])
+
 [node name="DebugEndLevelPositionMarker" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(781, -1110)
+position = Vector2(780, -1128)
+
+[node name="Player" parent="." instance=ExtResource("7_wjlhs")]
+position = Vector2(741, 854)
 
 [connection signal="to_end_button_clicked" from="DevSettings" to="." method="_on_dev_settings_to_end_button_clicked"]
-[connection signal="player_died" from="Player" to="." method="_on_player_died"]
 [connection signal="body_entered" from="CloseExitDoorArea" to="." method="_on_close_exit_door_area_body_entered"]
 [connection signal="level_completed" from="LevelCompletedArea" to="." method="_on_level_completed"]
+[connection signal="player_died" from="Player" to="." method="_on_player_died"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://3dyo6hfhyjtq"]
+
+[ext_resource type="Script" path="res://obstacles/electric_power_source.gd" id="1_b6e2e"]
+[ext_resource type="Texture2D" uid="uid://iarmb6us4xqy" path="res://level_commons/merged_basic_tileset.png" id="1_t8oor"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nvblq"]
+size = Vector2(32, 32)
+
+[node name="ElectricPowerSource" type="StaticBody2D"]
+script = ExtResource("1_b6e2e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_t8oor")
+hframes = 12
+vframes = 8
+frame = 91
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nvblq")

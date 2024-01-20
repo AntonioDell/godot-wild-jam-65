@@ -50,6 +50,14 @@ var is_death = false:
 @onready var animation_player = %AnimationPlayer
 @onready var camera: Camera2D = %Camera
 
+
+func die():
+	if is_death: return 
+	is_death = true
+	animation_player.play("death")
+	await animation_player.animation_finished
+	player_died.emit()
+
 func _ready():
 	rocket.charging_started.connect(_on_rocket_charging_started)
 	rocket.max_charge_reached.connect(_on_rocket_max_charge_reached)
@@ -214,14 +222,3 @@ func _on_bird_stun_collision_area_body_entered(body):
 	
 	(body as Bird).get_sucked_in(Vector2.ZERO)
 	_explode()
-
-
-func _on_screen_exited():
-	_die()
-
-
-func _die():
-	is_death = true
-	animation_player.play("death")
-	await animation_player.animation_finished
-	player_died.emit()

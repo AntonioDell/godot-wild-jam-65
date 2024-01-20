@@ -641,4 +641,4 @@ scale = Vector2(4.9, 4.7)
 rect = Rect2(-10, -10, 10, 10)
 
 [connection signal="body_entered" from="BirdStunCollisionArea" to="." method="_on_bird_stun_collision_area_body_entered"]
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="die"]
