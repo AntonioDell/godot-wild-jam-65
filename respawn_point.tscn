@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://tdl066rhoyrr"]
+
+[ext_resource type="Script" path="res://respawn_point.gd" id="1_mtftr"]
+
+[node name="RespawnPoint" type="Area2D"]
+script = ExtResource("1_mtftr")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -26,19 +26,30 @@ func _process(delta):
 	if Engine.is_editor_hint() or current_height_index == -1: return
 	
 	# FIXME: This will not work if the player doesn't touch the floor
-	if player.global_position.y < lock_camera_heights[current_height_index] and player.is_on_floor():
-		# TODO: Lock camera at height and kill player if he falls outside
-		_change_camera_limit(lock_camera_heights[current_height_index])
-		current_height_index = clampi(current_height_index + 1, 0, lock_camera_heights.size() - 1)
-		
+	if current_height_index < lock_camera_heights.size()\
+	and player.global_position.y < lock_camera_heights[current_height_index]\
+	and player.is_on_floor():
+		var new_index = _get_new_height_index()
+		_change_camera_limit(lock_camera_heights[clampi(new_index - 1, 0, lock_camera_heights.size())])
+		current_height_index = new_index
+
+func _get_new_height_index():
+	var new_index = 0
+	while new_index < lock_camera_heights.size():
+		if player.global_position.y >= lock_camera_heights[new_index]:
+			break
+		new_index += 1
+	return new_index
 
 var tween
 func _change_camera_limit(new_limit: int):
 	if tween:
 		tween.kill()
-	player.camera.limit_bottom = new_limit + 200
+	player.camera.limit_bottom = (player.camera.get_screen_center_position().y + 125)
 	tween = create_tween()
-	tween.tween_property(player.camera, "limit_bottom", new_limit, 2.0).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+	tween.tween_property(player.camera, "limit_bottom", new_limit, 1.0).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+
+
 
 #region tool scripts
 
