@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhjday255i03j"]
+[gd_scene load_steps=6 format=3 uid="uid://dhjday255i03j"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_gc2hx"]
 [ext_resource type="Texture2D" uid="uid://dhilvr7xxnbyw" path="res://level_2/level_2_obstacles_overview.png" id="2_medwu"]
+[ext_resource type="Texture2D" uid="uid://cqpgwcfw6jtel" path="res://level_2/level_2_background.png" id="2_nkbv5"]
 [ext_resource type="Texture2D" uid="uid://cal5feiba74rk" path="res://level_2/level_2_overview.png" id="3_hn218"]
 [ext_resource type="TileSet" uid="uid://cxd55pf42b50n" path="res://basic_tileset.tres" id="4_rxw7c"]
 
@@ -9,6 +10,10 @@
 script = ExtResource("1_gc2hx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Level2Background" type="Sprite2D" parent="."]
+position = Vector2(576, -853)
+texture = ExtResource("2_nkbv5")
 
 [node name="Level2ObstaclesOverview" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.392157)
