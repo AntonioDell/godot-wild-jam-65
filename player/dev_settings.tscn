@@ -2,61 +2,63 @@
 
 [ext_resource type="Script" path="res://player/dev_settings.gd" id="1_vlfok"]
 
-[node name="DevSettings" type="ScrollContainer"]
+[node name="DevSettings" type="CanvasLayer"]
+script = ExtResource("1_vlfok")
+
+[node name="DevSettings" type="ScrollContainer" parent="."]
 offset_right = 376.0
 offset_bottom = 474.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-script = ExtResource("1_vlfok")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="DevSettings"]
 layout_mode = 2
 
-[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer"]
+[node name="PanelContainer2" type="PanelContainer" parent="DevSettings/VBoxContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer2"]
+[node name="MarginContainer" type="MarginContainer" parent="DevSettings/VBoxContainer/PanelContainer2"]
 layout_mode = 2
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer2/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="DevSettings/VBoxContainer/PanelContainer2/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="Title" type="RichTextLabel" parent="VBoxContainer/PanelContainer2/MarginContainer/HBoxContainer"]
+[node name="Title" type="RichTextLabel" parent="DevSettings/VBoxContainer/PanelContainer2/MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 24
 text = "Developer Settings"
 fit_content = true
 autowrap_mode = 0
 
-[node name="ExpandSettingsCheckbox" type="CheckBox" parent="VBoxContainer/PanelContainer2/MarginContainer/HBoxContainer"]
+[node name="ExpandSettingsCheckbox" type="CheckBox" parent="DevSettings/VBoxContainer/PanelContainer2/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 
-[node name="SettingsList" type="PanelContainer" parent="VBoxContainer"]
+[node name="SettingsList" type="PanelContainer" parent="DevSettings/VBoxContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/SettingsList"]
+[node name="MarginContainer" type="MarginContainer" parent="DevSettings/VBoxContainer/SettingsList"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="Grid" type="GridContainer" parent="VBoxContainer/SettingsList/MarginContainer"]
+[node name="Grid" type="GridContainer" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 columns = 2
 
-[node name="SpawnBirdSelector" type="OptionButton" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+[node name="SpawnBirdSelector" type="OptionButton" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 unique_name_in_owner = true
 layout_mode = 2
 item_count = 2
@@ -66,49 +68,49 @@ popup/item_0/id = 0
 popup/item_1/text = "Stationary Bird"
 popup/item_1/id = 1
 
-[node name="SpawnBirdButton" type="Button" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+[node name="SpawnBirdButton" type="Button" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Spawn"
 
-[node name="Label3" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+[node name="Label3" type="Label" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 layout_mode = 2
 text = "Waling speed"
 
-[node name="WalkingSpeed" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+[node name="WalkingSpeed" type="SpinBox" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 unique_name_in_owner = true
 layout_mode = 2
 step = 0.1
 allow_greater = true
 allow_lesser = true
 
-[node name="Label7" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+[node name="Label7" type="Label" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 layout_mode = 2
 text = "Walking slowdown"
 
-[node name="WalkingSlowdown" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+[node name="WalkingSlowdown" type="SpinBox" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 unique_name_in_owner = true
 layout_mode = 2
 step = 0.1
 allow_greater = true
 allow_lesser = true
 
-[node name="Label8" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+[node name="Label8" type="Label" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 layout_mode = 2
 text = "Max gravity"
 
-[node name="MaxGravity" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+[node name="MaxGravity" type="SpinBox" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 unique_name_in_owner = true
 layout_mode = 2
 step = 0.1
 allow_greater = true
 allow_lesser = true
 
-[node name="Label11" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+[node name="Label11" type="Label" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 layout_mode = 2
 text = "Jump vertical acceleration duration"
 
-[node name="JumpVerticalAccelerationDuration" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+[node name="JumpVerticalAccelerationDuration" type="SpinBox" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 unique_name_in_owner = true
 layout_mode = 2
 max_value = 10.0
@@ -117,11 +119,11 @@ allow_greater = true
 allow_lesser = true
 suffix = "s"
 
-[node name="Label13" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+[node name="Label13" type="Label" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 layout_mode = 2
 text = "Jump max coyote time"
 
-[node name="JumpMaxCoyoteTime" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+[node name="JumpMaxCoyoteTime" type="SpinBox" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 unique_name_in_owner = true
 layout_mode = 2
 max_value = 1.0
@@ -130,11 +132,11 @@ allow_greater = true
 allow_lesser = true
 suffix = "s"
 
-[node name="Label14" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+[node name="Label14" type="Label" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 layout_mode = 2
 text = "Jump max remember time"
 
-[node name="JumpMaxRememberTime" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+[node name="JumpMaxRememberTime" type="SpinBox" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 unique_name_in_owner = true
 layout_mode = 2
 max_value = 1.0
@@ -143,22 +145,22 @@ allow_greater = true
 allow_lesser = true
 suffix = "s"
 
-[node name="Label12" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+[node name="Label12" type="Label" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 layout_mode = 2
 text = "Max jump speed"
 
-[node name="JumpMaxJumpSpeed" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+[node name="JumpMaxJumpSpeed" type="SpinBox" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 unique_name_in_owner = true
 layout_mode = 2
 max_value = 1000.0
 allow_greater = true
 allow_lesser = true
 
-[node name="Label4" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+[node name="Label4" type="Label" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 layout_mode = 2
 text = "Rocket max charge time"
 
-[node name="RocketMaxChargeTime" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+[node name="RocketMaxChargeTime" type="SpinBox" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 unique_name_in_owner = true
 layout_mode = 2
 step = 0.1
@@ -166,11 +168,11 @@ allow_greater = true
 allow_lesser = true
 suffix = "s"
 
-[node name="Label15" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+[node name="Label15" type="Label" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 layout_mode = 2
 text = "Rocket max charge delay"
 
-[node name="RocketMaxChargeDelay" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+[node name="RocketMaxChargeDelay" type="SpinBox" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 unique_name_in_owner = true
 layout_mode = 2
 max_value = 1000.0
@@ -179,11 +181,11 @@ allow_greater = true
 allow_lesser = true
 suffix = "s"
 
-[node name="Label10" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+[node name="Label10" type="Label" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 layout_mode = 2
 text = "Rocket min charge"
 
-[node name="RocketMinCharge" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+[node name="RocketMinCharge" type="SpinBox" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 unique_name_in_owner = true
 layout_mode = 2
 step = 0.1
@@ -191,11 +193,11 @@ allow_greater = true
 allow_lesser = true
 suffix = "%"
 
-[node name="Label5" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+[node name="Label5" type="Label" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 layout_mode = 2
 text = "Max vertical acceleration Duration"
 
-[node name="RocketMaxVerticalAccelerationDuration" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+[node name="RocketMaxVerticalAccelerationDuration" type="SpinBox" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 unique_name_in_owner = true
 layout_mode = 2
 step = 0.1
@@ -203,11 +205,11 @@ allow_greater = true
 allow_lesser = true
 suffix = "s"
 
-[node name="Label6" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+[node name="Label6" type="Label" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 layout_mode = 2
 text = "Rocket max vertical speed"
 
-[node name="RocketMaxVerticalSpeed" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+[node name="RocketMaxVerticalSpeed" type="SpinBox" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 unique_name_in_owner = true
 layout_mode = 2
 max_value = 1000.0
@@ -215,11 +217,11 @@ step = 0.1
 allow_greater = true
 allow_lesser = true
 
-[node name="Label9" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+[node name="Label9" type="Label" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 layout_mode = 2
 text = "Rocket max overload time"
 
-[node name="RocketMaxOverloadTime" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+[node name="RocketMaxOverloadTime" type="SpinBox" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 unique_name_in_owner = true
 layout_mode = 2
 max_value = 1000.0
@@ -228,11 +230,11 @@ allow_greater = true
 allow_lesser = true
 suffix = "s"
 
-[node name="Label16" type="Label" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+[node name="Label16" type="Label" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 layout_mode = 2
 text = "Drone jump speed "
 
-[node name="DroneJumpSpeed" type="SpinBox" parent="VBoxContainer/SettingsList/MarginContainer/Grid"]
+[node name="DroneJumpSpeed" type="SpinBox" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 unique_name_in_owner = true
 layout_mode = 2
 max_value = 1000.0

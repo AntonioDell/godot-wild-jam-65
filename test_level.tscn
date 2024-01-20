@@ -80,11 +80,7 @@ sources/0 = SubResource("TileSetAtlasSource_vadqv")
 
 [node name="TestLevel" type="Node"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="DevSettings" parent="CanvasLayer" instance=ExtResource("4_k3kvq")]
-offset_top = -480.0
-offset_bottom = -6.0
+[node name="DevSettings" parent="." instance=ExtResource("4_k3kvq")]
 metadata/_edit_use_anchors_ = true
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]

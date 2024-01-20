@@ -1,5 +1,5 @@
 @tool
-extends Control
+extends Node
 
 
 @onready var expand_settings_checkbox = %ExpandSettingsCheckbox
