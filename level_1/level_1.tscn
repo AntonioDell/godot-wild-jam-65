@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://d0v3naa0mmcgs"]
+[gd_scene load_steps=21 format=3 uid="uid://d0v3naa0mmcgs"]
 
 [ext_resource type="PackedScene" uid="uid://b2eygpgki0vx0" path="res://player/player.tscn" id="1_jpexq"]
 [ext_resource type="Script" path="res://level_1/level_1.gd" id="1_l55s1"]
@@ -219,6 +219,10 @@ _data = {
 "position_player_at_exit": SubResource("Animation_heill")
 }
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hvh5x"]
+normal = Vector2(0, 1)
+distance = -43.0
+
 [node name="Level1" type="Node"]
 script = ExtResource("1_l55s1")
 
@@ -267,6 +271,13 @@ metadata/_edit_lock_ = true
 [node name="LevelCompletedArea" parent="." instance=ExtResource("8_b01sy")]
 position = Vector2(160, -1346)
 
+[node name="CloseExitDoorArea" type="Area2D" parent="."]
+position = Vector2(0, -1225)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CloseExitDoorArea"]
+position = Vector2(160, 0)
+shape = SubResource("WorldBoundaryShape2D_hvh5x")
+
 [node name="Collectable" parent="." instance=ExtResource("9_63mg1")]
 position = Vector2(596, -498)
 
@@ -302,6 +313,7 @@ position = Vector2(160, -1333)
 position = Vector2(96, -149)
 
 [node name="ExitDoor" parent="." instance=ExtResource("12_a7q4n")]
+unique_name_in_owner = true
 position = Vector2(96, -1235)
 is_open = true
 
@@ -309,4 +321,5 @@ is_open = true
 lock_camera_heights = Array[float]([0.0, -118.0, -1015.0])
 
 [connection signal="level_completed" from="LevelCompletedArea" to="." method="_on_level_completed"]
+[connection signal="body_entered" from="CloseExitDoorArea" to="." method="_on_close_exit_door_area_body_entered"]
 [connection signal="player_died" from="Player" to="." method="_on_player_died"]
