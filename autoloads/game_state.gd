@@ -30,7 +30,7 @@ var temporary_collected_items = 0:
 	set(value):
 		temporary_collected_items = value
 		temporary_collected_items_changed.emit(value)
-var current_level = 0:
+var current_level = 0
 var settings = {
 	"volume": .7,
 }
