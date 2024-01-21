@@ -66,9 +66,14 @@ func _ready():
 	%RocketMaxVerticalSpeed.value = player.rocket.max_vertical_speed
 	%RocketMaxOverloadTime.value_changed.connect(func(value: float): player.rocket.max_overload_time = value)
 	%RocketMaxOverloadTime.value = player.rocket.max_overload_time
+	%TimeUntilMaxGravity.value_changed.connect(func(value: float): player.time_until_max_gravity = value)
+	%TimeUntilMaxGravity.value = player.time_until_max_gravity
 	%DroneJumpSpeed.value_changed.connect(func(value: float): player.drone_triggered_jump.max_jump_speed = value)
 	%DroneJumpSpeed.value = player.drone_triggered_jump.max_jump_speed
-
+	%DroneMaxJumpDuration.value_changed.connect(func(value: float): player.drone_triggered_jump.max_jump_duration = value)
+	%DroneMaxJumpDuration.value = player.drone_triggered_jump.max_jump_duration
+	
+	
 func _respawn_bird():
 	var new_bird: Node2D
 	if spawn_bird_selection == 0:

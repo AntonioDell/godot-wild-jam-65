@@ -10,7 +10,7 @@ signal overload_started()
 signal overload_ended()
 
 
-@export var max_vertical_speed = 1000.0
+@export var max_vertical_speed = 750.0
 @export var max_vertical_acceleration_duration = 1
 @export var max_charge_time_seconds = 2.2 # = charge animation length + max_charge_delay
 @export var max_charge_delay = .4 
@@ -19,6 +19,7 @@ signal overload_ended()
 @export var charge_level_2_reached_time = 1.2
 @export var charge_level_3_reached_time = 1.8
 
+@onready var ignore_charge_input_timer: Timer = $IgnoreChargeInputTimer
 
 var is_charging = false
 var is_rocket_active = false:
@@ -51,10 +52,16 @@ func get_vertical_velocity(delta: float, is_on_floor: bool) -> Vector2:
 			ret = Vector2.UP * strength
 	elif is_rocket_active:
 		_end_rocket()
-	else:
+	else: 
 		_handle_rocket_charge_input(delta)
 	
 	return ret
+
+func reset():
+	charge_time = 0.0
+	is_charging = false
+	is_rocket_active = false
+	left_floor = false
 
 func _handle_rocket_charge_input(delta: float):
 	if is_overloaded: 
@@ -66,7 +73,8 @@ func _handle_rocket_charge_input(delta: float):
 	
 	var value = Input.is_action_pressed("charge")
 	if value and not is_charging:
-		_begin_charging_rocket()
+		if ignore_charge_input_timer.is_stopped():
+			_begin_charging_rocket()
 	elif not value and is_charging:
 		_start_rocket()
 	elif value and is_charging:
@@ -78,6 +86,7 @@ func _handle_rocket_charge_input(delta: float):
 			charge_time += delta
 
 func _begin_charging_rocket():
+	ignore_charge_input_timer.start()
 	charge_time = 0.0
 	is_charging = true
 	charging_started.emit()
@@ -103,13 +112,9 @@ func _end_rocket():
 
 func _start_overload():
 	overload_started.emit()
-	charge_time = 0.0
-	is_charging = false
-	is_rocket_active = false
-	left_floor = false
 	is_overloaded = true
-	# Start overload timer
 	overload_timer = max_overload_time
+	reset()
 
 func _end_overload():
 	overload_ended.emit()

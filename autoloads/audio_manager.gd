@@ -4,30 +4,21 @@ extends Node
 @onready var sfx_player: AudioStreamPlayer = %SfxPlayer
 
 
-var sfx_volume_db: float
+var volume_db: float
 
 
 func _ready():
 	set_volume(GameState.settings.volume)
 
-#region volume
 
-const MAX_VOLUME_DB_MUSIC = 0.0
-const MIN_VOLUME_DB_MUSIC = -20.0
-const MAX_VOLUME_DB_SFX = 0.0
-const MIN_VOLUME_DB_SFX = -20.0
+const MAX_VOLUME_DB = 0.0
+const MIN_VOLUME_DB = -80.0
 
 func set_volume(volume: float):
-	_set_volume_music(volume)
-	_set_volume_sfx(volume)
+	volume_db = lerpf(MIN_VOLUME_DB, MAX_VOLUME_DB, volume)
+	music_player.volume_db = volume_db
+	sfx_player.volume_db = volume_db 
 
-func _set_volume_music(volume: float):
-	music_player.volume_db = lerpf(MIN_VOLUME_DB_MUSIC, MAX_VOLUME_DB_MUSIC, volume)
-	
-func _set_volume_sfx(volume: float):
-	sfx_volume_db = lerpf(MIN_VOLUME_DB_SFX, MAX_VOLUME_DB_SFX, volume)
-	sfx_player.volume_db = sfx_volume_db 
-#endregion
 
 #region music
 var main_menu_stream = preload("res://sound/solartitle.wav")
@@ -50,7 +41,7 @@ func fade_out_music(duration: float):
 	tween.tween_property(music_player, "volume_db", -40.0, duration)
 	await tween.finished
 	music_player.stop()
-	music_player.volume_db = 0
+	music_player.volume_db = volume_db
 
 func stop_music():
 	music_player.stop()

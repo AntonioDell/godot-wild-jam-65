@@ -5,7 +5,7 @@ signal jump_started()
 signal jump_ended()
 
 @export var max_jump_duration = .2
-@export var max_jump_speed = 750.0
+@export var max_jump_speed = 500.0
 
 var is_jumping = false
 

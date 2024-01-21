@@ -13,6 +13,7 @@ signal player_died()
 @export_category("Movement")
 @export var walking_speed = 150.0
 @export var max_gravity = 750.0
+@export var time_until_max_gravity = 2.0
 @export var walking_slowdown = 0.05
 
 @export_category("Audio")
@@ -70,6 +71,12 @@ func _ready():
 		player_triggered_jump.start())
 	player_triggered_jump.jump_started.connect(_jump_started)
 	drone_triggered_jump.jump_started.connect(_jump_started)
+	
+	%ChargeAudio.volume_db = AudioManager.volume_db
+	%Blastoff1Audio.volume_db = AudioManager.volume_db
+	%Blastoff2Audio.volume_db = AudioManager.volume_db
+	%Blastoff3Audio.volume_db = AudioManager.volume_db
+	%ExplosionAudio.volume_db = AudioManager.volume_db
 	
 	
 
@@ -146,8 +153,8 @@ func _get_gravity_vector(delta: float):
 	if not is_on_floor():
 		# Airborne
 		gravity_acceleration += delta
-		var v = clampf(gravity_acceleration, 0.0, 1.0)
-		strength = lerpf(0.0, max_gravity, ease(v, .4))
+		var g_v = inverse_lerp(0.0, time_until_max_gravity, gravity_acceleration)
+		strength = lerpf(0.0, max_gravity, ease(g_v, .4))
 	else:
 		gravity_acceleration = 0.0
 	return Vector2.DOWN * strength
@@ -197,6 +204,8 @@ func _explode():
 		animation_player.play("overload_right")
 		animation_player.queue("idle_right")
 	
+	rocket.reset()
+	charge_audio.stop()
 	is_stunned = true
 	%ExplosionAudio.play()
 	await animation_player.animation_finished
