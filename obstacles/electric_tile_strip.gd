@@ -1,15 +1,12 @@
 @tool
 extends Node2D
+class_name ElectricTileStrip
 
 enum Orientation {
 	VERTICAL,
 	HORIZONTAL
 }
 
-@export var orientation: Orientation = 0:
-	set(value):
-		orientation = value
-		_update_tiles()
 @export var is_active = true:
 	set(value):
 		is_active = value
@@ -20,8 +17,8 @@ enum Orientation {
 @export var toggle_buttons_active_index: int = 0
 
 
-var electric_tiles: Array[ElectricTile] = []
-var power_source_sprites: Array[ElectricPowerSource] = []
+var active_switchable_tiles: Array[Node2D] = []
+
 
 func _ready():
 	_register_tiles()
@@ -34,22 +31,15 @@ func _ready():
 func _register_tiles():
 	var children = get_children()
 	for child in children:
-		if child is ElectricTile:
-			electric_tiles.append(child)
-		elif child is ElectricPowerSource:
-			power_source_sprites.append(child)
+		if "is_active" in child:
+			active_switchable_tiles.append(child)
 	if Engine.is_editor_hint(): return
 	
-	if electric_tiles.size() == 0:
-		push_error("%s configuration error: No electric tile exists in electic tile strip." % [name])
-	if power_source_sprites.size() == 0:
-		push_error("%s configuration error: No power source exists in electic tile strip." % [name])
+	if active_switchable_tiles.size() == 0:
+		push_error("%s configuration error: No active swtichable tiles exists in electic tile strip." % [name])
 	
 	
 func _update_tiles():
-	for tile: ElectricTile in electric_tiles:
+	for tile in active_switchable_tiles:
 		tile.is_active = is_active
-		tile.orientation = orientation
-	for power_source: ElectricPowerSource in power_source_sprites:
-		power_source.is_active = is_active
 		

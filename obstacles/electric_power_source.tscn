@@ -9,11 +9,11 @@ size = Vector2(32, 32)
 [node name="ElectricPowerSource" type="StaticBody2D"]
 script = ExtResource("1_b6e2e")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nvblq")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_t8oor")
 hframes = 12
 vframes = 8
 frame = 91
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_nvblq")

@@ -57,6 +57,33 @@ layout_mode = 2
 size_flags_vertical = 0
 columns = 2
 
+[node name="Label2" type="Label" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
+layout_mode = 2
+text = "Collected items:"
+
+[node name="CollectedItems" type="Label" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="Label18" type="Label" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
+layout_mode = 2
+text = "Collected items in level:"
+
+[node name="CollectedItemsInLevel" type="Label" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="Label17" type="Label" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
+layout_mode = 2
+text = "Temporary collected items:"
+
+[node name="TemporaryCollectedItems" type="Label" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
 [node name="Label" type="Label" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 layout_mode = 2
 text = "Click to skip to end of level"
@@ -65,21 +92,6 @@ text = "Click to skip to end of level"
 unique_name_in_owner = true
 layout_mode = 2
 text = "To End"
-
-[node name="SpawnBirdSelector" type="OptionButton" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
-unique_name_in_owner = true
-layout_mode = 2
-item_count = 2
-selected = 0
-popup/item_0/text = "Patrolling Bird"
-popup/item_0/id = 0
-popup/item_1/text = "Stationary Bird"
-popup/item_1/id = 1
-
-[node name="SpawnBirdButton" type="Button" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Spawn"
 
 [node name="Label3" type="Label" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 layout_mode = 2

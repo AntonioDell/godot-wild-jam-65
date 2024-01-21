@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dhjday255i03j"]
+[gd_scene load_steps=27 format=3 uid="uid://dhjday255i03j"]
 
 [ext_resource type="Script" path="res://level_commons/level.gd" id="1_gc2hx"]
 [ext_resource type="Texture2D" uid="uid://dhilvr7xxnbyw" path="res://level_2/level_2_obstacles_overview.png" id="2_medwu"]
@@ -21,21 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dr8ffvra5ss3d" path="res://level_commons/single_door.tscn" id="19_31tk6"]
 [ext_resource type="PackedScene" uid="uid://diyx00sbuf88l" path="res://obstacles/drone.tscn" id="20_qtf2u"]
 [ext_resource type="PackedScene" uid="uid://bxjfb0xvannha" path="res://obstacles/bird.tscn" id="20_xm4v6"]
-
-[sub_resource type="Animation" id="Animation_unyvm"]
-resource_name = "position_player_at_exit"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Player:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(741, -1349)]
-}
+[ext_resource type="PackedScene" uid="uid://dr86t04x40uwd" path="res://level_commons/collectable.tscn" id="22_5y15j"]
 
 [sub_resource type="Animation" id="Animation_euw06"]
 length = 0.001
@@ -50,6 +36,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(741, 854)]
+}
+
+[sub_resource type="Animation" id="Animation_unyvm"]
+resource_name = "position_player_at_exit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(741, -1349)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_68lwp"]
@@ -153,7 +154,6 @@ position = Vector2(737, -1347)
 position = Vector2(310, -1111)
 is_active = false
 toggle_buttons = NodePath("ToggleElectricTileStripButtons")
-toggle_buttons_active_index = 0
 
 [node name="ElectricPowerSource" parent="ElectricTileStripWithButtons" instance=ExtResource("16_fwwd0")]
 position = Vector2(-102, 18)
@@ -212,8 +212,6 @@ is_pressed = true
 
 [node name="VElectricTileStrip" parent="." instance=ExtResource("15_grs3c")]
 position = Vector2(43, -1091)
-orientation = 1
-toggle_buttons_active_index = 0
 
 [node name="ElectricPowerSource" parent="VElectricTileStrip" instance=ExtResource("16_fwwd0")]
 position = Vector2(5, -65)
@@ -237,8 +235,6 @@ is_active = false
 
 [node name="VElectricTileStrip2" parent="." instance=ExtResource("15_grs3c")]
 position = Vector2(171, -964)
-orientation = 1
-toggle_buttons_active_index = 0
 
 [node name="ElectricPowerSource" parent="VElectricTileStrip2" instance=ExtResource("16_fwwd0")]
 position = Vector2(5, -65)
@@ -262,8 +258,6 @@ is_active = false
 
 [node name="VElectricTileStrip3" parent="." instance=ExtResource("15_grs3c")]
 position = Vector2(42, -868)
-orientation = 1
-toggle_buttons_active_index = 0
 
 [node name="ElectricPowerSource" parent="VElectricTileStrip3" instance=ExtResource("16_fwwd0")]
 position = Vector2(5, -65)
@@ -287,7 +281,6 @@ is_active = false
 
 [node name="HElectricTileStrip" parent="." instance=ExtResource("15_grs3c")]
 position = Vector2(265, -549)
-toggle_buttons_active_index = 0
 
 [node name="ElectricPowerSource" parent="HElectricTileStrip" instance=ExtResource("16_fwwd0")]
 position = Vector2(72, 0)
@@ -334,6 +327,12 @@ position = Vector2(204, 0)
 
 [node name="Player" parent="." instance=ExtResource("7_wjlhs")]
 position = Vector2(741, 854)
+
+[node name="Collectable" parent="." instance=ExtResource("22_5y15j")]
+position = Vector2(587, -389)
+
+[node name="Drone2" parent="." instance=ExtResource("20_qtf2u")]
+position = Vector2(683, -1089)
 
 [connection signal="to_end_button_clicked" from="DevSettings" to="." method="_on_dev_settings_to_end_button_clicked"]
 [connection signal="body_entered" from="CloseExitDoorArea" to="." method="_on_close_exit_door_area_body_entered"]

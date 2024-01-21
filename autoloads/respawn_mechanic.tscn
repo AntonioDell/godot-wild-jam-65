@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dvnlim8ir8een"]
 
-[ext_resource type="Script" path="res://respawn_mechanic.gd" id="1_gjfvh"]
+[ext_resource type="Script" path="res://autoloads/respawn_mechanic.gd" id="1_gjfvh"]
 
 [node name="RespawnMechanic" type="Node"]
 script = ExtResource("1_gjfvh")

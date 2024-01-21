@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://d0v3naa0mmcgs"]
+[gd_scene load_steps=24 format=3 uid="uid://d0v3naa0mmcgs"]
 
 [ext_resource type="PackedScene" uid="uid://b2eygpgki0vx0" path="res://player/player.tscn" id="1_jpexq"]
 [ext_resource type="Script" path="res://level_commons/level.gd" id="1_lywxs"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://ddunid30jv8rw" path="res://level_commons/door.tscn" id="14_8vslw"]
 [ext_resource type="PackedScene" uid="uid://bntgfnkp8saaw" path="res://level_commons/camera_lock_mechanic.tscn" id="15_tepgx"]
 [ext_resource type="PackedScene" uid="uid://tdl066rhoyrr" path="res://level_commons/respawn_point.tscn" id="16_usqrk"]
+[ext_resource type="PackedScene" uid="uid://diyx00sbuf88l" path="res://obstacles/drone.tscn" id="17_1yifc"]
 
 [sub_resource type="Animation" id="Animation_d1063"]
 length = 0.001
@@ -117,13 +118,7 @@ position = Vector2(160, -1346)
 position = Vector2(161, -1277)
 
 [node name="Collectable" parent="." instance=ExtResource("10_l2ap7")]
-position = Vector2(596, -498)
-
-[node name="Collectable2" parent="." instance=ExtResource("10_l2ap7")]
-position = Vector2(327, -416)
-
-[node name="Collectable3" parent="." instance=ExtResource("10_l2ap7")]
-position = Vector2(61, -48)
+position = Vector2(720, -388)
 
 [node name="RopeTop" parent="." instance=ExtResource("11_enyfg")]
 position = Vector2(-1, -2190)
@@ -171,6 +166,9 @@ position = Vector2(813, -1045)
 position = Vector2(-45, -17.5)
 shape = SubResource("RectangleShape2D_fwxr4")
 debug_color = Color(0.368521, 0.612267, 0.190537, 0.42)
+
+[node name="Drone" parent="." instance=ExtResource("17_1yifc")]
+position = Vector2(626, -593)
 
 [node name="DebugEndLevelPositionMarker" type="Marker2D" parent="."]
 unique_name_in_owner = true

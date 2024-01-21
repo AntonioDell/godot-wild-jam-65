@@ -27,6 +27,8 @@ func _ready():
 	_reset_patrol_points()
 
 func _physics_process(delta):
+	if Engine.is_editor_hint(): return
+	
 	_move_on_patrol(delta)
 	move_and_slide()
 

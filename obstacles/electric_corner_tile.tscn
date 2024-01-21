@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://ffo56jbcthvw"]
+
+[ext_resource type="Script" path="res://obstacles/electric_corner_tile.gd" id="1_5ltmw"]
+[ext_resource type="Texture2D" uid="uid://qxfowdfroxc1" path="res://obstacles/electric_corners_sprites.png" id="2_xx71r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6hugx"]
+size = Vector2(32, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kfgyx"]
+size = Vector2(34, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wkm0y"]
+size = Vector2(32, 32)
+
+[node name="ElectricCornerTile" type="Area2D"]
+script = ExtResource("1_5ltmw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6hugx")
+debug_color = Color(0.945098, 0.196078, 0.345098, 0.419608)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_kfgyx")
+debug_color = Color(0.945098, 0.196078, 0.345098, 0.419608)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_wkm0y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_xx71r")
+hframes = 4
+vframes = 2
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

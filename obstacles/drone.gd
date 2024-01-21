@@ -1,8 +1,12 @@
 @tool
 extends Area2D
 
+
 @export var time_stunned = 2.0
-@export var is_shooty = false
+@export var is_shooty = false:
+	set(value):
+		is_shooty = value
+		_update_shooty_area_color()
 
 @onready var animation_player = %AnimationPlayer
 @onready var stun_timer: Timer = %StunTimer
@@ -24,6 +28,7 @@ var current_aim: String
 var bullet_scene = preload("res://obstacles/bullet.tscn")
 
 func _ready():
+	_update_shooty_area_color()
 	if Engine.is_editor_hint(): return
 	var bullet_origin_nodes = %BulletOrigins.get_children()
 	for node: Node2D in bullet_origin_nodes:
@@ -65,7 +70,7 @@ func _on_player_exited(body):
 		colliding_player = null
 
 func _aim_at_player():
-	if not shooty_player or not stun_timer.is_stopped(): return
+	if not is_shooty or not shooty_player or not stun_timer.is_stopped(): return
 	
 	var player_pos = shooty_player.global_position
 	var angle_to_player = %BulletOrigins.global_position.angle_to_point(player_pos)
@@ -82,7 +87,7 @@ func _aim_at_player():
 	current_aim = smallest_difference_direction
 
 func _shoot():
-	if not shooty_player or not current_aim or not stun_timer.is_stopped(): return
+	if not is_shooty or not shooty_player or not current_aim or not stun_timer.is_stopped(): return
 	
 	var bullet = bullet_scene.instantiate() as Bullet
 	bullet.travel_angle = aim_directions[current_aim].angle
@@ -97,4 +102,13 @@ func _on_shooty_player_detection_body_exited(body):
 	if body is Player:
 		shooty_player = null
 
+#region tool scripts
+const SHOOTY_AREA_COLOR = Color(255, 0, 0, .07)
 
+func _update_shooty_area_color():
+	if not Engine.is_editor_hint() or not %ShootyCollisionShape: return
+	
+	var shooty_collision_color = Color.TRANSPARENT if not is_shooty else SHOOTY_AREA_COLOR
+	(%ShootyCollisionShape as CollisionShape2D).debug_color = shooty_collision_color
+	
+#endregion

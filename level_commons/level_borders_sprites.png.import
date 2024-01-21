@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dlkgkalpmj65y"
-path="res://.godot/imported/level_borders_sprites.png-7f184adea625a98cdb66f3683906b9d8.ctex"
+path="res://.godot/imported/level_borders_sprites.png-cb00d9427dee01aa32308e7c69cceae4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://level_borders_sprites.png"
-dest_files=["res://.godot/imported/level_borders_sprites.png-7f184adea625a98cdb66f3683906b9d8.ctex"]
+source_file="res://level_commons/level_borders_sprites.png"
+dest_files=["res://.godot/imported/level_borders_sprites.png-cb00d9427dee01aa32308e7c69cceae4.ctex"]
 
 [params]
 

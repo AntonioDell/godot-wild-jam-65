@@ -1,5 +1,9 @@
 extends Node
 
+signal collected_items_changed(new_value: int)
+signal collected_items_in_level_changed(new_value: int)
+signal temporary_collected_items_changed(new_value: int)
+
 enum {
 	MAIN_MENU,
 	LEVEL_1,
@@ -14,9 +18,18 @@ var level_1_scene: PackedScene = preload("res://level_1/level_1.tscn")
 var level_2_scene: PackedScene = preload("res://level_2/level_2.tscn")
 var level_3_scene: PackedScene = preload("res://level_3/level_3.tscn")
 var main_menu_scene: PackedScene = preload("res://main_menu/main_menu.tscn")
-var collected_items = 0
-var collected_items_in_level = 0
-var temporary_collected_items = 0
+var collected_items = 0:
+	set(value):
+		collected_items = value
+		collected_items_changed.emit(value)
+var collected_items_in_level = 0:
+	set(value):
+		collected_items_in_level = value
+		collected_items_in_level_changed.emit(value)
+var temporary_collected_items = 0:
+	set(value):
+		temporary_collected_items = value
+		temporary_collected_items_changed.emit(value)
 var current_level = 0
 var settings = {
 	"volume": .5
@@ -59,7 +72,7 @@ func collect_item():
 	temporary_collected_items += 1
 
 func get_collected_count() -> int:
-	return collected_items
+	return collected_items + collected_items_in_level
 
 func change_setting(setting_name: String, value):
 	if not SETTINGS.has(setting_name):

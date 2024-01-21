@@ -21,6 +21,17 @@ func _ready():
 	if not player:
 		push_error("%s configuration error: No player in tree")
 	
+	# Show gamestate
+	%CollectedItems.text = "%s" % GameState.collected_items
+	GameState.collected_items_changed.connect(func(v): %CollectedItems.text = "%s" % v)
+	%CollectedItemsInLevel.text = "%s" % GameState.collected_items_in_level
+	GameState.collected_items_in_level_changed.connect(func(v): %CollectedItemsInLevel.text = "%s" % v)
+	%TemporaryCollectedItems.text = "%s" % GameState.temporary_collected_items
+	GameState.temporary_collected_items_changed.connect(func(v): %TemporaryCollectedItems.text = "%s" % v)
+	
+	# Shortcuts
+	%ToEndButton.pressed.connect(func(): to_end_button_clicked.emit())
+	
 	# Range based controls
 	%WalkingSpeed.value_changed.connect(func(value: float): player.walking_speed = value)
 	%WalkingSpeed.value = player.walking_speed
@@ -50,13 +61,6 @@ func _ready():
 	%RocketMaxOverloadTime.value = player.rocket.max_overload_time
 	%DroneJumpSpeed.value_changed.connect(func(value: float): player.drone_triggered_jump.max_jump_speed = value)
 	%DroneJumpSpeed.value = player.drone_triggered_jump.max_jump_speed
-	
-	%SpawnBirdSelector.item_selected.connect(func(index: int): 
-		spawn_bird_selection = index
-	)
-	%SpawnBirdButton.pressed.connect(_respawn_bird)
-	
-	%ToEndButton.pressed.connect(func(): to_end_button_clicked.emit())
 
 func _respawn_bird():
 	var new_bird: Node2D

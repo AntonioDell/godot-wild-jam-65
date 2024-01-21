@@ -48,6 +48,7 @@ func _tool_show_debug_lines():
 	debug_line = Line2D.new()
 	debug_line.width = 1
 	debug_line.default_color = Color.DARK_GOLDENROD
+	# FIXME: Will throw errors if no buttons are connected yet, fix line 57
 	debug_line.add_point(buttons[0].global_position)
 	debug_line.add_point(buttons[1].global_position)
 	add_child(debug_line, false, Node.INTERNAL_MODE_FRONT)
