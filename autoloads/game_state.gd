@@ -32,7 +32,7 @@ var temporary_collected_items = 0:
 		temporary_collected_items_changed.emit(value)
 var current_level = 0
 var settings = {
-	"volume": .5
+	"volume": .7,
 }
 var level_deaths = 0
 
@@ -78,14 +78,18 @@ func change_setting(setting_name: String, value):
 	if not SETTINGS.has(setting_name):
 		push_error("%s failed to change setting %s. No setting with that name exists." % [name, setting_name])
 	settings[setting_name] = value
+	if setting_name == "volume":
+		AudioManager.set_volume(value)
 	# TODO: Actually apply audio to all audiostreams
 # TODO: Reset level on death (reset collectibles got from the level)
 
+const FADE_OUT_DURATION = 2.0
 func _transition_to(level: int):
 	_reset_level_state()
 	
 	var tween = create_tween()
-	tween.tween_property(canvas_modulate, "color", Color.BLACK, 2.0)
+	tween.tween_property(canvas_modulate, "color", Color.BLACK, FADE_OUT_DURATION)
+	AudioManager.fade_out_music(FADE_OUT_DURATION)
 	await tween.finished
 	var error_code  
 	if level != MAIN_MENU:

@@ -1,5 +1,6 @@
 extends Node
 
+@export var level_number = 0
 
 @onready var animation_player = %AnimationPlayer
 @onready var space_elevator_entry: SpaceElevator = %SpaceElevatorEntry
@@ -14,6 +15,7 @@ func _ready():
 	else:
 		space_elevator_entry.play_lift()
 		await space_elevator_entry.lift_ended
+		AudioManager.play_music(level_number)
 	entry_door.open()
 
 func _on_level_completed():

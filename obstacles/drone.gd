@@ -34,7 +34,6 @@ func _ready():
 	for node: Node2D in bullet_origin_nodes:
 		aim_directions[node.name].angle = %BulletOrigins.global_position.angle_to_point(node.global_position)
 		aim_directions[node.name].position = node.global_position
-		print("%s Angle %s" % [node.name, aim_directions[node.name].angle])
 	_queue_idle()
 
 func _process(delta):
@@ -74,7 +73,6 @@ func _aim_at_player():
 	
 	var player_pos = shooty_player.global_position
 	var angle_to_player = %BulletOrigins.global_position.angle_to_point(player_pos)
-	print("Angle to player %s" % angle_to_player)
 	var smallest_difference_direction = Vector2.INF
 	var smallest_difference = INF
 	for direction: String in aim_directions:

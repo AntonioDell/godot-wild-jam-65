@@ -64,6 +64,7 @@ size = Vector2(96, 95.5)
 
 [node name="Level2" type="Node"]
 script = ExtResource("1_gc2hx")
+level_number = 2
 
 [node name="DevSettings" parent="." instance=ExtResource("2_oe6dj")]
 
@@ -150,10 +151,8 @@ debug_color = Color(0.235294, 0.623529, 0.360784, 0.419608)
 [node name="LevelCompletedArea" parent="." instance=ExtResource("12_aqdav")]
 position = Vector2(737, -1347)
 
-[node name="ElectricTileStripWithButtons" parent="." node_paths=PackedStringArray("toggle_buttons") instance=ExtResource("15_grs3c")]
+[node name="ElectricTileStripWithButtons" parent="." instance=ExtResource("15_grs3c")]
 position = Vector2(310, -1111)
-is_active = false
-toggle_buttons = NodePath("ToggleElectricTileStripButtons")
 
 [node name="ElectricPowerSource" parent="ElectricTileStripWithButtons" instance=ExtResource("16_fwwd0")]
 position = Vector2(-102, 18)

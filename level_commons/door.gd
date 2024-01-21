@@ -15,9 +15,11 @@ func _ready():
 
 
 func open():
+	AudioManager.play_sfx_door()
 	animation_player.play("opens")
 
 func close():
+	AudioManager.play_sfx_door()
 	animation_player.play("closes")
 
 func _update_door_state():

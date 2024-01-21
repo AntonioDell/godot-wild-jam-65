@@ -43,6 +43,7 @@ size_flags_horizontal = 8
 
 [node name="SettingsList" type="PanelContainer" parent="DevSettings/VBoxContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="DevSettings/VBoxContainer/SettingsList"]
@@ -59,30 +60,27 @@ columns = 2
 
 [node name="Label2" type="Label" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 layout_mode = 2
-text = "Collected items:"
+text = "Collected items"
 
-[node name="CollectedItems" type="Label" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
+[node name="CollectedItems" type="SpinBox" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "0"
 
 [node name="Label18" type="Label" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 layout_mode = 2
 text = "Collected items in level:"
 
-[node name="CollectedItemsInLevel" type="Label" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
+[node name="CollectedItemsInLevel" type="SpinBox" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "0"
 
 [node name="Label17" type="Label" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 layout_mode = 2
 text = "Temporary collected items:"
 
-[node name="TemporaryCollectedItems" type="Label" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
+[node name="TemporaryCollectedItems" type="SpinBox" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "0"
 
 [node name="Label" type="Label" parent="DevSettings/VBoxContainer/SettingsList/MarginContainer/Grid"]
 layout_mode = 2

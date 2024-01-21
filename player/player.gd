@@ -70,6 +70,8 @@ func _ready():
 		player_triggered_jump.start())
 	player_triggered_jump.jump_started.connect(_jump_started)
 	drone_triggered_jump.jump_started.connect(_jump_started)
+	
+	
 
 func _physics_process(delta):
 	if is_death: return
@@ -196,6 +198,7 @@ func _explode():
 		animation_player.queue("idle_right")
 	
 	is_stunned = true
+	%ExplosionAudio.play()
 	await animation_player.animation_finished
 	is_stunned = false
 	

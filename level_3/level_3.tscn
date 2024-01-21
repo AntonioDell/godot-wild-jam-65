@@ -351,7 +351,6 @@ position = Vector2(-112, 48)
 [node name="FirstElectricTileStrip" parent="ElectricHazards" instance=ExtResource("8_gxe63")]
 unique_name_in_owner = true
 position = Vector2(928, -597)
-is_active = false
 
 [node name="ElectricPowerSource" parent="ElectricHazards/FirstElectricTileStrip" instance=ExtResource("9_t4i7o")]
 position = Vector2(80, 16)
@@ -674,7 +673,7 @@ lock_camera_heights = Array[float]([0.0, -117.0, -693.0])
 
 [node name="DebugEndLevelPositionMarker" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(591, -1603)
+position = Vector2(1066, -418)
 
 [node name="EndMachine" type="Node2D" parent="."]
 position = Vector2(320, -1621)
