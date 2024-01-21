@@ -22,6 +22,7 @@ func _process(delta):
 	_tool_show_debug_lines()
 
 func _on_button_pressed(pressed_button_index: int):
+	print("button %s" % pressed_button_index)
 	for i in buttons.size(): 
 		if i == pressed_button_index: continue
 		var button = buttons[i]
@@ -54,7 +55,7 @@ func _tool_show_debug_lines():
 	add_child(debug_line, false, Node.INTERNAL_MODE_FRONT)
 
 func _tool_should_recreate_line() -> bool:
-	if buttons.size() != 2: return false
+	if buttons.size() != 2 or buttons.any(func(b): return not b): return false
 	elif not debug_line or debug_line.points.size() != 2: return true
 	else:
 		return debug_line.points[0] != buttons[0].global_position or debug_line.points[1] != buttons[1].global_position

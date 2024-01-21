@@ -595,14 +595,14 @@ position = Vector2(-66, -86)
 unique_name_in_owner = true
 position = Vector2(881, -485)
 
-[node name="FreeOrCaptureToggleButtons" parent="." node_paths=PackedStringArray("buttons") instance=ExtResource("16_yfuqr")]
-buttons = [NodePath("FreeDroneButton"), NodePath("CaptureDroneButton")]
+[node name="FreeDroneButtons" parent="." node_paths=PackedStringArray("buttons") instance=ExtResource("16_yfuqr")]
+buttons = [NodePath("FreeDroneButtonA"), NodePath("FreeDroneButtonB")]
 
-[node name="FreeDroneButton" parent="FreeOrCaptureToggleButtons" instance=ExtResource("16_ohdnv")]
-position = Vector2(688, -901)
-
-[node name="CaptureDroneButton" parent="FreeOrCaptureToggleButtons" instance=ExtResource("16_ohdnv")]
+[node name="FreeDroneButtonA" parent="FreeDroneButtons" instance=ExtResource("16_ohdnv")]
 position = Vector2(337, -1221)
+
+[node name="FreeDroneButtonB" parent="FreeDroneButtons" instance=ExtResource("16_ohdnv")]
+position = Vector2(688, -901)
 is_pressed = true
 
 [node name="SpaceElevatorEntry" parent="." instance=ExtResource("16_nixep")]
@@ -621,14 +621,15 @@ unique_name_in_owner = true
 position = Vector2(864, -438)
 rotation = -3.14159
 
-[node name="FreeDroneDoor1" parent="." instance=ExtResource("14_2caxv")]
+[node name="FreeDroneDoorTop" parent="." instance=ExtResource("14_2caxv")]
 unique_name_in_owner = true
 position = Vector2(448, -1141)
 
-[node name="FreeDroneDoor2" parent="." instance=ExtResource("14_2caxv")]
+[node name="FreeDroneDoorBottom" parent="." instance=ExtResource("14_2caxv")]
 unique_name_in_owner = true
 position = Vector2(512, -1045)
 rotation = 3.14159
+is_open = true
 
 [node name="RespawnPoint" parent="." instance=ExtResource("21_drnbe")]
 position = Vector2(592, -149)
@@ -673,7 +674,7 @@ lock_camera_heights = Array[float]([0.0, -117.0, -693.0])
 
 [node name="DebugEndLevelPositionMarker" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(1066, -418)
+position = Vector2(439, -1174)
 
 [node name="EndMachine" type="Node2D" parent="."]
 position = Vector2(320, -1621)
@@ -715,6 +716,6 @@ zoom = Vector2(2, 2)
 
 [connection signal="to_end_button_clicked" from="DevSettings" to="." method="_on_dev_settings_to_end_button_clicked"]
 [connection signal="button_pressed" from="FirstButton" to="." method="_on_first_button_pressed"]
-[connection signal="button_pressed" from="FreeOrCaptureToggleButtons" to="." method="_on_free_or_capture_toggle_buttons_button_pressed"]
+[connection signal="button_pressed" from="FreeDroneButtons" to="." method="_on_free_or_capture_toggle_buttons_button_pressed"]
 [connection signal="player_died" from="Player" to="." method="_on_player_died"]
 [connection signal="body_entered" from="EndReachedArea" to="." method="_on_end_reached_area_body_entered"]

@@ -61,16 +61,13 @@ func _on_first_button_pressed():
 	($FirstDoor as Door).open()
 	(%FirstElectricTileStrip as ElectricTileStrip).is_active = true
 
-func _on_free_drone_button_button_pressed():
-	(%FreeDroneDoor1 as Door).open()
-	(%FreeDroneDoor2 as Door).open()
-
 func _on_free_or_capture_toggle_buttons_button_pressed(key):
-	if key == 0: 
-		(%FreeDroneDoor1 as Door).open()
-		(%FreeDroneDoor2 as Door).open()
-	else:
-		(%FreeDroneDoor1 as Door).close()
-		(%FreeDroneDoor2 as Door).close()
+	if key == 0: # Button B is pressed
+		print(key)
+		(%FreeDroneDoorTop as Door).open()
+		(%FreeDroneDoorBottom as Door).close()
+	else: # Button A is pressed
+		(%FreeDroneDoorTop as Door).close()
+		(%FreeDroneDoorBottom as Door).open()
 
 

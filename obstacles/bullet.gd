@@ -11,7 +11,7 @@ func _physics_process(delta):
 
 func _on_body_entered(body):
 	if body is Player:
-		body.die()
+		body._explode()
 	queue_free()
 
 func _on_area_entered(area):

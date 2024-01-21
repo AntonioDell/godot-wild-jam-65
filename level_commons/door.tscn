@@ -138,10 +138,12 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6fdlo"]
-size = Vector2(12, 30)
+resource_local_to_scene = true
+size = Vector2(64, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j1htx"]
-size = Vector2(12, 30)
+resource_local_to_scene = true
+size = Vector2(64, 30)
 
 [node name="Door" type="StaticBody2D"]
 script = ExtResource("1_y2m30")
@@ -157,12 +159,11 @@ position = Vector2(0, -1)
 texture = ExtResource("2_3i820")
 centered = false
 hframes = 5
-frame = 4
 
 [node name="CollisionShapeLeft" type="CollisionShape2D" parent="."]
-position = Vector2(6, 15)
+position = Vector2(32, 15)
 shape = SubResource("RectangleShape2D_6fdlo")
 
 [node name="CollisionShapeRight" type="CollisionShape2D" parent="."]
-position = Vector2(122, 15)
+position = Vector2(96, 15)
 shape = SubResource("RectangleShape2D_j1htx")

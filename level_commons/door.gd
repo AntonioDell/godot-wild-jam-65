@@ -1,3 +1,4 @@
+@tool
 extends StaticBody2D
 class_name Door
 
@@ -12,15 +13,16 @@ class_name Door
 
 func _ready():
 	_update_door_state()
+	
 
 
 func open():
 	AudioManager.play_sfx_door()
-	animation_player.play("opens")
+	is_open = true
 
 func close():
 	AudioManager.play_sfx_door()
-	animation_player.play("closes")
+	is_open = false
 
 func _update_door_state():
 	if not animation_player: return
