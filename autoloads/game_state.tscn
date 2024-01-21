@@ -7,20 +7,3 @@ script = ExtResource("1_hgsg6")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 unique_name_in_owner = true
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="ResetButton" type="Button" parent="CanvasLayer"]
-modulate = Color(1, 1, 1, 0.627451)
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -51.0
-offset_top = -31.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Reset"
-
-[connection signal="pressed" from="CanvasLayer/ResetButton" to="." method="_on_reset_button_pressed"]

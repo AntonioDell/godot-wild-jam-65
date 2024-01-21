@@ -21,20 +21,6 @@ func _ready():
 	if not player:
 		push_error("%s configuration error: No player in tree")
 	
-	# Gamestate
-	%CollectedItems.value = GameState.collected_items
-	GameState.collected_items_changed.connect(func(v): 
-		print("wow")
-		%CollectedItems.value = v)
-	%CollectedItems.value_changed.connect(func (v): GameState.collected_items = v)
-	
-	%CollectedItemsInLevel.value = GameState.collected_items_in_level
-	GameState.collected_items_in_level_changed.connect(func(v): %CollectedItemsInLevel.value = v)
-	%CollectedItemsInLevel.value_changed.connect(func (v): GameState.collected_items_in_level = v)
-	
-	%TemporaryCollectedItems.value = GameState.temporary_collected_items
-	GameState.temporary_collected_items_changed.connect(func(v): %TemporaryCollectedItems.value = v)
-	%TemporaryCollectedItems.value_changed.connect(func (v): GameState.temporary_collected_items = v)
 	
 	# Shortcuts
 	%ToEndButton.pressed.connect(func(): to_end_button_clicked.emit())

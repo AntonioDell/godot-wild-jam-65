@@ -1,9 +1,5 @@
 extends Node
 
-signal collected_items_changed(new_value: int)
-signal collected_items_in_level_changed(new_value: int)
-signal temporary_collected_items_changed(new_value: int)
-
 enum {
 	MAIN_MENU,
 	LEVEL_1,
@@ -18,39 +14,29 @@ var level_1_scene: PackedScene = preload("res://level_1/level_1.tscn")
 var level_2_scene: PackedScene = preload("res://level_2/level_2.tscn")
 var level_3_scene: PackedScene = preload("res://level_3/level_3.tscn")
 var main_menu_scene: PackedScene = preload("res://main_menu/main_menu.tscn")
-var collected_items = 0:
-	set(value):
-		collected_items = value
-		collected_items_changed.emit(value)
-var collected_items_in_level = 0:
-	set(value):
-		collected_items_in_level = value
-		collected_items_in_level_changed.emit(value)
-var temporary_collected_items = 0:
-	set(value):
-		temporary_collected_items = value
-		temporary_collected_items_changed.emit(value)
 var current_level = 0
 var settings = {
 	"volume": .7,
 }
 var level_deaths = 0
 
+var level_1_collected = false
+var level_2_collected = false
+var level_3_collected = false
+
 @onready var canvas_modulate: CanvasModulate = %CanvasModulate
 
 ## Should be called after main menu animation finished
 func start_game():
+	level_1_collected = false
+	level_2_collected = false
+	level_3_collected = false
 	current_level = 1
 	_transition_to(LEVEL_1)
-
-func make_collected_items_permanent():
-	collected_items_in_level = temporary_collected_items
-	temporary_collected_items = 0
 
 ## Call on player death
 func register_player_death():
 	level_deaths += 1
-	temporary_collected_items = 0
 
 func get_deaths():
 	return level_deaths
@@ -58,21 +44,25 @@ func get_deaths():
 ## Call when player completed the current level
 func complete_level():
 	current_level += 1
-	collected_items += collected_items_in_level + temporary_collected_items
 	if current_level > level_count:
 		# TODO: Show credits scene
 		current_level = MAIN_MENU
-		collected_items = 0
 		_transition_to(MAIN_MENU)
 	else:
 		_transition_to(current_level)
 
 ## Call if player collected a collectable
 func collect_item():
-	temporary_collected_items += 1
+	if current_level == 1:
+		level_1_collected = true
+	elif current_level == 2:
+		level_2_collected = true
+	elif current_level == 3:
+		level_3_collected = true
 
 func get_collected_count() -> int:
-	return collected_items + collected_items_in_level
+	var collected = [level_1_collected, level_2_collected, level_3_collected]
+	return collected.count(true)
 
 func change_setting(setting_name: String, value):
 	if not SETTINGS.has(setting_name):
@@ -120,13 +110,4 @@ func _get_level_scene(level: int) -> PackedScene:
 
 func _reset_level_state():
 	RespawnMechanic.reset()
-	collected_items_in_level = 0
-	temporary_collected_items = 0
 	level_deaths = 0
-
-
-func _on_reset_button_pressed():
-	current_level = 0
-	collected_items = 0
-	_reset_level_state()
-	_transition_to(0)

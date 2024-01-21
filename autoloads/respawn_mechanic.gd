@@ -8,7 +8,6 @@ var current_respawn_position: Vector2:
 		if past_respawn_positions.has(value):
 			# Respawn position was already reached -> do not add as current respawn position
 			return
-		GameState.make_collected_items_permanent()
 		current_respawn_position = value
 		past_respawn_positions.append(value)
 
