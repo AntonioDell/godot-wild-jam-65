@@ -302,11 +302,11 @@ position = Vector2(223, -164)
 is_shooty = true
 
 [node name="Bird" parent="." node_paths=PackedStringArray("patrol_point_nodes") instance=ExtResource("20_xm4v6")]
-position = Vector2(124, -262)
+position = Vector2(628, -1177)
 patrol_point_nodes = [NodePath("StartPosition"), NodePath("Marker2D")]
 
 [node name="Marker2D" type="Marker2D" parent="Bird"]
-position = Vector2(204, 0)
+position = Vector2(0, 144)
 
 [node name="Player" parent="." instance=ExtResource("7_wjlhs")]
 position = Vector2(741, 854)
