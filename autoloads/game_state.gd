@@ -119,6 +119,7 @@ func _get_level_scene(level: int) -> PackedScene:
 	return null
 
 func _reset_level_state():
+	RespawnMechanic.reset()
 	collected_items_in_level = 0
 	temporary_collected_items = 0
 	level_deaths = 0

@@ -351,6 +351,7 @@ position = Vector2(-112, 48)
 [node name="FirstElectricTileStrip" parent="ElectricHazards" instance=ExtResource("8_gxe63")]
 unique_name_in_owner = true
 position = Vector2(928, -597)
+is_active = false
 
 [node name="ElectricPowerSource" parent="ElectricHazards/FirstElectricTileStrip" instance=ExtResource("9_t4i7o")]
 position = Vector2(80, 16)

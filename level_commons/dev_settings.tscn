@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://level_commons/dev_settings.gd" id="1_vlfok"]
 
 [node name="DevSettings" type="CanvasLayer"]
-visible = false
 script = ExtResource("1_vlfok")
 
 [node name="DevSettings" type="ScrollContainer" parent="."]
