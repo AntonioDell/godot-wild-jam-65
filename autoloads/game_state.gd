@@ -123,3 +123,10 @@ func _reset_level_state():
 	collected_items_in_level = 0
 	temporary_collected_items = 0
 	level_deaths = 0
+
+
+func _on_reset_button_pressed():
+	current_level = 0
+	collected_items = 0
+	_reset_level_state()
+	_transition_to(0)
