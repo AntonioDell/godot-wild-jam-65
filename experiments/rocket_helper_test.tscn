@@ -38,3 +38,10 @@ polygon = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
 position = Vector2(289, 425)
 points = PackedVector2Array(0, 0, 0, -300)
 width = 2.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = 266.0
+offset_top = 95.0
+offset_right = 313.0
+offset_bottom = 118.0
+text = "300px"
