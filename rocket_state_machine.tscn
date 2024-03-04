@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://oe14gxhs20vw"]
+
+[ext_resource type="Script" path="res://rocket_state_machine.gd" id="1_p5e5t"]
+[ext_resource type="Script" path="res://player/state_ready_to_charge.gd" id="2_q37es"]
+[ext_resource type="Script" path="res://player/state_charging.gd" id="3_h42dq"]
+[ext_resource type="Script" path="res://player/state_charge_cooldown.gd" id="4_qkp0v"]
+
+[node name="RocketStateMachine" type="Node"]
+script = ExtResource("1_p5e5t")
+
+[node name="ReadyToCharge" type="Node" parent="." node_paths=PackedStringArray("state_charging")]
+script = ExtResource("2_q37es")
+state_charging = NodePath("../Charging")
+
+[node name="Charging" type="Node" parent="." node_paths=PackedStringArray("state_charge_cooldown")]
+script = ExtResource("3_h42dq")
+state_charge_cooldown = NodePath("../ChargeCooldown")
+
+[node name="ChargeCooldown" type="Node" parent="." node_paths=PackedStringArray("state_ready_to_charge")]
+script = ExtResource("4_qkp0v")
+state_ready_to_charge = NodePath("../ReadyToCharge")

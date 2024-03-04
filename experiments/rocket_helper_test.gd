@@ -1,6 +1,6 @@
 extends Node
 
-@onready var rocket_helper: RocketHelper = $RocketHelper
+@onready var rocket_helper: Thrust = $RocketHelper
 @onready var limit = Engine.physics_ticks_per_second * rocket_helper.seconds_to_max_height
 @onready var character = $CharacterBody2D
 

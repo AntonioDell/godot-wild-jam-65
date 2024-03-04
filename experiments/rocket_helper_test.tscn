@@ -1,11 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b40ik86a81oxo"]
+[gd_scene load_steps=5 format=3 uid="uid://b40ik86a81oxo"]
 
-[ext_resource type="Script" path="res://experiments/rocket_helper.gd" id="1_dat6t"]
+[ext_resource type="Script" path="res://experiments/thrust.gd" id="1_dat6t"]
 [ext_resource type="Script" path="res://experiments/rocket_helper_test.gd" id="1_pl15x"]
-
-[sub_resource type="Curve" id="Curve_mhndh"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.442149, 0.527472), 3.762, 3.762, 0, 0, Vector2(1, 1), 2.05494, 0.0, 0, 0]
-point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_yt208"]
 offsets = PackedFloat32Array(0)
@@ -21,9 +17,6 @@ script = ExtResource("1_pl15x")
 
 [node name="RocketHelper" type="Node" parent="."]
 script = ExtResource("1_dat6t")
-max_height = 300
-movement_curve = SubResource("Curve_mhndh")
-seconds_to_max_height = 2.8
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(340, 425)
@@ -36,12 +29,12 @@ polygon = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
 
 [node name="Line2D" type="Line2D" parent="."]
 position = Vector2(289, 425)
-points = PackedVector2Array(0, 0, 0, -300)
+points = PackedVector2Array(0, 0, 0, -400)
 width = 2.0
 
 [node name="Label" type="Label" parent="."]
-offset_left = 266.0
-offset_top = 95.0
-offset_right = 313.0
-offset_bottom = 118.0
-text = "300px"
+offset_left = 236.0
+offset_top = 14.0
+offset_right = 283.0
+offset_bottom = 37.0
+text = "400px"
