@@ -17,7 +17,7 @@ func respawn():
 		push_error("%s configuration error: Called respawn before player reached the first respawn point." % [name])
 		return
 	
-	var player: Player = get_tree().get_first_node_in_group("player")
+	var player = get_tree().get_first_node_in_group("player")
 	player.global_position = current_respawn_position
 
 func register(respawn_point: RespawnPoint):

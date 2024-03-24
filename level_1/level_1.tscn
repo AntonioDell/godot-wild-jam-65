@@ -1,6 +1,5 @@
 [gd_scene load_steps=24 format=3 uid="uid://d0v3naa0mmcgs"]
 
-[ext_resource type="PackedScene" uid="uid://b2eygpgki0vx0" path="res://player/player.tscn" id="1_jpexq"]
 [ext_resource type="Script" path="res://level_commons/level.gd" id="1_lywxs"]
 [ext_resource type="Texture2D" uid="uid://djq7lf4sdnjsd" path="res://level_1/level_1_overview.png" id="2_7qx3o"]
 [ext_resource type="TileSet" uid="uid://cxd55pf42b50n" path="res://level_commons/basic_tileset.tres" id="3_llj77"]
@@ -11,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bcmaihmpamejv" path="res://level_commons/close_exit_door_area.tscn" id="9_vdmjd"]
 [ext_resource type="PackedScene" uid="uid://dr86t04x40uwd" path="res://level_commons/collectable.tscn" id="10_l2ap7"]
 [ext_resource type="PackedScene" uid="uid://bc5a6qmhij3rh" path="res://level_commons/rope.tscn" id="11_enyfg"]
+[ext_resource type="PackedScene" uid="uid://ccnient6ijo62" path="res://player/finite_state_player.tscn" id="12_e4xaf"]
 [ext_resource type="PackedScene" uid="uid://b8xbpaau8pmdu" path="res://level_commons/space_elevator.tscn" id="12_shkpq"]
 [ext_resource type="PackedScene" uid="uid://ddunid30jv8rw" path="res://level_commons/door.tscn" id="14_8vslw"]
 [ext_resource type="PackedScene" uid="uid://bntgfnkp8saaw" path="res://level_commons/camera_lock_mechanic.tscn" id="15_tepgx"]
@@ -140,9 +140,8 @@ unique_name_in_owner = true
 position = Vector2(0, -2212)
 flip_background = true
 
-[node name="Player" parent="." instance=ExtResource("1_jpexq")]
-unique_name_in_owner = true
-position = Vector2(168, 857)
+[node name="Player" parent="." instance=ExtResource("12_e4xaf")]
+position = Vector2(160, 855)
 
 [node name="EntryDoor" parent="." instance=ExtResource("14_8vslw")]
 unique_name_in_owner = true
@@ -184,9 +183,9 @@ position = Vector2(626, -593)
 
 [node name="DebugEndLevelPositionMarker" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(189, -1134)
+position = Vector2(670, -1134)
 
 [connection signal="to_end_button_clicked" from="DevSettings" to="." method="_on_dev_settings_to_end_button_clicked"]
 [connection signal="level_completed" from="LevelCompletedArea" to="." method="_on_level_completed"]
 [connection signal="body_entered" from="CloseExitDoorArea" to="." method="_on_close_exit_door_area_body_entered"]
-[connection signal="player_died" from="Player" to="." method="_on_player_died"]
+[connection signal="death_ended" from="Player" to="." method="_on_player_died"]

@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://oe14gxhs20vw"]
+[gd_scene load_steps=11 format=3 uid="uid://oe14gxhs20vw"]
 
 [ext_resource type="Script" path="res://rocket_state_machine.gd" id="1_p5e5t"]
 [ext_resource type="Script" path="res://player/state_ready_to_charge.gd" id="2_q37es"]
 [ext_resource type="Script" path="res://player/state_charging.gd" id="3_h42dq"]
+[ext_resource type="AudioStream" uid="uid://ccdvwddx75dmd" path="res://sound/blastoff2.wav" id="4_07qmk"]
 [ext_resource type="Script" path="res://player/state_charge_cooldown.gd" id="4_qkp0v"]
+[ext_resource type="AudioStream" uid="uid://cagqyebcvh2q1" path="res://sound/blastofflevel1blast.wav" id="5_dlerj"]
+[ext_resource type="AudioStream" uid="uid://msbeginw1lva" path="res://sound/blastofflevel2blast.wav" id="6_8p6fr"]
+[ext_resource type="AudioStream" uid="uid://ct62owvaphcbx" path="res://sound/blastofflevel3blast.wav" id="7_mviqs"]
+[ext_resource type="Script" path="res://player/state_overload.gd" id="9_s3k5q"]
+[ext_resource type="AudioStream" uid="uid://dcrdntawoex42" path="res://sound/explosion.wav" id="10_ojnnk"]
 
 [node name="RocketStateMachine" type="Node"]
 script = ExtResource("1_p5e5t")
@@ -12,10 +18,42 @@ script = ExtResource("1_p5e5t")
 script = ExtResource("2_q37es")
 state_charging = NodePath("../Charging")
 
-[node name="Charging" type="Node" parent="." node_paths=PackedStringArray("state_charge_cooldown")]
+[node name="Charging" type="Node" parent="." node_paths=PackedStringArray("state_charge_cooldown", "state_overload")]
 script = ExtResource("3_h42dq")
 state_charge_cooldown = NodePath("../ChargeCooldown")
+state_overload = NodePath("../Overload")
+
+[node name="ChargeAudio" type="AudioStreamPlayer" parent="Charging"]
+unique_name_in_owner = true
+stream = ExtResource("4_07qmk")
+volume_db = -10.0
+pitch_scale = 2.45
+
+[node name="Blastoff1Audio" type="AudioStreamPlayer" parent="Charging"]
+unique_name_in_owner = true
+stream = ExtResource("5_dlerj")
+volume_db = -10.0
+
+[node name="Blastoff2Audio" type="AudioStreamPlayer" parent="Charging"]
+unique_name_in_owner = true
+stream = ExtResource("6_8p6fr")
+volume_db = -10.0
+
+[node name="Blastoff3Audio" type="AudioStreamPlayer" parent="Charging"]
+unique_name_in_owner = true
+stream = ExtResource("7_mviqs")
+volume_db = -10.0
 
 [node name="ChargeCooldown" type="Node" parent="." node_paths=PackedStringArray("state_ready_to_charge")]
 script = ExtResource("4_qkp0v")
 state_ready_to_charge = NodePath("../ReadyToCharge")
+time_to_cooldown = 0.5
+
+[node name="Overload" type="Node" parent="." node_paths=PackedStringArray("state_ready_to_charge")]
+script = ExtResource("9_s3k5q")
+state_ready_to_charge = NodePath("../ReadyToCharge")
+
+[node name="ExplosionAudio" type="AudioStreamPlayer" parent="Overload"]
+unique_name_in_owner = true
+stream = ExtResource("10_ojnnk")
+volume_db = -10.0

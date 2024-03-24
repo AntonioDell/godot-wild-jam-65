@@ -5,7 +5,9 @@ extends State
 
 var time_since_cooldown_started := 0.0
 
+#region Injectables
 var player_actions: PlayerActions
+#endregion
 
 func enter():
 	time_since_cooldown_started = 0.0

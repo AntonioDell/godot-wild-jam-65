@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://cal5feiba74rk" path="res://level_2/level_2_overview.png" id="3_hn218"]
 [ext_resource type="TileSet" uid="uid://cxd55pf42b50n" path="res://level_commons/basic_tileset.tres" id="4_rxw7c"]
 [ext_resource type="PackedScene" uid="uid://b8xbpaau8pmdu" path="res://level_commons/space_elevator.tscn" id="6_y6ly3"]
-[ext_resource type="PackedScene" uid="uid://b2eygpgki0vx0" path="res://player/player.tscn" id="7_wjlhs"]
 [ext_resource type="PackedScene" uid="uid://ddunid30jv8rw" path="res://level_commons/door.tscn" id="8_qqhcv"]
 [ext_resource type="PackedScene" uid="uid://bcmaihmpamejv" path="res://level_commons/close_exit_door_area.tscn" id="9_481pr"]
 [ext_resource type="PackedScene" uid="uid://bntgfnkp8saaw" path="res://level_commons/camera_lock_mechanic.tscn" id="10_5s1vb"]
@@ -21,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://dr8ffvra5ss3d" path="res://level_commons/single_door.tscn" id="19_31tk6"]
 [ext_resource type="PackedScene" uid="uid://diyx00sbuf88l" path="res://obstacles/drone.tscn" id="20_qtf2u"]
 [ext_resource type="PackedScene" uid="uid://bxjfb0xvannha" path="res://obstacles/bird.tscn" id="20_xm4v6"]
+[ext_resource type="PackedScene" uid="uid://ccnient6ijo62" path="res://player/finite_state_player.tscn" id="21_o3vmn"]
 [ext_resource type="PackedScene" uid="uid://dr86t04x40uwd" path="res://level_commons/collectable.tscn" id="22_5y15j"]
 
 [sub_resource type="Animation" id="Animation_euw06"]
@@ -308,7 +308,7 @@ patrol_point_nodes = [NodePath("StartPosition"), NodePath("Marker2D")]
 [node name="Marker2D" type="Marker2D" parent="Bird"]
 position = Vector2(0, 144)
 
-[node name="Player" parent="." instance=ExtResource("7_wjlhs")]
+[node name="Player" parent="." instance=ExtResource("21_o3vmn")]
 position = Vector2(741, 854)
 
 [node name="Collectable" parent="." instance=ExtResource("22_5y15j")]
@@ -321,4 +321,4 @@ position = Vector2(683, -1089)
 [connection signal="body_entered" from="CloseExitDoorArea" to="." method="_on_close_exit_door_area_body_entered"]
 [connection signal="level_completed" from="LevelCompletedArea" to="." method="_on_level_completed"]
 [connection signal="button_pressed" from="ButtonArea" to="SingleDoor" method="open"]
-[connection signal="player_died" from="Player" to="." method="_on_player_died"]
+[connection signal="death_ended" from="Player" to="." method="_on_player_died"]

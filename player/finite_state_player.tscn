@@ -1,15 +1,10 @@
-[gd_scene load_steps=31 format=3 uid="uid://b2eygpgki0vx0"]
+[gd_scene load_steps=26 format=3 uid="uid://ccnient6ijo62"]
 
-[ext_resource type="Script" path="res://player/player.gd" id="1_l8dor"]
-[ext_resource type="PackedScene" uid="uid://bkxifw7a3hfio" path="res://player/rocket_with_decimals.tscn" id="4_cfi6y"]
-[ext_resource type="PackedScene" uid="uid://bw4o3wsn2jhkm" path="res://player/jump.tscn" id="5_7v38u"]
-[ext_resource type="AudioStream" uid="uid://ccdvwddx75dmd" path="res://sound/blastoff2.wav" id="5_dh1e6"]
-[ext_resource type="AudioStream" uid="uid://cagqyebcvh2q1" path="res://sound/blastofflevel1blast.wav" id="6_77kd7"]
-[ext_resource type="AudioStream" uid="uid://msbeginw1lva" path="res://sound/blastofflevel2blast.wav" id="7_6ncby"]
-[ext_resource type="Texture2D" uid="uid://bqeuc5oxc8ilk" path="res://player/robot_sprites_v3.png" id="7_ff3xo"]
-[ext_resource type="Script" path="res://player/jump_input.gd" id="7_kel1s"]
-[ext_resource type="AudioStream" uid="uid://ct62owvaphcbx" path="res://sound/blastofflevel3blast.wav" id="8_sbir5"]
-[ext_resource type="AudioStream" uid="uid://dcrdntawoex42" path="res://sound/explosion.wav" id="9_sk48s"]
+[ext_resource type="Script" path="res://player/finite_state_player.gd" id="1_7tnt7"]
+[ext_resource type="PackedScene" uid="uid://dqega6c6ige02" path="res://movement_state_machine.tscn" id="1_fumsx"]
+[ext_resource type="Texture2D" uid="uid://bqeuc5oxc8ilk" path="res://player/robot_sprites_v3.png" id="2_sqx1x"]
+[ext_resource type="PackedScene" uid="uid://oe14gxhs20vw" path="res://rocket_state_machine.tscn" id="2_xetxe"]
+[ext_resource type="Script" path="res://player/player_actions.gd" id="4_x126a"]
 
 [sub_resource type="Animation" id="Animation_4on4x"]
 length = 0.001
@@ -63,6 +58,7 @@ tracks/3/keys = {
 [sub_resource type="Animation" id="Animation_s8ppt"]
 resource_name = "charge_left"
 length = 1.8
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -270,6 +266,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_1iec5"]
 resource_name = "idle_left"
 length = 0.1
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -298,6 +295,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_gyeio"]
 resource_name = "idle_right"
 length = 0.1
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -544,75 +542,27 @@ _data = {
 "walk_right": SubResource("Animation_ruimc")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g7b2x"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d4s4n"]
 size = Vector2(25, 27.875)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e8t7g"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e43vi"]
 radius = 7.0
 height = 26.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("charge_audio", "rocket", "player_triggered_jump", "jump_input", "drone_triggered_jump") groups=["player"]]
+[node name="FiniteStatePlayer" type="CharacterBody2D" groups=["player"]]
 collision_layer = 3
-script = ExtResource("1_l8dor")
-charge_audio = NodePath("ChargeAudio")
-rocket = NodePath("Rocket")
-player_triggered_jump = NodePath("PlayerTriggeredJump")
-jump_input = NodePath("JumpInput")
-drone_triggered_jump = NodePath("DroneTriggeredJump")
+script = ExtResource("1_7tnt7")
 
-[node name="AudioListener2D" type="AudioListener2D" parent="."]
-current = true
-
-[node name="Camera" type="Camera2D" parent="."]
-unique_name_in_owner = true
-zoom = Vector2(2, 2)
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-drag_vertical_offset = -0.5
-editor_draw_limits = true
-editor_draw_drag_margin = true
-
-[node name="Rocket" parent="." instance=ExtResource("4_cfi6y")]
+[node name="RocketStateMachine" parent="." instance=ExtResource("2_xetxe")]
 unique_name_in_owner = true
 
-[node name="PlayerTriggeredJump" parent="." instance=ExtResource("5_7v38u")]
+[node name="MovementStateMachine" parent="." instance=ExtResource("1_fumsx")]
 unique_name_in_owner = true
-max_jump_duration = 0.4
-max_jump_speed = 550.0
 
-[node name="JumpInput" type="Node" parent="."]
+[node name="PlayerActions" type="Node" parent="." node_paths=PackedStringArray("player")]
 unique_name_in_owner = true
-script = ExtResource("7_kel1s")
-
-[node name="DroneTriggeredJump" parent="." instance=ExtResource("5_7v38u")]
-unique_name_in_owner = true
-max_jump_speed = 1000.0
-
-[node name="ChargeAudio" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
-stream = ExtResource("5_dh1e6")
-volume_db = -10.0
-pitch_scale = 2.45
-
-[node name="Blastoff1Audio" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
-stream = ExtResource("6_77kd7")
-volume_db = -10.0
-
-[node name="Blastoff2Audio" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
-stream = ExtResource("7_6ncby")
-volume_db = -10.0
-
-[node name="Blastoff3Audio" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
-stream = ExtResource("8_sbir5")
-volume_db = -10.0
-
-[node name="ExplosionAudio" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
-stream = ExtResource("9_sk48s")
-volume_db = -10.0
+script = ExtResource("4_x126a")
+player = NodePath("..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -627,13 +577,26 @@ position = Vector2(0, -32)
 unique_name_in_owner = true
 texture_filter = 3
 position = Vector2(0, 8)
-texture = ExtResource("7_ff3xo")
+texture = ExtResource("2_sqx1x")
 hframes = 7
 vframes = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -13.9375)
-shape = SubResource("RectangleShape2D_g7b2x")
+shape = SubResource("RectangleShape2D_d4s4n")
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(0, -48)
+zoom = Vector2(1.5, 1.5)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_bottom_margin = 0.3
+editor_draw_drag_margin = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(24, 0)
+scale = Vector2(4.9, 4.7)
+rect = Rect2(-10, -10, 10, 10)
 
 [node name="BirdStunCollisionArea" type="Area2D" parent="."]
 position = Vector2(0, -32)
@@ -643,13 +606,8 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BirdStunCollisionArea"]
 position = Vector2(-2, -8)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_e8t7g")
+shape = SubResource("CapsuleShape2D_e43vi")
 debug_color = Color(0.988235, 0, 0.282353, 0.419608)
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(24, 0)
-scale = Vector2(4.9, 4.7)
-rect = Rect2(-10, -10, 10, 10)
-
-[connection signal="body_entered" from="BirdStunCollisionArea" to="." method="_on_bird_stun_collision_area_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="die"]
+[connection signal="body_entered" from="BirdStunCollisionArea" to="." method="_on_bird_stun_collision_area_body_entered"]

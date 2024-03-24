@@ -4,13 +4,13 @@ class_name DeathMechanic
 
 @export var lock_camera_heights: Array[float] = []
 
-var player: Player
+var player: CharacterBody2D
 var current_height_index: int = -1
 
 func _ready():
 	if Engine.is_editor_hint(): return
 	
-	player = get_tree().get_first_node_in_group("player") as Player
+	player = get_tree().get_first_node_in_group("player")
 	if not player:
 		push_error("%s configuration error: No player exists in tree" % name)
 	

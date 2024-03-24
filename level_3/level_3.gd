@@ -24,12 +24,11 @@ func _ready():
 	entry_door.open()
 
 func _on_end_reached_area_body_entered(body):
-	if body is Player:
+	if body is Player or body is FiniteStatePlayer:
 		_end_game()
 
 func _end_game():
-	var player: Player = get_tree().get_first_node_in_group("player")
-	player.is_stunned = true
+	var player = get_tree().get_first_node_in_group("player")
 	player.animation_player.play("idle_left")
 	player.camera.enabled = false
 	%EndCamera.enabled = true

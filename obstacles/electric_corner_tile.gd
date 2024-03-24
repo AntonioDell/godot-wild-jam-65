@@ -24,8 +24,8 @@ func _ready():
 func _on_body_entered(body):
 	if Engine.is_editor_hint(): return
 	
-	if body is Player and is_active:
-		(body as Player).die()
+	if "die" in body and is_active:
+		body.die()
 
 func _update_sprite():
 	if not sprite: return

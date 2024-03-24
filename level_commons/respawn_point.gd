@@ -9,5 +9,5 @@ func _ready():
 
 
 func _on_body_entered(body):
-	if body is Player:
+	if body is Player or body is FiniteStatePlayer:
 		respawn_point_reached.emit(global_position)

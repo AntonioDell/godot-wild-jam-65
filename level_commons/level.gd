@@ -29,7 +29,7 @@ func _on_player_died():
 	get_tree().reload_current_scene()
 
 func _on_close_exit_door_area_body_entered(body):
-	if body is Player:
+	if body is Player or body is FiniteStatePlayer:
 		%ExitDoor.is_open = false
 
 func _on_dev_settings_to_end_button_clicked():

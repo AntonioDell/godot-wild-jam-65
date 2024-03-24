@@ -1,48 +1,63 @@
-[gd_scene load_steps=11 format=3 uid="uid://dqega6c6ige02"]
+[gd_scene load_steps=12 format=3 uid="uid://dqega6c6ige02"]
 
 [ext_resource type="Script" path="res://movement_state_machine.gd" id="1_mmyg3"]
-[ext_resource type="Script" path="res://player/idle.gd" id="2_fi4d8"]
+[ext_resource type="Script" path="res://player/state_idle.gd" id="2_fi4d8"]
 [ext_resource type="Script" path="res://player/state_walking.gd" id="3_ethw4"]
 [ext_resource type="Script" path="res://player/state_falling.gd" id="4_oumq2"]
 [ext_resource type="Script" path="res://player/state_rocket_active.gd" id="5_716x3"]
+[ext_resource type="Script" path="res://player/thrust.gd" id="5_tbmke"]
 [ext_resource type="Script" path="res://player/state_drone_jump.gd" id="6_2wr2r"]
-[ext_resource type="Script" path="res://experiments/thrust.gd" id="6_38ceu"]
+[ext_resource type="Script" path="res://player/state_jump.gd" id="8_sfwbb"]
+[ext_resource type="Script" path="res://player/state_dead.gd" id="9_mmfy8"]
 
-[sub_resource type="Curve" id="Curve_axkpw"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.912833, 1), 1.4, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_imfsa"]
+_data = [Vector2(0, 0), 0.0, 2.86712, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_bicfg"]
 _data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_imfsa"]
-_data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
 [node name="MovementStateMachine" type="Node"]
 script = ExtResource("1_mmyg3")
 
-[node name="RocketActive" type="Node" parent="." node_paths=PackedStringArray("state_falling", "thrust")]
-script = ExtResource("5_716x3")
-state_falling = NodePath("../Falling")
-thrust = NodePath("RocketThrust")
-
-[node name="RocketThrust" type="Node" parent="RocketActive"]
-script = ExtResource("6_38ceu")
-thrust_range_px = 176
-thrust_range_curve = SubResource("Curve_axkpw")
-thrust_duration = 1.0
-
-[node name="Idle" type="Node" parent="." node_paths=PackedStringArray("state_walking", "state_falling")]
+[node name="Idle" type="Node" parent="." node_paths=PackedStringArray("state_walking", "state_falling", "state_jump")]
 script = ExtResource("2_fi4d8")
 state_walking = NodePath("../Walking")
 state_falling = NodePath("../Falling")
+state_jump = NodePath("../Jump")
 
-[node name="Walking" type="Node" parent="." node_paths=PackedStringArray("state_falling", "state_idle")]
+[node name="Walking" type="Node" parent="." node_paths=PackedStringArray("state_falling", "state_idle", "state_jump")]
 script = ExtResource("3_ethw4")
 state_falling = NodePath("../Falling")
 state_idle = NodePath("../Idle")
+state_jump = NodePath("../Jump")
+
+[node name="Jump" type="Node" parent="." node_paths=PackedStringArray("state_falling", "thrust")]
+script = ExtResource("8_sfwbb")
+state_falling = NodePath("../Falling")
+thrust = NodePath("Thrust")
+
+[node name="Thrust" type="Node" parent="Jump"]
+script = ExtResource("5_tbmke")
+thrust_range_px = 48
+thrust_range_curve = SubResource("Curve_imfsa")
+thrust_duration = 0.3
+
+[node name="RocketActive" type="Node" parent="." node_paths=PackedStringArray("state_falling")]
+script = ExtResource("5_716x3")
+state_falling = NodePath("../Falling")
+
+[node name="DroneJump" type="Node" parent="." node_paths=PackedStringArray("state_falling", "thrust")]
+script = ExtResource("6_2wr2r")
+state_falling = NodePath("../Falling")
+thrust = NodePath("Thrust")
+
+[node name="Thrust" type="Node" parent="DroneJump"]
+script = ExtResource("5_tbmke")
+thrust_range_px = 64
+thrust_range_curve = SubResource("Curve_imfsa")
+thrust_duration = 0.3
 
 [node name="Falling" type="Node" parent="." node_paths=PackedStringArray("state_idle", "state_drone_jump", "state_walking")]
 script = ExtResource("4_oumq2")
@@ -50,16 +65,8 @@ state_idle = NodePath("../Idle")
 state_drone_jump = NodePath("../DroneJump")
 state_walking = NodePath("../Walking")
 gravity_max_velocity = 750.0
-gravity_time_to_max_velocity = 2.0
+gravity_time_to_max_velocity = 1.0
 gravity_velocity_curve = SubResource("Curve_bicfg")
 
-[node name="DroneJump" type="Node" parent="." node_paths=PackedStringArray("state_falling", "thrust")]
-script = ExtResource("6_2wr2r")
-state_falling = NodePath("../Falling")
-thrust = NodePath("DroneJumpThrust")
-
-[node name="DroneJumpThrust" type="Node" parent="DroneJump"]
-script = ExtResource("6_38ceu")
-thrust_range_px = 64
-thrust_range_curve = SubResource("Curve_imfsa")
-thrust_duration = 0.6
+[node name="Dead" type="Node" parent="."]
+script = ExtResource("9_mmfy8")

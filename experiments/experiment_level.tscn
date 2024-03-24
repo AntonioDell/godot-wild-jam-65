@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cahnh07cjgcf1"]
+[gd_scene load_steps=6 format=3 uid="uid://cahnh07cjgcf1"]
 
+[ext_resource type="Script" path="res://experiments/experiment_level.gd" id="1_gd7gl"]
 [ext_resource type="TileSet" uid="uid://cxd55pf42b50n" path="res://level_commons/basic_tileset.tres" id="1_phvs5"]
-[ext_resource type="PackedScene" uid="uid://ccnient6ijo62" path="res://experiments/finite_state_player.tscn" id="2_kk6oq"]
+[ext_resource type="PackedScene" uid="uid://ccnient6ijo62" path="res://player/finite_state_player.tscn" id="2_kk6oq"]
+[ext_resource type="PackedScene" uid="uid://diyx00sbuf88l" path="res://obstacles/drone.tscn" id="3_2gv53"]
+[ext_resource type="PackedScene" uid="uid://c3gsskk5cjbug" path="res://obstacles/electric_tile.tscn" id="4_44i61"]
 
 [node name="ExperimentLevel" type="Node"]
+script = ExtResource("1_gd7gl")
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -26,4 +30,13 @@ text = "WASD (Arrows) - Move
 Space - Charge"
 
 [node name="FiniteStatePlayer" parent="." instance=ExtResource("2_kk6oq")]
-position = Vector2(681, -390)
+position = Vector2(414, -632)
+
+[node name="Drone" parent="." instance=ExtResource("3_2gv53")]
+position = Vector2(624, -585)
+collision_layer = 0
+is_shooty = true
+
+[node name="ElectricTile" parent="." instance=ExtResource("4_44i61")]
+position = Vector2(305, -612)
+orientation = 1

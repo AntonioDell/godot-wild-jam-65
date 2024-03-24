@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b40ik86a81oxo"]
 
-[ext_resource type="Script" path="res://experiments/thrust.gd" id="1_dat6t"]
+[ext_resource type="Script" path="res://player/thrust.gd" id="1_dat6t"]
 [ext_resource type="Script" path="res://experiments/rocket_helper_test.gd" id="1_pl15x"]
 
 [sub_resource type="Gradient" id="Gradient_yt208"]

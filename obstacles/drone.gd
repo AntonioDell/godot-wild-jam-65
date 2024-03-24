@@ -22,8 +22,8 @@ var aim_directions: Dictionary = {
 	"E": {"angle": INF, "frame": 19, "position": Vector2.ZERO },
 	"NE": {"angle": INF, "frame": 21, "position": Vector2.ZERO },
 }
-var colliding_player: Player
-var shooty_player: Player
+var colliding_player
+var shooty_player
 var current_aim: String
 var bullet_scene = preload("res://obstacles/bullet.tscn")
 
@@ -44,7 +44,10 @@ func _process(delta):
 		_trigger_drone_jump()
 
 func _trigger_drone_jump():
-	colliding_player.drone_triggered_jump.start()
+	if "drone_triggered_jump" in colliding_player:
+		colliding_player.drone_triggered_jump.start()
+	elif "trigger_drone_jump" in colliding_player:
+		colliding_player.trigger_drone_jump.emit()
 	animation_player.play("stun_start_end")
 	animation_player.queue("stun_loop")
 	stun_timer.start(time_stunned)
@@ -60,12 +63,12 @@ func _queue_idle():
 	else:
 		animation_player.queue("idle_shooty")
 
-func _on_player_entered(body):
-	if body is Player:
+func _on_player_entered(body: Node2D):
+	if _is_player(body):
 		colliding_player = body
 
-func _on_player_exited(body):
-	if body is Player:
+func _on_player_exited(body: Node2D):
+	if _is_player(body):
 		colliding_player = null
 
 func _aim_at_player():
@@ -93,12 +96,15 @@ func _shoot():
 	get_tree().root.add_child(bullet)
 
 func _on_shooty_player_detection_body_entered(body):
-	if body is Player:
+	if _is_player(body):
 		shooty_player = body
 
 func _on_shooty_player_detection_body_exited(body):
-	if body is Player:
+	if _is_player(body):
 		shooty_player = null
+
+func _is_player(body: Node2D):
+	return body is Player or body is FiniteStatePlayer
 
 #region tool scripts
 const SHOOTY_AREA_COLOR = Color(255, 0, 0, .07)

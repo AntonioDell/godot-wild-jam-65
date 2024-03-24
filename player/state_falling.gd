@@ -33,6 +33,7 @@ func enter():
 	else:
 		player.trigger_drone_jump.connect(_trigger_drone_jump)
 
+
 func process_physics(delta: float) -> State:
 	if drone_jump_triggered:
 		return state_drone_jump
@@ -52,7 +53,6 @@ func process_physics(delta: float) -> State:
 #region Ariborne walking 
 	var v_x = player_actions.get_movement_direction() * airborne_speed
 	player.velocity = Vector2(v_x, v_y)
-	player.move_and_slide()
 #endregion
 	
 	# TODO: Add edge case for infinite fall -> player should die probably
@@ -65,3 +65,4 @@ func exit():
 
 func _trigger_drone_jump():
 	drone_jump_triggered = true
+

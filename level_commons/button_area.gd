@@ -22,7 +22,7 @@ func press_button():
 
 func _on_body_entered(body):
 	if Engine.is_editor_hint(): return
-	if body is Player:
+	if body is Player or body is FiniteStatePlayer:
 		press_button()
 
 func _play_animation():

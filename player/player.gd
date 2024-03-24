@@ -77,8 +77,6 @@ func _ready():
 	%Blastoff2Audio.volume_db = AudioManager.volume_db
 	%Blastoff3Audio.volume_db = AudioManager.volume_db
 	%ExplosionAudio.volume_db = AudioManager.volume_db
-	
-	
 
 func _physics_process(delta):
 	if is_death: return

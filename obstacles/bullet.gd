@@ -10,8 +10,10 @@ func _physics_process(delta):
 	position += direction * speed * delta
 
 func _on_body_entered(body):
-	if body is Player:
+	if "_explode" in body:
 		body._explode()
+	elif "bullet_hit" in body:
+		body.bullet_hit()
 	queue_free()
 
 func _on_area_entered(area):

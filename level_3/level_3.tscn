@@ -17,8 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://dr8ffvra5ss3d" path="res://level_commons/single_door.tscn" id="14_2caxv"]
 [ext_resource type="PackedScene" uid="uid://b8xbpaau8pmdu" path="res://level_commons/space_elevator.tscn" id="16_nixep"]
 [ext_resource type="PackedScene" uid="uid://b1xhkt7w5yuch" path="res://level_commons/button_area.tscn" id="16_ohdnv"]
+[ext_resource type="PackedScene" uid="uid://ccnient6ijo62" path="res://player/finite_state_player.tscn" id="16_rtbc1"]
 [ext_resource type="PackedScene" uid="uid://ckird3qw1qahd" path="res://level_commons/toggle_buttons.tscn" id="16_yfuqr"]
-[ext_resource type="PackedScene" uid="uid://b2eygpgki0vx0" path="res://player/player.tscn" id="17_k6qec"]
 [ext_resource type="PackedScene" uid="uid://ddunid30jv8rw" path="res://level_commons/door.tscn" id="18_rf8yv"]
 [ext_resource type="PackedScene" uid="uid://bntgfnkp8saaw" path="res://level_commons/camera_lock_mechanic.tscn" id="20_5t2xp"]
 [ext_resource type="PackedScene" uid="uid://tdl066rhoyrr" path="res://level_commons/respawn_point.tscn" id="21_drnbe"]
@@ -610,7 +610,7 @@ is_pressed = true
 unique_name_in_owner = true
 position = Vector2(832, -7)
 
-[node name="Player" parent="." instance=ExtResource("17_k6qec")]
+[node name="FiniteStatePlayer" parent="." instance=ExtResource("16_rtbc1")]
 position = Vector2(1007, 857)
 
 [node name="EntryDoor" parent="." instance=ExtResource("18_rf8yv")]
@@ -682,7 +682,7 @@ lock_camera_heights = Array[float]([0.0, -117.0, -693.0])
 
 [node name="DebugEndLevelPositionMarker" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(439, -1174)
+position = Vector2(585, -1618)
 
 [node name="EndMachine" type="Node2D" parent="."]
 position = Vector2(320, -1621)
@@ -725,5 +725,5 @@ zoom = Vector2(2, 2)
 [connection signal="to_end_button_clicked" from="DevSettings" to="." method="_on_dev_settings_to_end_button_clicked"]
 [connection signal="button_pressed" from="FirstButton" to="." method="_on_first_button_pressed"]
 [connection signal="button_pressed" from="FreeDroneButtons" to="." method="_on_free_or_capture_toggle_buttons_button_pressed"]
-[connection signal="player_died" from="Player" to="." method="_on_player_died"]
+[connection signal="death_ended" from="FiniteStatePlayer" to="." method="_on_player_died"]
 [connection signal="body_entered" from="EndReachedArea" to="." method="_on_end_reached_area_body_entered"]
