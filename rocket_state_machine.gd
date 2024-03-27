@@ -8,6 +8,7 @@ signal rocket_thrust_activated(stage: int)
 
 @onready var initial_state: State = $ReadyToCharge
 @onready var state_overload: State = $Overload
+@onready var state_dead: State = $Dead
 
 var current_state: State
 
@@ -18,6 +19,7 @@ var is_state_change_locked_for_frame = false
 
 func init(player: CharacterBody2D, player_actions: PlayerActions, animation_player: AnimationPlayer):
 	player.was_shot.connect(func(): _change_state_with_lock(state_overload))
+	player.death_started.connect(func(): _change_state_with_lock(state_dead))
 	
 	for child in get_children():
 		if "player" in child:

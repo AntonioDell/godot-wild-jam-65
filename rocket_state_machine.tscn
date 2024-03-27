@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://oe14gxhs20vw"]
+[gd_scene load_steps=12 format=3 uid="uid://oe14gxhs20vw"]
 
 [ext_resource type="Script" path="res://rocket_state_machine.gd" id="1_p5e5t"]
 [ext_resource type="Script" path="res://player/state_ready_to_charge.gd" id="2_q37es"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://ct62owvaphcbx" path="res://sound/blastofflevel3blast.wav" id="7_mviqs"]
 [ext_resource type="Script" path="res://player/state_overload.gd" id="9_s3k5q"]
 [ext_resource type="AudioStream" uid="uid://dcrdntawoex42" path="res://sound/explosion.wav" id="10_ojnnk"]
+[ext_resource type="Script" path="res://state_rocket_dead.gd" id="11_iyvxl"]
 
 [node name="RocketStateMachine" type="Node"]
 script = ExtResource("1_p5e5t")
@@ -57,3 +58,6 @@ state_ready_to_charge = NodePath("../ReadyToCharge")
 unique_name_in_owner = true
 stream = ExtResource("10_ojnnk")
 volume_db = -10.0
+
+[node name="Dead" type="Node" parent="."]
+script = ExtResource("11_iyvxl")

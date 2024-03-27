@@ -299,7 +299,6 @@ position = Vector2(623, -389)
 
 [node name="Drone" parent="." instance=ExtResource("20_qtf2u")]
 position = Vector2(223, -164)
-is_shooty = true
 
 [node name="Bird" parent="." node_paths=PackedStringArray("patrol_point_nodes") instance=ExtResource("20_xm4v6")]
 position = Vector2(628, -1177)

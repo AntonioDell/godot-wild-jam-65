@@ -35,6 +35,7 @@ func _physics_process(delta: float):
 	var new_state = current_state.process_physics(delta)
 	if new_state:
 		_change_state(new_state)
+	
 	player.move_and_slide()
 
 func _change_state(new_state: State):
