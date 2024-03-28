@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcvrthg2t2iq7"]
+
+[ext_resource type="Script" path="res://settings/developer_settings.gd" id="1_4gv18"]
+
+[node name="DeveloperSettings" type="Node"]
+script = ExtResource("1_4gv18")

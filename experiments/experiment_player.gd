@@ -99,7 +99,6 @@ func _process_rocket_charging(delta: float):
 	# TODO: Remove debug code
 	if not Input.is_action_pressed("charge") or charging_time >= rocket_time_to_max_charge + rocket_time_to_overload:
 		next_charge = clampf(inverse_lerp(0.0, rocket_time_to_max_charge, charging_time), 0.1, 1.0)
-		print(next_charge)
 		_change_state(ROCKET_START)
 		return
 	
@@ -174,5 +173,4 @@ func _process_falling(delta: float):
 	move_and_slide()
 
 func _change_state(new_state: int):
-	print("_change_state to %s" % new_state)
 	state = new_state

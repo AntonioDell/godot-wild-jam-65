@@ -1,9 +1,9 @@
 [gd_scene load_steps=26 format=3 uid="uid://ccnient6ijo62"]
 
 [ext_resource type="Script" path="res://player/finite_state_player.gd" id="1_7tnt7"]
-[ext_resource type="PackedScene" uid="uid://dqega6c6ige02" path="res://movement_state_machine.tscn" id="1_fumsx"]
+[ext_resource type="PackedScene" uid="uid://dqega6c6ige02" path="res://state_machines/movement_state_machine.tscn" id="1_fumsx"]
 [ext_resource type="Texture2D" uid="uid://bqeuc5oxc8ilk" path="res://player/robot_sprites_v3.png" id="2_sqx1x"]
-[ext_resource type="PackedScene" uid="uid://oe14gxhs20vw" path="res://rocket_state_machine.tscn" id="2_xetxe"]
+[ext_resource type="PackedScene" uid="uid://oe14gxhs20vw" path="res://state_machines/rocket_state_machine.tscn" id="2_xetxe"]
 [ext_resource type="Script" path="res://player/player_actions.gd" id="4_x126a"]
 
 [sub_resource type="Animation" id="Animation_4on4x"]
