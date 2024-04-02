@@ -1,12 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://c7mjx1lays4je"]
+[gd_scene load_steps=17 format=3 uid="uid://c7mjx1lays4je"]
 
 [ext_resource type="Script" path="res://main_menu/main_menu.gd" id="1_iqp7u"]
-[ext_resource type="Texture2D" uid="uid://o7tuah15wexb" path="res://main_menu/city_2_sprites.png" id="2_8kwox"]
 [ext_resource type="Texture2D" uid="uid://c5ljfx0426fkb" path="res://main_menu/tv_menu_sprites.png" id="2_yhv2j"]
 [ext_resource type="StyleBox" uid="uid://ckgca2irikb2b" path="res://main_menu/main_menu_button_focused.tres" id="3_c0imx"]
-[ext_resource type="Texture2D" uid="uid://dv6bk3jd7yiho" path="res://main_menu/city_1_sprites.png" id="3_vejod"]
-[ext_resource type="Texture2D" uid="uid://cnw86wv3c82nb" path="res://main_menu/city_0_sprites.png" id="4_5clb5"]
-[ext_resource type="Texture2D" uid="uid://bv123bsgovx8i" path="res://level_commons/space_background.png" id="7_gimxo"]
+[ext_resource type="Texture2D" uid="uid://bmdq84lx56xv5" path="res://main_menu/parallax_v2_bg.png" id="3_mssfw"]
+[ext_resource type="Texture2D" uid="uid://ta3kt752h8ph" path="res://main_menu/parallax_v2_1.png" id="4_kaes1"]
+[ext_resource type="Texture2D" uid="uid://csnsl73isnl53" path="res://main_menu/parallax_v2_2.png" id="5_ahhhu"]
+[ext_resource type="Texture2D" uid="uid://b84ll37svlymj" path="res://main_menu/parallax_v2_3.png" id="6_5upcy"]
+[ext_resource type="Texture2D" uid="uid://csqpy0mm7jg3u" path="res://main_menu/parallax_v2_4.png" id="7_4n8gh"]
+[ext_resource type="Texture2D" uid="uid://cjdm4eq0ur5dg" path="res://main_menu/parallax_v2_5.png" id="8_y6756"]
+[ext_resource type="Texture2D" uid="uid://cad1l1frljj2b" path="res://main_menu/parallax_v2_6.png" id="9_hyjay"]
 
 [sub_resource type="Animation" id="Animation_n51ja"]
 length = 0.001
@@ -33,6 +36,64 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, -738)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CityParallaxV2/ParallaxV2Layer6:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -1216)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CityParallaxV2/ParallaxV2Layer5:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -1216)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CityParallaxV2/ParallaxV2Layer4:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -1216)]
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CityParallaxV2/ParallaxV2Layer1_3:position:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CityParallaxV2/ParallaxV2Layer1_3:position:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="Animation" id="Animation_cd7pm"]
@@ -62,37 +123,13 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, -738), Vector2(0, 481)]
 }
-tracks/2/type = "animation"
+tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CityParallax/AnimationPlayer")
+tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"clips": PackedStringArray(),
-"times": PackedFloat32Array()
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CityParallax/AnimationPlayer")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["city_loop"],
-"method": &"play"
-}]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(2),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -118,73 +155,112 @@ tracks/0/keys = {
 "values": [0, 0, 0, 2, 2, 2, 4, 4, 4, 1, 1, 1, 3, 3, 3]
 }
 
+[sub_resource type="Animation" id="Animation_bv02d"]
+resource_name = "start_game_v2"
+length = 8.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CityParallaxV2/ParallaxV2Layer6:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.8, 3.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -1216), Vector2(0, -540)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CityParallaxV2/ParallaxV2Layer5:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8, 5.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -1216), Vector2(0, -635)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CityParallaxV2/ParallaxV2Layer4:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.8, 5.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -1216), Vector2(0, -706)]
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CityParallaxV2/ParallaxV2Layer1_3:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.8)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CityParallaxV2/ParallaxV2Layer1_3:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 626, -0.25, 0, 0.25, 0, 626, -0.25, 0, 0.528526, 1, 1230, 0, 0, 0, 0),
+"times": PackedFloat32Array(0.8, 6.4, 7.4, 8.8)
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MainMenuSprite:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [5, 6, 7, 7, 7]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MainMenuSprite:offset")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.3, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -738), Vector2(0, 481)]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(8.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_hacky_hack"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qxupw"]
 _data = {
 "RESET": SubResource("Animation_n51ja"),
 "start_game": SubResource("Animation_cd7pm"),
+"start_game_v2": SubResource("Animation_bv02d"),
 "tv_loop": SubResource("Animation_dnbm2")
-}
-
-[sub_resource type="Animation" id="Animation_3p760"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("City0Sprites:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("City1Sprites:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_gp06y"]
-resource_name = "city_loop"
-length = 2.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("City0Sprites:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [4, 5, 4, 5, 4, 5, 4, 5, 4, 5, 4, 5, 4, 5, 4, 5, 4, 5, 4, 5, 0, 1, 2, 3]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("City1Sprites:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1.6, 1.7, 1.8, 1.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kq4r6"]
-_data = {
-"RESET": SubResource("Animation_3p760"),
-"city_loop": SubResource("Animation_gp06y")
 }
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_32mgc"]
@@ -199,31 +275,44 @@ libraries = {
 }
 autoplay = "tv_loop"
 
-[node name="SpaceBackground" type="Sprite2D" parent="."]
-position = Vector2(336, 0)
-texture = ExtResource("7_gimxo")
+[node name="CityParallaxV2" type="Node2D" parent="."]
 
-[node name="CityParallax" type="Node2D" parent="."]
-position = Vector2(0, -480)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CityParallax"]
-libraries = {
-"": SubResource("AnimationLibrary_kq4r6")
-}
-
-[node name="City2Sprites" type="Sprite2D" parent="CityParallax"]
-texture = ExtResource("2_8kwox")
+[node name="ParallaxV2Bg" type="Sprite2D" parent="CityParallaxV2"]
+position = Vector2(0, -1216)
+texture = ExtResource("3_mssfw")
 centered = false
 
-[node name="City1Sprites" type="Sprite2D" parent="CityParallax"]
-texture = ExtResource("3_vejod")
-centered = false
-hframes = 4
+[node name="ParallaxV2Layer1_3" type="Node2D" parent="CityParallaxV2"]
 
-[node name="City0Sprites" type="Sprite2D" parent="CityParallax"]
-texture = ExtResource("4_5clb5")
+[node name="ParallaxV2Layer1" type="Sprite2D" parent="CityParallaxV2/ParallaxV2Layer1_3"]
+position = Vector2(0, -1216)
+texture = ExtResource("4_kaes1")
 centered = false
-hframes = 6
+
+[node name="ParallaxV2Layer2" type="Sprite2D" parent="CityParallaxV2/ParallaxV2Layer1_3"]
+position = Vector2(0, -1216)
+texture = ExtResource("5_ahhhu")
+centered = false
+
+[node name="ParallaxV2Layer3" type="Sprite2D" parent="CityParallaxV2/ParallaxV2Layer1_3"]
+position = Vector2(0, -1216)
+texture = ExtResource("6_5upcy")
+centered = false
+
+[node name="ParallaxV2Layer4" type="Sprite2D" parent="CityParallaxV2"]
+position = Vector2(0, -1216)
+texture = ExtResource("7_4n8gh")
+centered = false
+
+[node name="ParallaxV2Layer5" type="Sprite2D" parent="CityParallaxV2"]
+position = Vector2(0, -1216)
+texture = ExtResource("8_y6756")
+centered = false
+
+[node name="ParallaxV2Layer6" type="Sprite2D" parent="CityParallaxV2"]
+position = Vector2(0, -1216)
+texture = ExtResource("9_hyjay")
+centered = false
 
 [node name="MainMenuSprite" type="Sprite2D" parent="."]
 texture_filter = 3

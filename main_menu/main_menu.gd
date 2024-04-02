@@ -15,7 +15,7 @@ func _ready():
 func _on_start_button_pressed():
 	start_button.hide()
 	volume_setting.hide()
-	animation_player.play("start_game")
+	animation_player.play("start_game_v2")
 
 func _hacky_hack():
 	is_game_started = true
