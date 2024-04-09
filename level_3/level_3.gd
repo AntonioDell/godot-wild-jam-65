@@ -62,7 +62,6 @@ func _on_first_button_pressed():
 
 func _on_free_or_capture_toggle_buttons_button_pressed(key):
 	if key == 0: # Button B is pressed
-		print(key)
 		(%FreeDroneDoorTop as Door).open()
 		(%FreeDroneDoorBottom as Door).close()
 	else: # Button A is pressed

@@ -22,7 +22,6 @@ func _process(delta):
 	_tool_show_debug_lines()
 
 func _on_button_pressed(pressed_button_index: int):
-	print("button %s" % pressed_button_index)
 	for i in buttons.size(): 
 		if i == pressed_button_index: continue
 		var button = buttons[i]

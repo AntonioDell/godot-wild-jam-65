@@ -19,7 +19,6 @@ func start():
 func get_vertical_velocity(delta: float) -> Vector2:
 	var ret = Vector2.ZERO
 	if is_jumping:
-		#print("%s: eased = %s, normal %s" % [timer.time_left, ease(inverse_lerp(0.0, max_jump_duration, timer.time_left), .4), inverse_lerp(0.0, max_jump_duration, timer.time_left)])
 		var strength = max_jump_speed *  (1 - ease(inverse_lerp(0.0, max_jump_duration, time_since_jump), .4))
 		ret = Vector2.UP * strength
 	

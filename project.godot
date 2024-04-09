@@ -19,6 +19,7 @@ config/features=PackedStringArray("4.2", "GL Compatibility")
 GameState="*res://autoloads/game_state.tscn"
 RespawnMechanic="*res://autoloads/respawn_mechanic.tscn"
 AudioManager="*res://autoloads/audio_manager.tscn"
+GlobalSettings="*res://autoloads/global_settings.tscn"
 
 [display]
 
