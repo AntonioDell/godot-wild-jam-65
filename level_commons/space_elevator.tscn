@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://b8xbpaau8pmdu"]
+[gd_scene load_steps=9 format=3 uid="uid://b8xbpaau8pmdu"]
 
 [ext_resource type="Script" path="res://level_commons/space_elevator.gd" id="1_pncg0"]
-[ext_resource type="Texture2D" uid="uid://bv123bsgovx8i" path="res://level_commons/space_background.png" id="2_tu46t"]
 [ext_resource type="PackedScene" uid="uid://bc5a6qmhij3rh" path="res://level_commons/rope.tscn" id="3_kty1i"]
 [ext_resource type="PackedScene" uid="uid://cn0mjyo2b2b8c" path="res://level_commons/platform.tscn" id="4_b6lpq"]
 
@@ -76,14 +75,7 @@ libraries = {
 "": SubResource("AnimationLibrary_ce35e")
 }
 
-[node name="SpaceBackgroundBottom" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-z_index = -2
-position = Vector2(173, 480)
-texture = ExtResource("2_tu46t")
-
 [node name="RopeBottom" parent="." instance=ExtResource("3_kty1i")]
-z_index = -1
 position = Vector2(-1, -4)
 rotation = 1.5708
 points = PackedVector2Array(3.99942, -161, 963.999, -161)

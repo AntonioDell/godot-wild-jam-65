@@ -29,8 +29,9 @@ func _on_player_died():
 	get_tree().reload_current_scene()
 
 func _on_close_exit_door_area_body_entered(body):
-	if body is Player or body is FiniteStatePlayer:
-		%ExitDoor.is_open = false
+	var exit_door = get_node_or_null("ExitDoor")
+	if exit_door and body is Player or body is FiniteStatePlayer:
+		exit_door.is_open = false
 
 func _on_dev_settings_to_end_button_clicked():
 	get_tree().get_first_node_in_group("player").global_position = %DebugEndLevelPositionMarker.global_position

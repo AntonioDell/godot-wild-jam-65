@@ -550,6 +550,7 @@ radius = 7.0
 height = 26.0
 
 [node name="FiniteStatePlayer" type="CharacterBody2D" groups=["player"]]
+z_index = 1
 collision_layer = 3
 script = ExtResource("1_7tnt7")
 
